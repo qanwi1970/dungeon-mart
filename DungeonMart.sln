@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart", "DungeonMart\DungeonMart.csproj", "{89EBB166-3B8F-4506-841C-3090EF84CD07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.Tests", "DungeonMart.Tests\DungeonMart.Tests.csproj", "{23BB50A2-4423-452B-9482-88728F2B4411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.Data", "DungeonMart.Data\DungeonMart.Data.csproj", "{7536182F-9B13-4A80-A59C-E71299CAB249}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23BB50A2-4423-452B-9482-88728F2B4411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23BB50A2-4423-452B-9482-88728F2B4411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23BB50A2-4423-452B-9482-88728F2B4411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23BB50A2-4423-452B-9482-88728F2B4411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7536182F-9B13-4A80-A59C-E71299CAB249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7536182F-9B13-4A80-A59C-E71299CAB249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7536182F-9B13-4A80-A59C-E71299CAB249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7536182F-9B13-4A80-A59C-E71299CAB249}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
