@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="license.html" />
     <Content Include="scripts\ai.js" />
     <Content Include="scripts\ai.min.js" />
     <Content Include="Web.config" />
