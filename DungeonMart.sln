@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.Tests", "Dungeo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.Data", "DungeonMart.Data\DungeonMart.Data.csproj", "{7536182F-9B13-4A80-A59C-E71299CAB249}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.Console", "DungeonMart.Console\DungeonMart.Console.csproj", "{8324D2EE-0C4B-479E-98C8-4C188B2E20DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7536182F-9B13-4A80-A59C-E71299CAB249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7536182F-9B13-4A80-A59C-E71299CAB249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7536182F-9B13-4A80-A59C-E71299CAB249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8324D2EE-0C4B-479E-98C8-4C188B2E20DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8324D2EE-0C4B-479E-98C8-4C188B2E20DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8324D2EE-0C4B-479E-98C8-4C188B2E20DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8324D2EE-0C4B-479E-98C8-4C188B2E20DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

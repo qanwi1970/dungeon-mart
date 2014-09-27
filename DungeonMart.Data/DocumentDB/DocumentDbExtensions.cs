@@ -4,7 +4,7 @@ using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 
-namespace DungeonMart.Data.Util
+namespace DungeonMart.Data.DocumentDB
 {
     internal static class DocumentDbExtensions
     {
