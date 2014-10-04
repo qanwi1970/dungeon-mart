@@ -20,26 +20,28 @@ namespace DungeonMart.Console
             {
                 Name = "test"
             });
-            System.Console.WriteLine(newEquipment.Id);
+            System.Console.WriteLine(newEquipment.id);
 
             System.Console.WriteLine("Getting list");
             var equipments = repo.GetEquipments().ToList();
             System.Console.WriteLine("List Count: " + equipments.Count);
             foreach (var equipment in equipments)
             {
-                System.Console.Write(equipment.Id + "\t");
+                System.Console.Write(equipment.id + "\t");
             }
 
             System.Console.WriteLine("Updating equipment");
             newEquipment.Family = "testfamily";
-            var updatedEquipment = repo.UpdateEquipment(newEquipment.Id, newEquipment);
+            var updatedEquipment = repo.UpdateEquipment(newEquipment.id, newEquipment);
             System.Console.WriteLine(updatedEquipment.Family);
 
             System.Console.WriteLine("Deleting equipment");
-            repo.DeleteEquipment(newEquipment.Id);
+            repo.DeleteEquipment(newEquipment.id);
 
             equipments = repo.GetEquipments().ToList();
             System.Console.WriteLine("Equipments count: " + equipments.Count);
+
+            System.Console.ReadKey();
         }
     }
 }

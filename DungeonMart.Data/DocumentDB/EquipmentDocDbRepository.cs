@@ -24,7 +24,7 @@ namespace DungeonMart.Data.DocumentDB
 
         public Equipment GetEquipmentById(string id)
         {
-            return Client.CreateDocumentQuery<Equipment>(DocumentLink).First(d => d.Id == id);
+            return Client.CreateDocumentQuery<Equipment>(DocumentLink).First(d => d.id == id);
         }
 
         public Equipment AddEquipment(Equipment equipment)
