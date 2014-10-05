@@ -34,7 +34,6 @@ namespace DungeonMart.Data.DocumentDB
             return result;
         }
 
-        // not sure how this really works
         public Equipment UpdateEquipment(string id, Equipment equipment)
         {
             var doc = Client.CreateDocumentQuery<Document>(DocumentLink).AsEnumerable().First(d => d.Id == id);
