@@ -11,8 +11,9 @@ namespace DungeonMart.Data.DocumentDB
 {
     public class EquipmentDocDbRepository : IEquipmentRepository
     {
-        private static readonly DocumentClient Client = new DocumentClient(new Uri("https://dmart.documents.azure.com:443/"),
-            "dNN+SNwgqpiXyNfG5Ez43nMofUKY7+3x2e4Gp6vPzxGMypCzoYRNqEMm2AGSggfZqiiAWk4qSHGYhrkCJs9xvw==");
+        private static readonly DocumentDBProperties Properties = new DocumentDBProperties();
+
+        private static readonly DocumentClient Client = new DocumentClient(new Uri(Properties.Location), Properties.Key);
 
         private static readonly string DocumentLink =
             Client.GetOrCreateDocumentCollectionAsync("dmart", "equipment").Result.DocumentsLink;

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocumentDB\DocumentDBProperties.cs" />
     <Compile Include="DocumentDB\EquipmentDocDbRepository.cs" />
     <Compile Include="Interfaces\IEquipmentRepository.cs" />
     <Compile Include="Models\BaseModel.cs" />
