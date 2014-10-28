@@ -30,7 +30,7 @@ namespace DungeonMart.Console
                 System.Console.Write(equipment.id + "\t");
             }
 
-            System.Console.WriteLine("Updating equipment");
+            System.Console.WriteLine("\nUpdating equipment");
             newEquipment.Family = "testfamily";
             var updatedEquipment = repo.UpdateEquipment(newEquipment.id, newEquipment);
             System.Console.WriteLine(updatedEquipment.Family);
