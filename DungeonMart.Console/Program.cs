@@ -19,7 +19,7 @@ namespace DungeonMart.Console
             var newEquipment = repo.AddEquipment(new Equipment
             {
                 Name = "test"
-            });
+            }).Result;
             System.Console.WriteLine(newEquipment.id);
 
             System.Console.WriteLine("Getting list");
@@ -32,7 +32,7 @@ namespace DungeonMart.Console
 
             System.Console.WriteLine("\nUpdating equipment");
             newEquipment.Family = "testfamily";
-            var updatedEquipment = repo.UpdateEquipment(newEquipment.id, newEquipment);
+            var updatedEquipment = repo.UpdateEquipment(newEquipment.id, newEquipment).Result;
             System.Console.WriteLine(updatedEquipment.Family);
 
             System.Console.WriteLine("Deleting equipment");

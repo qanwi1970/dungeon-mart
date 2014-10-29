@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Models;
 using Microsoft.Azure.Documents;
@@ -28,25 +29,27 @@ namespace DungeonMart.Data.DocumentDB
             return Client.CreateDocumentQuery<Equipment>(CollectionLink).First(d => d.id == id);
         }
 
-        public Equipment AddEquipment(Equipment equipment)
+        public async Task<Equipment> AddEquipment(Equipment equipment)
         {
-            dynamic doc = Client.CreateDocumentAsync(CollectionLink, equipment).Result.Resource;
-            Equipment result = doc;
-            return result;
+            var result = await Client.CreateDocumentAsync(DocumentLink, equipment);
+            dynamic doc = result.Resource;
+            Equipment addedEquipment = doc;
+            return addedEquipment;
         }
 
-        public Equipment UpdateEquipment(string id, Equipment equipment)
+        public async Task<Equipment> UpdateEquipment(string id, Equipment equipment)
         {
-            var doc = Client.CreateDocumentQuery(CollectionLink).AsEnumerable().First(d => d.Id == id);
-            dynamic updatedDoc = Client.ReplaceDocumentAsync(doc.SelfLink, equipment).Result.Resource;
-            Equipment result = updatedDoc;
-            return result;
+            var doc = Client.CreateDocumentQuery(DocumentLink).AsEnumerable().First(d => d.Id == id);
+            var result = await Client.ReplaceDocumentAsync(doc.SelfLink, equipment);
+            dynamic updatedDoc = result.Resource;
+            Equipment updatedEquipment = updatedDoc;
+            return updatedEquipment;
         }
 
-        public void DeleteEquipment(string id)
+        public async Task DeleteEquipment(string id)
         {
-            var doc = Client.CreateDocumentQuery(CollectionLink).AsEnumerable().First(d => d.Id == id);
-            Client.DeleteDocumentAsync(doc.SelfLink);
+            var doc = Client.CreateDocumentQuery(DocumentLink).AsEnumerable().First(d => d.Id == id);
+            await Client.DeleteDocumentAsync(doc.SelfLink);
         }
     }
 }
