@@ -30,7 +30,7 @@ namespace DungeonMart.Data.DocumentDB
 
         public Equipment GetEquipmentById(string id)
         {
-            return Client.CreateDocumentQuery<Equipment>(_collectionLink).First(d => d.id == id);
+            return Client.CreateDocumentQuery<Equipment>(_collectionLink).AsEnumerable().First(d => d.id == id);
         }
 
         public async Task<Equipment> AddEquipment(Equipment equipment)
