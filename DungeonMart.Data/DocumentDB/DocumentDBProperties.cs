@@ -11,5 +11,10 @@
         {
             get { return "dNN+SNwgqpiXyNfG5Ez43nMofUKY7+3x2e4Gp6vPzxGMypCzoYRNqEMm2AGSggfZqiiAWk4qSHGYhrkCJs9xvw=="; }
         }
+
+        public string DatabaseId
+        {
+            get { return "dmart"; }
+        }
     }
 }

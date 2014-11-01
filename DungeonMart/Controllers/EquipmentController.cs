@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using DungeonMart.Data.DocumentDB;
@@ -18,33 +19,38 @@ namespace DungeonMart.Controllers
         }
 
         // GET: api/Equipment
-        public IEnumerable<Equipment> Get()
+        public async Task<HttpResponseMessage> Get()
         {
-            return _equipmentRepository.GetEquipments();
+            var result = Request.CreateResponse(HttpStatusCode.OK, _equipmentRepository.GetEquipments());
+            return await Task.FromResult(result);
         }
 
         // GET: api/Equipment/5
-        public Equipment Get(string id)
+        public async Task<HttpResponseMessage> Get(string id)
         {
-            return _equipmentRepository.GetEquipmentById(id);
+            var result = Request.CreateResponse(HttpStatusCode.OK, _equipmentRepository.GetEquipmentById(id));
+            return await Task.FromResult(result);
         }
 
         // POST: api/Equipment
-        public async Task<Equipment> Post([FromBody]Equipment value)
+        public async Task<HttpResponseMessage> Post([FromBody]Equipment value)
         {
-            return await _equipmentRepository.AddEquipment(value);
+            var newEquipment = await _equipmentRepository.AddEquipment(value);
+            return Request.CreateResponse(HttpStatusCode.Created, newEquipment);
         }
 
         // PUT: api/Equipment/5
-        public async Task<Equipment> Put(string id, [FromBody]Equipment value)
+        public async Task<HttpResponseMessage> Put(string id, [FromBody]Equipment value)
         {
-            return await _equipmentRepository.UpdateEquipment(id, value);
+            var updatedEquipment = await _equipmentRepository.UpdateEquipment(id, value);
+            return Request.CreateResponse(HttpStatusCode.OK, updatedEquipment);
         }
 
         // DELETE: api/Equipment/5
-        public async void Delete(string id)
+        public async Task<HttpResponseMessage> Delete(string id)
         {
             await _equipmentRepository.DeleteEquipment(id);
+            return Request.CreateResponse();
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Models;
-using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 
@@ -12,30 +11,30 @@ namespace DungeonMart.Data.DocumentDB
 {
     public class EquipmentDocDbRepository : IEquipmentRepository
     {
+        private const string CollectionName = "equipment";
+
         private static readonly DocumentDBProperties Properties = new DocumentDBProperties();
 
         private static readonly DocumentClient Client = new DocumentClient(new Uri(Properties.Location), Properties.Key);
 
-        private readonly string _collectionLink;
-
-        public EquipmentDocDbRepository()
+        public async Task<IEnumerable<Equipment>> GetEquipments()
         {
-            _collectionLink = EquipmentCollection.Instance.Collection.DocumentsLink;
+            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
+            return await Task.Run(
+                () => Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable());
         }
 
-        public IEnumerable<Equipment> GetEquipments()
+        public async Task<Equipment> GetEquipmentById(string id)
         {
-            return Client.CreateDocumentQuery<Equipment>(_collectionLink).AsEnumerable();
-        }
-
-        public Equipment GetEquipmentById(string id)
-        {
-            return Client.CreateDocumentQuery<Equipment>(_collectionLink).AsEnumerable().First(d => d.id == id);
+            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
+            return await Task.Run(
+                () => Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable().First(d => d.id == id));
         }
 
         public async Task<Equipment> AddEquipment(Equipment equipment)
         {
-            var result = await Client.CreateDocumentAsync(_collectionLink, equipment);
+            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
+            var result = await Client.CreateDocumentAsync(collection.DocumentsLink, equipment);
             dynamic doc = result.Resource;
             Equipment addedEquipment = doc;
             return addedEquipment;
@@ -43,7 +42,8 @@ namespace DungeonMart.Data.DocumentDB
 
         public async Task<Equipment> UpdateEquipment(string id, Equipment equipment)
         {
-            var doc = Client.CreateDocumentQuery(_collectionLink).AsEnumerable().First(d => d.Id == id);
+            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
+            var doc = Client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
             var result = await Client.ReplaceDocumentAsync(doc.SelfLink, equipment);
             dynamic updatedDoc = result.Resource;
             Equipment updatedEquipment = updatedDoc;
@@ -52,23 +52,9 @@ namespace DungeonMart.Data.DocumentDB
 
         public async Task DeleteEquipment(string id)
         {
-            var doc = Client.CreateDocumentQuery(_collectionLink).AsEnumerable().First(d => d.Id == id);
+            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
+            var doc = Client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
             await Client.DeleteDocumentAsync(doc.SelfLink);
-        }
-
-        private class EquipmentCollection
-        {
-            private static readonly Lazy<EquipmentCollection> LazyMe =
-                new Lazy<EquipmentCollection>(() => new EquipmentCollection());
-
-            public DocumentCollection Collection { get; private set; }
-
-            private EquipmentCollection()
-            {
-                Collection = Client.GetOrCreateDocumentCollectionAsync("dmart", "equipment").Result;
-            }
-
-            public static EquipmentCollection Instance { get { return LazyMe.Value; } }
         }
     }
 }

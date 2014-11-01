@@ -23,7 +23,7 @@ namespace DungeonMart.Console
             System.Console.WriteLine(newEquipment.id);
 
             System.Console.WriteLine("Getting list");
-            var equipments = repo.GetEquipments().ToList();
+            var equipments = repo.GetEquipments().Result.ToList();
             System.Console.WriteLine("List Count: " + equipments.Count);
             foreach (var equipment in equipments)
             {
@@ -38,7 +38,7 @@ namespace DungeonMart.Console
             System.Console.WriteLine("Deleting equipment");
             repo.DeleteEquipment(newEquipment.id);
 
-            equipments = repo.GetEquipments().ToList();
+            equipments = repo.GetEquipments().Result.ToList();
             System.Console.WriteLine("Equipments count: " + equipments.Count);
 
             System.Console.ReadKey();
