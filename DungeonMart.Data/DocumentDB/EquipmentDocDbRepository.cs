@@ -20,15 +20,13 @@ namespace DungeonMart.Data.DocumentDB
         public async Task<IEnumerable<Equipment>> GetEquipments()
         {
             var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
-            return await Task.Run(
-                () => Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable());
+            return Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable();
         }
 
         public async Task<Equipment> GetEquipmentById(string id)
         {
             var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
-            return await Task.Run(
-                () => Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable().First(d => d.id == id));
+            return Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable().First(d => d.id == id);
         }
 
         public async Task<Equipment> AddEquipment(Equipment equipment)
