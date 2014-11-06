@@ -13,26 +13,38 @@ namespace DungeonMart.Data.DocumentDB
     {
         private const string CollectionName = "equipment";
 
-        private static readonly DocumentDBProperties Properties = new DocumentDBProperties();
+        private readonly IDocumentDBProperties _properties;
 
-        private static readonly DocumentClient Client = new DocumentClient(new Uri(Properties.Location), Properties.Key);
+        private readonly DocumentClient _client;
+
+        public EquipmentDocDbRepository()
+        {
+            _properties = new DocumentDBProperties();
+            _client = new DocumentClient(new Uri(_properties.Location), _properties.Key);
+        }
+
+        public EquipmentDocDbRepository(IDocumentDBProperties properties)
+        {
+            _properties = properties;
+            _client = new DocumentClient(new Uri(_properties.Location), _properties.Key);
+        }
 
         public async Task<IEnumerable<Equipment>> GetEquipmentsAsync()
         {
-            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
-            return Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable();
+            var collection = await _client.GetOrCreateDocumentCollectionAsync(_properties.DatabaseId, CollectionName);
+            return _client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable();
         }
 
         public async Task<Equipment> GetEquipmentByIdAsync(string id)
         {
-            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
-            return Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable().First(d => d.id == id);
+            var collection = await _client.GetOrCreateDocumentCollectionAsync(_properties.DatabaseId, CollectionName);
+            return _client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable().First(d => d.id == id);
         }
 
         public async Task<Equipment> AddEquipmentAsync(Equipment equipment)
         {
-            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
-            var result = await Client.CreateDocumentAsync(collection.DocumentsLink, equipment);
+            var collection = await _client.GetOrCreateDocumentCollectionAsync(_properties.DatabaseId, CollectionName);
+            var result = await _client.CreateDocumentAsync(collection.DocumentsLink, equipment);
             dynamic doc = result.Resource;
             Equipment addedEquipment = doc;
             return addedEquipment;
@@ -40,9 +52,9 @@ namespace DungeonMart.Data.DocumentDB
 
         public async Task<Equipment> UpdateEquipmentAsync(string id, Equipment equipment)
         {
-            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
-            var doc = Client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
-            var result = await Client.ReplaceDocumentAsync(doc.SelfLink, equipment);
+            var collection = await _client.GetOrCreateDocumentCollectionAsync(_properties.DatabaseId, CollectionName);
+            var doc = _client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
+            var result = await _client.ReplaceDocumentAsync(doc.SelfLink, equipment);
             dynamic updatedDoc = result.Resource;
             Equipment updatedEquipment = updatedDoc;
             return updatedEquipment;
@@ -50,9 +62,9 @@ namespace DungeonMart.Data.DocumentDB
 
         public async Task DeleteEquipmentAsync(string id)
         {
-            var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
-            var doc = Client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
-            await Client.DeleteDocumentAsync(doc.SelfLink);
+            var collection = await _client.GetOrCreateDocumentCollectionAsync(_properties.DatabaseId, CollectionName);
+            var doc = _client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
+            await _client.DeleteDocumentAsync(doc.SelfLink);
         }
     }
 }

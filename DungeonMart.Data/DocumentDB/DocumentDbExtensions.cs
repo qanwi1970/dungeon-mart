@@ -6,7 +6,7 @@ using Microsoft.Azure.Documents.Linq;
 
 namespace DungeonMart.Data.DocumentDB
 {
-    internal static class DocumentDbExtensions
+    public static class DocumentDbExtensions
     {
         public static async Task<Database> GetOrCreateDatabaseAsync(this DocumentClient client, string databaseId)
         {

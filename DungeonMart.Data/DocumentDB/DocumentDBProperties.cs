@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.DocumentDB
 {
-    public class DocumentDBProperties
+    public class DocumentDBProperties : IDocumentDBProperties
     {
         public string Location
         {
