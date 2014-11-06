@@ -6,10 +6,10 @@ namespace DungeonMart.Data.Interfaces
 {
     public interface IEquipmentRepository
     {
-        Task<IEnumerable<Equipment>> GetEquipments();
-        Task<Equipment> GetEquipmentById(string id);
-        Task<Equipment> AddEquipment(Equipment equipment);
-        Task<Equipment> UpdateEquipment(string id, Equipment equipment);
-        Task DeleteEquipment(string id);
+        Task<IEnumerable<Equipment>> GetEquipmentsAsync();
+        Task<Equipment> GetEquipmentByIdAsync(string id);
+        Task<Equipment> AddEquipmentAsync(Equipment equipment);
+        Task<Equipment> UpdateEquipmentAsync(string id, Equipment equipment);
+        Task DeleteEquipmentAsync(string id);
     }
 }

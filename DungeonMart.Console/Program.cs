@@ -16,14 +16,14 @@ namespace DungeonMart.Console
             IEquipmentRepository repo = new EquipmentDocDbRepository();
 
             System.Console.WriteLine("Adding Equipment");
-            var newEquipment = repo.AddEquipment(new Equipment
+            var newEquipment = repo.AddEquipmentAsync(new Equipment
             {
                 Name = "test"
             }).Result;
             System.Console.WriteLine(newEquipment.id);
 
             System.Console.WriteLine("Getting list");
-            var equipments = repo.GetEquipments().Result.ToList();
+            var equipments = repo.GetEquipmentsAsync().Result.ToList();
             System.Console.WriteLine("List Count: " + equipments.Count);
             foreach (var equipment in equipments)
             {
@@ -32,13 +32,13 @@ namespace DungeonMart.Console
 
             System.Console.WriteLine("\nUpdating equipment");
             newEquipment.Family = "testfamily";
-            var updatedEquipment = repo.UpdateEquipment(newEquipment.id, newEquipment).Result;
+            var updatedEquipment = repo.UpdateEquipmentAsync(newEquipment.id, newEquipment).Result;
             System.Console.WriteLine(updatedEquipment.Family);
 
             System.Console.WriteLine("Deleting equipment");
-            repo.DeleteEquipment(newEquipment.id);
+            repo.DeleteEquipmentAsync(newEquipment.id);
 
-            equipments = repo.GetEquipments().Result.ToList();
+            equipments = repo.GetEquipmentsAsync().Result.ToList();
             System.Console.WriteLine("Equipments count: " + equipments.Count);
 
             System.Console.ReadKey();

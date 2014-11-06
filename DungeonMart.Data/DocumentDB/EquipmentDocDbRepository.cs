@@ -17,19 +17,19 @@ namespace DungeonMart.Data.DocumentDB
 
         private static readonly DocumentClient Client = new DocumentClient(new Uri(Properties.Location), Properties.Key);
 
-        public async Task<IEnumerable<Equipment>> GetEquipments()
+        public async Task<IEnumerable<Equipment>> GetEquipmentsAsync()
         {
             var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
             return Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable();
         }
 
-        public async Task<Equipment> GetEquipmentById(string id)
+        public async Task<Equipment> GetEquipmentByIdAsync(string id)
         {
             var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
             return Client.CreateDocumentQuery<Equipment>(collection.DocumentsLink).AsEnumerable().First(d => d.id == id);
         }
 
-        public async Task<Equipment> AddEquipment(Equipment equipment)
+        public async Task<Equipment> AddEquipmentAsync(Equipment equipment)
         {
             var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
             var result = await Client.CreateDocumentAsync(collection.DocumentsLink, equipment);
@@ -38,7 +38,7 @@ namespace DungeonMart.Data.DocumentDB
             return addedEquipment;
         }
 
-        public async Task<Equipment> UpdateEquipment(string id, Equipment equipment)
+        public async Task<Equipment> UpdateEquipmentAsync(string id, Equipment equipment)
         {
             var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
             var doc = Client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
@@ -48,7 +48,7 @@ namespace DungeonMart.Data.DocumentDB
             return updatedEquipment;
         }
 
-        public async Task DeleteEquipment(string id)
+        public async Task DeleteEquipmentAsync(string id)
         {
             var collection = await Client.GetOrCreateDocumentCollectionAsync(Properties.DatabaseId, CollectionName);
             var doc = Client.CreateDocumentQuery(collection.DocumentsLink).AsEnumerable().First(d => d.Id == id);
