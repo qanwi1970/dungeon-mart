@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using DungeonMart.Data.DocumentDB;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Models;
 
@@ -13,9 +12,9 @@ namespace DungeonMart.Controllers
     {
         private readonly IEquipmentRepository _equipmentRepository;
 
-        public EquipmentController()
+        public EquipmentController(IEquipmentRepository equipmentRepository)
         {
-            _equipmentRepository = new EquipmentDocDbRepository();
+            _equipmentRepository = equipmentRepository;
         }
 
         // GET: api/Equipment
