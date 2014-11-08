@@ -43,17 +43,42 @@ namespace DungeonMart.Data.Tests.DocumentDB
         {
             var equipment = new Equipment
             {
-                Name = "Test"
+                Name = "Add_GetAll_GetById"
             };
             var addedEquipment = await repo.AddEquipmentAsync(equipment);
             var newId = addedEquipment.id;
-            Assert.AreEqual("Test", addedEquipment.Name);
+            Assert.AreEqual("Add_GetAll_GetById", addedEquipment.Name);
 
             var equipmentList = await repo.GetEquipmentsAsync();
             Assert.AreEqual(1, equipmentList.Count());
 
             var retrievedEquipment = await repo.GetEquipmentByIdAsync(newId);
-            Assert.AreEqual("Test", retrievedEquipment.Name);
+            Assert.AreEqual("Add_GetAll_GetById", retrievedEquipment.Name);
+        }
+
+        [Test]
+        public async void Add_GetById_Update_Delete_GetAll()
+        {
+            var equipment = new Equipment
+            {
+                Name = "Add_GetById_Update_Delete_GetAll"
+            };
+            var addedEquipment = await repo.AddEquipmentAsync(equipment);
+            var newId = addedEquipment.id;
+            Assert.AreEqual("Add_GetById_Update_Delete_GetAll", addedEquipment.Name);
+
+            var retrievedEquipment = await repo.GetEquipmentByIdAsync(newId);
+            Assert.AreEqual("Add_GetById_Update_Delete_GetAll", retrievedEquipment.Name);
+
+            retrievedEquipment.DamageSmall = "1d2";
+            var updatedEquipment = await repo.UpdateEquipmentAsync(newId, retrievedEquipment);
+            Assert.AreEqual("Add_GetById_Update_Delete_GetAll", updatedEquipment.Name);
+            Assert.AreEqual("1d2", updatedEquipment.DamageSmall);
+
+            await repo.DeleteEquipmentAsync(newId);
+
+            var equipmentList = await repo.GetEquipmentsAsync();
+            Assert.AreEqual(0, equipmentList.Count());
         }
     }
 }
