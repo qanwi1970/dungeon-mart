@@ -13,7 +13,7 @@ namespace DungeonMart.Console
     {
         static void Main(string[] args)
         {
-            IEquipmentRepository repo = new EquipmentDocDbRepository();
+            IEquipmentRepository repo = new EquipmentDocDbRepository(new DocumentDBProperties());
 
             System.Console.WriteLine("Adding Equipment");
             var newEquipment = repo.AddEquipmentAsync(new Equipment

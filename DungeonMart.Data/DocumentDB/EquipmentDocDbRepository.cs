@@ -17,12 +17,6 @@ namespace DungeonMart.Data.DocumentDB
 
         private readonly DocumentClient _client;
 
-        public EquipmentDocDbRepository()
-        {
-            _properties = new DocumentDBProperties();
-            _client = new DocumentClient(new Uri(_properties.Location), _properties.Key);
-        }
-
         public EquipmentDocDbRepository(IDocumentDBProperties properties)
         {
             _properties = properties;

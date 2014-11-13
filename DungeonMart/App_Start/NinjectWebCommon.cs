@@ -65,6 +65,7 @@ namespace DungeonMart
         {
             kernel.Load(Assembly.GetExecutingAssembly());
             kernel.Bind<IEquipmentRepository>().To<EquipmentDocDbRepository>();
+            kernel.Bind<IDocumentDBProperties>().To<DocumentDBProperties>();
         }        
     }
 }
