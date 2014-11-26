@@ -2,8 +2,6 @@ using System;
 using System.Reflection;
 using System.Web;
 using DungeonMart;
-using DungeonMart.Data.DocumentDB;
-using DungeonMart.Data.Interfaces;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
@@ -64,8 +62,8 @@ namespace DungeonMart
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load(Assembly.GetExecutingAssembly());
-            kernel.Bind<IEquipmentRepository>().To<EquipmentDocDbRepository>();
-            kernel.Bind<IDocumentDBProperties>().To<DocumentDBProperties>();
+            //kernel.Bind<IEquipmentRepository>().To<EquipmentDocDbRepository>();
+            //kernel.Bind<IDocumentDBProperties>().To<DocumentDBProperties>();
         }        
     }
 }

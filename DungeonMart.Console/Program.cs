@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DungeonMart.Data.DocumentDB;
-using DungeonMart.Data.Interfaces;
-using DungeonMart.Data.Models;
+using DungeonMart.Data.OldSql;
 
 namespace DungeonMart.Console
 {
@@ -13,33 +11,10 @@ namespace DungeonMart.Console
     {
         static void Main(string[] args)
         {
-            IEquipmentRepository repo = new EquipmentDocDbRepository(new DocumentDBProperties());
-
-            System.Console.WriteLine("Adding Equipment");
-            var newEquipment = repo.AddEquipmentAsync(new Equipment
+            using (var dbContext = new SRDContext())
             {
-                Name = "test"
-            }).Result;
-            System.Console.WriteLine(newEquipment.id);
-
-            System.Console.WriteLine("Getting list");
-            var equipments = repo.GetEquipmentsAsync().Result.ToList();
-            System.Console.WriteLine("List Count: " + equipments.Count);
-            foreach (var equipment in equipments)
-            {
-                System.Console.Write(equipment.id + "\t");
+                System.Console.WriteLine("Equipment Count: {0}", dbContext.equipments.Count());
             }
-
-            System.Console.WriteLine("\nUpdating equipment");
-            newEquipment.Family = "testfamily";
-            var updatedEquipment = repo.UpdateEquipmentAsync(newEquipment.id, newEquipment).Result;
-            System.Console.WriteLine(updatedEquipment.Family);
-
-            System.Console.WriteLine("Deleting equipment");
-            repo.DeleteEquipmentAsync(newEquipment.id);
-
-            equipments = repo.GetEquipmentsAsync().Result.ToList();
-            System.Console.WriteLine("Equipments count: " + equipments.Count);
 
             System.Console.ReadKey();
         }

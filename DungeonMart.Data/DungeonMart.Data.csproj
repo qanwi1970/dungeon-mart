@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Documents.Client">
       <HintPath>..\packages\Microsoft.Azure.Documents.Client.0.9.0-preview\lib\net40\Microsoft.Azure.Documents.Client.dll</HintPath>
     </Reference>
@@ -38,8 +44,11 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,23 +56,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DocumentDB\DocumentDBProperties.cs" />
-    <Compile Include="DocumentDB\EquipmentDocDbRepository.cs" />
-    <Compile Include="DocumentDB\IDocumentDBProperties.cs" />
-    <Compile Include="Interfaces\IEquipmentRepository.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Equipment.cs" />
+    <Compile Include="OldSql\class.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\class_table.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\domain.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\equipment.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\feat.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\item.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\monster.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\OriginalSrd.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OriginalSrd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\OriginalSrd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\OriginalSrd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OriginalSrd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\power.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\skill.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OldSql\spell.cs">
+      <DependentUpon>OriginalSrd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DocumentDB\DocumentDbExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="json\Classes.json" />
     <None Include="json\Equipment.json" />
+    <EntityDeploy Include="OldSql\OriginalSrd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OriginalSrd.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="OldSql\OriginalSrd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OriginalSrd.edmx</DependentUpon>
+      <LastGenOutput>OriginalSrd.Context.cs</LastGenOutput>
+    </None>
+    <None Include="OldSql\OriginalSrd.edmx.diagram">
+      <DependentUpon>OriginalSrd.edmx</DependentUpon>
+    </None>
+    <None Include="OldSql\OriginalSrd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OriginalSrd.edmx</DependentUpon>
+      <LastGenOutput>OriginalSrd.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Interfaces\" />
     <Folder Include="Util\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
