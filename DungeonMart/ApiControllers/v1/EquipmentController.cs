@@ -10,14 +10,20 @@ using DungeonMart.Filters;
 
 namespace DungeonMart.ApiControllers.v1
 {
+    /// <summary>
+    /// Api for Equipment. Includes everything from a pound of wheat to a two handed sword.
+    /// </summary>
     [Exception]
     [RoutePrefix("api/v1/equipment")]
     public class EquipmentController : ApiController
     {
         private SRDContext db = new SRDContext();
 
+        /// <summary>
+        /// Returns the entire equipment inventory
+        /// </summary>
+        /// <returns>array of equipment objects</returns>
         [Route("")]
-        // GET: api/Equipment
         public IQueryable<equipment> Getequipments()
         {
             return db.equipments;

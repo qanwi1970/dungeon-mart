@@ -15,7 +15,7 @@ namespace DungeonMart.Filters
             throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
             {
                 Content = new StringContent("An error occurred!"),
-                ReasonPhrase = "Deadly Exception"
+                ReasonPhrase = context.Exception.Message
             });
         }
     }
