@@ -6,53 +6,51 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DungeonMart.Data.OldSql;
-using DungeonMart.Filters;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [Exception]
-    [RoutePrefix("api/v1/equipment")]
-    public class EquipmentController : ApiController
+    [RoutePrefix("api/v1/classTable")]
+    public class ClassTableController : ApiController
     {
         private SRDContext db = new SRDContext();
 
+        // GET: api/ClassTable
         [Route("")]
-        // GET: api/Equipment
-        public IQueryable<equipment> Getequipments()
+        public IQueryable<class_table> Getclass_table()
         {
-            return db.equipments;
+            return db.class_table;
         }
 
+        // GET: api/ClassTable/5
         [Route("{id}")]
-        // GET: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Getequipment(int id)
+        [ResponseType(typeof(class_table))]
+        public async Task<IHttpActionResult> Getclass_table(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            class_table class_table = await db.class_table.FindAsync(id);
+            if (class_table == null)
             {
                 return NotFound();
             }
 
-            return Ok(equipment);
+            return Ok(class_table);
         }
 
+        // PUT: api/ClassTable/5
         [Route("{id}")]
-        // PUT: api/Equipment/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putequipment(int id, equipment equipment)
+        public async Task<IHttpActionResult> Putclass_table(int id, class_table class_table)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != equipment.Id)
+            if (id != class_table.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(equipment).State = EntityState.Modified;
+            db.Entry(class_table).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!equipmentExists(id))
+                if (!class_tableExists(id))
                 {
                     return NotFound();
                 }
@@ -73,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // POST: api/ClassTable
         [Route("")]
-        // POST: api/Equipment
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Postequipment(equipment equipment)
+        [ResponseType(typeof(class_table))]
+        public async Task<IHttpActionResult> Postclass_table(class_table class_table)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.equipments.Add(equipment);
+            db.class_table.Add(class_table);
 
             try
             {
@@ -91,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (equipmentExists(equipment.Id))
+                if (class_tableExists(class_table.Id))
                 {
                     return Conflict();
                 }
@@ -101,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = equipment.Id }, equipment);
+            return CreatedAtRoute("DefaultApi", new { id = class_table.Id }, class_table);
         }
 
+        // DELETE: api/ClassTable/5
         [Route("{id}")]
-        // DELETE: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Deleteequipment(int id)
+        [ResponseType(typeof(class_table))]
+        public async Task<IHttpActionResult> Deleteclass_table(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            class_table class_table = await db.class_table.FindAsync(id);
+            if (class_table == null)
             {
                 return NotFound();
             }
 
-            db.equipments.Remove(equipment);
+            db.class_table.Remove(class_table);
             await db.SaveChangesAsync();
 
-            return Ok(equipment);
+            return Ok(class_table);
         }
 
         protected override void Dispose(bool disposing)
@@ -130,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool equipmentExists(int id)
+        private bool class_tableExists(int id)
         {
-            return db.equipments.Count(e => e.Id == id) > 0;
+            return db.class_table.Count(e => e.Id == id) > 0;
         }
     }
 }

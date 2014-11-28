@@ -6,53 +6,51 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DungeonMart.Data.OldSql;
-using DungeonMart.Filters;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [Exception]
-    [RoutePrefix("api/v1/equipment")]
-    public class EquipmentController : ApiController
+    [RoutePrefix("api/v1/domain")]
+    public class DomainController : ApiController
     {
         private SRDContext db = new SRDContext();
 
+        // GET: api/Domain
         [Route("")]
-        // GET: api/Equipment
-        public IQueryable<equipment> Getequipments()
+        public IQueryable<domain> Getdomains()
         {
-            return db.equipments;
+            return db.domains;
         }
 
+        // GET: api/Domain/5
         [Route("{id}")]
-        // GET: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Getequipment(int id)
+        [ResponseType(typeof(domain))]
+        public async Task<IHttpActionResult> Getdomain(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            domain domain = await db.domains.FindAsync(id);
+            if (domain == null)
             {
                 return NotFound();
             }
 
-            return Ok(equipment);
+            return Ok(domain);
         }
 
+        // PUT: api/Domain/5
         [Route("{id}")]
-        // PUT: api/Equipment/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putequipment(int id, equipment equipment)
+        public async Task<IHttpActionResult> Putdomain(int id, domain domain)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != equipment.Id)
+            if (id != domain.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(equipment).State = EntityState.Modified;
+            db.Entry(domain).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!equipmentExists(id))
+                if (!domainExists(id))
                 {
                     return NotFound();
                 }
@@ -73,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // POST: api/Domain
         [Route("")]
-        // POST: api/Equipment
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Postequipment(equipment equipment)
+        [ResponseType(typeof(domain))]
+        public async Task<IHttpActionResult> Postdomain(domain domain)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.equipments.Add(equipment);
+            db.domains.Add(domain);
 
             try
             {
@@ -91,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (equipmentExists(equipment.Id))
+                if (domainExists(domain.Id))
                 {
                     return Conflict();
                 }
@@ -101,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = equipment.Id }, equipment);
+            return CreatedAtRoute("DefaultApi", new { id = domain.Id }, domain);
         }
 
+        // DELETE: api/Domain/5
         [Route("{id}")]
-        // DELETE: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Deleteequipment(int id)
+        [ResponseType(typeof(domain))]
+        public async Task<IHttpActionResult> Deletedomain(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            domain domain = await db.domains.FindAsync(id);
+            if (domain == null)
             {
                 return NotFound();
             }
 
-            db.equipments.Remove(equipment);
+            db.domains.Remove(domain);
             await db.SaveChangesAsync();
 
-            return Ok(equipment);
+            return Ok(domain);
         }
 
         protected override void Dispose(bool disposing)
@@ -130,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool equipmentExists(int id)
+        private bool domainExists(int id)
         {
-            return db.equipments.Count(e => e.Id == id) > 0;
+            return db.domains.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -6,53 +6,51 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DungeonMart.Data.OldSql;
-using DungeonMart.Filters;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [Exception]
-    [RoutePrefix("api/v1/equipment")]
-    public class EquipmentController : ApiController
+    [RoutePrefix("api/v1/spell")]
+    public class SpellController : ApiController
     {
         private SRDContext db = new SRDContext();
 
+        // GET: api/Spell
         [Route("")]
-        // GET: api/Equipment
-        public IQueryable<equipment> Getequipments()
+        public IQueryable<spell> Getspells()
         {
-            return db.equipments;
+            return db.spells;
         }
 
+        // GET: api/Spell/5
         [Route("{id}")]
-        // GET: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Getequipment(int id)
+        [ResponseType(typeof(spell))]
+        public async Task<IHttpActionResult> Getspell(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            spell spell = await db.spells.FindAsync(id);
+            if (spell == null)
             {
                 return NotFound();
             }
 
-            return Ok(equipment);
+            return Ok(spell);
         }
 
+        // PUT: api/Spell/5
         [Route("{id}")]
-        // PUT: api/Equipment/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putequipment(int id, equipment equipment)
+        public async Task<IHttpActionResult> Putspell(int id, spell spell)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != equipment.Id)
+            if (id != spell.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(equipment).State = EntityState.Modified;
+            db.Entry(spell).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!equipmentExists(id))
+                if (!spellExists(id))
                 {
                     return NotFound();
                 }
@@ -73,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // POST: api/Spell
         [Route("")]
-        // POST: api/Equipment
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Postequipment(equipment equipment)
+        [ResponseType(typeof(spell))]
+        public async Task<IHttpActionResult> Postspell(spell spell)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.equipments.Add(equipment);
+            db.spells.Add(spell);
 
             try
             {
@@ -91,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (equipmentExists(equipment.Id))
+                if (spellExists(spell.Id))
                 {
                     return Conflict();
                 }
@@ -101,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = equipment.Id }, equipment);
+            return CreatedAtRoute("DefaultApi", new { id = spell.Id }, spell);
         }
 
+        // DELETE: api/Spell/5
         [Route("{id}")]
-        // DELETE: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Deleteequipment(int id)
+        [ResponseType(typeof(spell))]
+        public async Task<IHttpActionResult> Deletespell(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            spell spell = await db.spells.FindAsync(id);
+            if (spell == null)
             {
                 return NotFound();
             }
 
-            db.equipments.Remove(equipment);
+            db.spells.Remove(spell);
             await db.SaveChangesAsync();
 
-            return Ok(equipment);
+            return Ok(spell);
         }
 
         protected override void Dispose(bool disposing)
@@ -130,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool equipmentExists(int id)
+        private bool spellExists(int id)
         {
-            return db.equipments.Count(e => e.Id == id) > 0;
+            return db.spells.Count(e => e.Id == id) > 0;
         }
     }
 }

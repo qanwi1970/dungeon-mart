@@ -6,53 +6,51 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DungeonMart.Data.OldSql;
-using DungeonMart.Filters;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [Exception]
-    [RoutePrefix("api/v1/equipment")]
-    public class EquipmentController : ApiController
+    [RoutePrefix("api/v1/power")]
+    public class PowerController : ApiController
     {
         private SRDContext db = new SRDContext();
 
+        // GET: api/Power
         [Route("")]
-        // GET: api/Equipment
-        public IQueryable<equipment> Getequipments()
+        public IQueryable<power> Getpowers()
         {
-            return db.equipments;
+            return db.powers;
         }
 
+        // GET: api/Power/5
         [Route("{id}")]
-        // GET: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Getequipment(int id)
+        [ResponseType(typeof(power))]
+        public async Task<IHttpActionResult> Getpower(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            power power = await db.powers.FindAsync(id);
+            if (power == null)
             {
                 return NotFound();
             }
 
-            return Ok(equipment);
+            return Ok(power);
         }
 
+        // PUT: api/Power/5
         [Route("{id}")]
-        // PUT: api/Equipment/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putequipment(int id, equipment equipment)
+        public async Task<IHttpActionResult> Putpower(int id, power power)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != equipment.Id)
+            if (id != power.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(equipment).State = EntityState.Modified;
+            db.Entry(power).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!equipmentExists(id))
+                if (!powerExists(id))
                 {
                     return NotFound();
                 }
@@ -73,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // POST: api/Power
         [Route("")]
-        // POST: api/Equipment
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Postequipment(equipment equipment)
+        [ResponseType(typeof(power))]
+        public async Task<IHttpActionResult> Postpower(power power)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.equipments.Add(equipment);
+            db.powers.Add(power);
 
             try
             {
@@ -91,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (equipmentExists(equipment.Id))
+                if (powerExists(power.Id))
                 {
                     return Conflict();
                 }
@@ -101,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = equipment.Id }, equipment);
+            return CreatedAtRoute("DefaultApi", new { id = power.Id }, power);
         }
 
+        // DELETE: api/Power/5
         [Route("{id}")]
-        // DELETE: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Deleteequipment(int id)
+        [ResponseType(typeof(power))]
+        public async Task<IHttpActionResult> Deletepower(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            power power = await db.powers.FindAsync(id);
+            if (power == null)
             {
                 return NotFound();
             }
 
-            db.equipments.Remove(equipment);
+            db.powers.Remove(power);
             await db.SaveChangesAsync();
 
-            return Ok(equipment);
+            return Ok(power);
         }
 
         protected override void Dispose(bool disposing)
@@ -130,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool equipmentExists(int id)
+        private bool powerExists(int id)
         {
-            return db.equipments.Count(e => e.Id == id) > 0;
+            return db.powers.Count(e => e.Id == id) > 0;
         }
     }
 }

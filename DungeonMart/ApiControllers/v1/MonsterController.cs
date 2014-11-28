@@ -6,53 +6,51 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DungeonMart.Data.OldSql;
-using DungeonMart.Filters;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [Exception]
-    [RoutePrefix("api/v1/equipment")]
-    public class EquipmentController : ApiController
+    [RoutePrefix("api/v1/monster")]
+    public class MonsterController : ApiController
     {
         private SRDContext db = new SRDContext();
 
+        // GET: api/Monster
         [Route("")]
-        // GET: api/Equipment
-        public IQueryable<equipment> Getequipments()
+        public IQueryable<monster> Getmonsters()
         {
-            return db.equipments;
+            return db.monsters;
         }
 
+        // GET: api/Monster/5
         [Route("{id}")]
-        // GET: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Getequipment(int id)
+        [ResponseType(typeof(monster))]
+        public async Task<IHttpActionResult> Getmonster(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            monster monster = await db.monsters.FindAsync(id);
+            if (monster == null)
             {
                 return NotFound();
             }
 
-            return Ok(equipment);
+            return Ok(monster);
         }
 
+        // PUT: api/Monster/5
         [Route("{id}")]
-        // PUT: api/Equipment/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putequipment(int id, equipment equipment)
+        public async Task<IHttpActionResult> Putmonster(int id, monster monster)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != equipment.Id)
+            if (id != monster.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(equipment).State = EntityState.Modified;
+            db.Entry(monster).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!equipmentExists(id))
+                if (!monsterExists(id))
                 {
                     return NotFound();
                 }
@@ -73,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // POST: api/Monster
         [Route("")]
-        // POST: api/Equipment
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Postequipment(equipment equipment)
+        [ResponseType(typeof(monster))]
+        public async Task<IHttpActionResult> Postmonster(monster monster)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.equipments.Add(equipment);
+            db.monsters.Add(monster);
 
             try
             {
@@ -91,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (equipmentExists(equipment.Id))
+                if (monsterExists(monster.Id))
                 {
                     return Conflict();
                 }
@@ -101,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = equipment.Id }, equipment);
+            return CreatedAtRoute("DefaultApi", new { id = monster.Id }, monster);
         }
 
+        // DELETE: api/Monster/5
         [Route("{id}")]
-        // DELETE: api/Equipment/5
-        [ResponseType(typeof(equipment))]
-        public async Task<IHttpActionResult> Deleteequipment(int id)
+        [ResponseType(typeof(monster))]
+        public async Task<IHttpActionResult> Deletemonster(int id)
         {
-            equipment equipment = await db.equipments.FindAsync(id);
-            if (equipment == null)
+            monster monster = await db.monsters.FindAsync(id);
+            if (monster == null)
             {
                 return NotFound();
             }
 
-            db.equipments.Remove(equipment);
+            db.monsters.Remove(monster);
             await db.SaveChangesAsync();
 
-            return Ok(equipment);
+            return Ok(monster);
         }
 
         protected override void Dispose(bool disposing)
@@ -130,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool equipmentExists(int id)
+        private bool monsterExists(int id)
         {
-            return db.equipments.Count(e => e.Id == id) > 0;
+            return db.monsters.Count(e => e.Id == id) > 0;
         }
     }
 }

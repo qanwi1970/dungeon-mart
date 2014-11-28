@@ -127,9 +127,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\v1\ClassController.cs" />
+    <Compile Include="ApiControllers\v1\ClassTableController.cs" />
+    <Compile Include="ApiControllers\v1\DomainController.cs" />
     <Compile Include="ApiControllers\v1\EquipmentController.cs" />
+    <Compile Include="ApiControllers\v1\FeatController.cs" />
+    <Compile Include="ApiControllers\v1\ItemController.cs" />
+    <Compile Include="ApiControllers\v1\MonsterController.cs" />
+    <Compile Include="ApiControllers\v1\PowerController.cs" />
+    <Compile Include="ApiControllers\v1\SkillController.cs" />
+    <Compile Include="ApiControllers\v1\SpellController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Filters\ExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
