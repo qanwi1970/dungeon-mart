@@ -29,8 +29,14 @@ namespace DungeonMart.ApiControllers.v1
             return db.equipments;
         }
 
+        /// <summary>
+        /// Get a single equipment object by Id.
+        /// </summary>
+        /// <param name="id">the Id of the equipment</param>
+        /// <returns>a single equipment object</returns>
+        /// <remarks>Gets a single equipment object</remarks>
+        /// <response code="404">Equipment with that Id not found</response>
         [Route("{id}")]
-        // GET: api/Equipment/5
         [ResponseType(typeof(equipment))]
         public async Task<IHttpActionResult> Getequipment(int id)
         {
@@ -43,8 +49,13 @@ namespace DungeonMart.ApiControllers.v1
             return Ok(equipment);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="equipment"></param>
+        /// <returns></returns>
         [Route("{id}")]
-        // PUT: api/Equipment/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> Putequipment(int id, equipment equipment)
         {
