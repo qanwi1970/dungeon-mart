@@ -56,7 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\DungeonMartContext.cs" />
+    <Compile Include="DAL\DungeonMartInitializer.cs" />
+    <Compile Include="DAL\SeedData.cs" />
+    <Compile Include="Migrations\201412070715002_InitialCreate.cs" />
+    <Compile Include="Migrations\201412070715002_InitialCreate.Designer.cs">
+      <DependentUpon>201412070715002_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CharacterClass.cs" />
+    <Compile Include="Models\ClassProgression.cs" />
     <Compile Include="OldSql\class.cs">
       <DependentUpon>OriginalSrd.tt</DependentUpon>
     </Compile>
@@ -105,7 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="json\Classes.json" />
     <None Include="json\Equipment.json" />
     <EntityDeploy Include="OldSql\OriginalSrd.edmx">
@@ -133,6 +145,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201412070715002_InitialCreate.resx">
+      <DependentUpon>201412070715002_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

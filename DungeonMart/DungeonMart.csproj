@@ -128,7 +128,9 @@
     <Content Include="license.html" />
     <Content Include="scripts\ai.js" />
     <Content Include="scripts\ai.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\v1\ClassController.cs" />
