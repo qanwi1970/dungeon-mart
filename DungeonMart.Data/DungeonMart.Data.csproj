@@ -63,10 +63,19 @@
     <Compile Include="Migrations\201412070715002_InitialCreate.Designer.cs">
       <DependentUpon>201412070715002_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412131624086_ClassProgression.cs" />
+    <Compile Include="Migrations\201412131624086_ClassProgression.Designer.cs">
+      <DependentUpon>201412131624086_ClassProgression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412131703060_Domain.cs" />
+    <Compile Include="Migrations\201412131703060_Domain.Designer.cs">
+      <DependentUpon>201412131703060_Domain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CharacterClass.cs" />
     <Compile Include="Models\ClassProgression.cs" />
+    <Compile Include="Models\Domain.cs" />
     <Compile Include="OldSql\class.cs">
       <DependentUpon>OriginalSrd.tt</DependentUpon>
     </Compile>
@@ -150,6 +159,18 @@
     <EmbeddedResource Include="Migrations\201412070715002_InitialCreate.resx">
       <DependentUpon>201412070715002_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412131624086_ClassProgression.resx">
+      <DependentUpon>201412131624086_ClassProgression.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412131703060_Domain.resx">
+      <DependentUpon>201412131703060_Domain.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DungeonMart.Common\DungeonMart.Common.csproj">
+      <Project>{c4b8a0c7-4804-4d00-9e4e-291820337512}</Project>
+      <Name>DungeonMart.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
