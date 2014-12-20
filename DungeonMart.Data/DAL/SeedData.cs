@@ -12,6 +12,7 @@ namespace DungeonMart.Data.DAL
             SeedCharacterClass(context);
             SeedClassProgression(context);
             SeedDomain(context);
+            SeedEquipment(context);
         }
 
         private static void SeedCharacterClass(DungeonMartContext context)
@@ -148,6 +149,44 @@ namespace DungeonMart.Data.DAL
                         Spell9 = domain.spell_9
                     };
                     context.Domains.AddOrUpdate(dmDomain);
+                }
+            }
+        }
+
+        private static void SeedEquipment(DungeonMartContext context)
+        {
+            using (var srdContext = new SRDContext())
+            {
+                foreach (var equipment in srdContext.equipments)
+                {
+                    var dmEquipment = new Equipment
+                    {
+                        ArcaneSpellFailureChance = equipment.arcane_spell_failure_chance,
+                        ArmorCheckPenalty = equipment.armor_check_penalty,
+                        ArmorShieldBonus = equipment.armor_shield_bonus,
+                        Category = equipment.category,
+                        Cost = equipment.cost,
+                        CreatedBy = "SeedEquipment",
+                        CreatedDate = DateTime.UtcNow,
+                        Critical = equipment.critical,
+                        DamageMedium = equipment.dmg_m,
+                        DamageSmall = equipment.dmg_s,
+                        Family = equipment.family,
+                        FullText = equipment.full_text,
+                        Id = equipment.Id,
+                        MaximumDexBonus = equipment.maximum_dex_bonus,
+                        ModifiedBy = "SeedEquipment",
+                        ModifiedDate = DateTime.UtcNow,
+                        Name = equipment.name,
+                        RangeIncrement = equipment.range_increment,
+                        Reference = equipment.reference,
+                        Speed20 = equipment.speed_20,
+                        Speed30 = equipment.speed_30,
+                        Subcategory = equipment.subcategory,
+                        WeaponType = equipment.type,
+                        Weight = equipment.weight
+                    };
+                    context.Equipments.AddOrUpdate(dmEquipment);
                 }
             }
         }

@@ -59,23 +59,13 @@
     <Compile Include="DAL\DungeonMartContext.cs" />
     <Compile Include="DAL\DungeonMartInitializer.cs" />
     <Compile Include="DAL\SeedData.cs" />
-    <Compile Include="Migrations\201412070715002_InitialCreate.cs" />
-    <Compile Include="Migrations\201412070715002_InitialCreate.Designer.cs">
-      <DependentUpon>201412070715002_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412131624086_ClassProgression.cs" />
-    <Compile Include="Migrations\201412131624086_ClassProgression.Designer.cs">
-      <DependentUpon>201412131624086_ClassProgression.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412131703060_Domain.cs" />
-    <Compile Include="Migrations\201412131703060_Domain.Designer.cs">
-      <DependentUpon>201412131703060_Domain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CharacterClass.cs" />
     <Compile Include="Models\ClassProgression.cs" />
     <Compile Include="Models\Domain.cs" />
+    <Compile Include="Models\Equipment.cs" />
+    <Compile Include="Models\Feat.cs" />
+    <Compile Include="Models\IAuditable.cs" />
     <Compile Include="OldSql\class.cs">
       <DependentUpon>OriginalSrd.tt</DependentUpon>
     </Compile>
@@ -154,17 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412070715002_InitialCreate.resx">
-      <DependentUpon>201412070715002_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412131624086_ClassProgression.resx">
-      <DependentUpon>201412131624086_ClassProgression.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412131703060_Domain.resx">
-      <DependentUpon>201412131703060_Domain.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DungeonMart.Common\DungeonMart.Common.csproj">

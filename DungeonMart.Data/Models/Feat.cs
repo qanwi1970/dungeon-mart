@@ -3,31 +3,27 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DungeonMart.Data.Models
 {
-    public class Domain : IAuditable
+    public class Feat : IAuditable
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public string GrantedPowers { get; set; }
+        public string FeatType { get; set; }
 
-        public string Spell1 { get; set; }
+        public string Multiple { get; set; }
 
-        public string Spell2 { get; set; }
+        public string Stack { get; set; }
 
-        public string Spell3 { get; set; }
+        public string Choice { get; set; }
 
-        public string Spell4 { get; set; }
+        public string Prerequisite { get; set; }
 
-        public string Spell5 { get; set; }
+        public string Benefit { get; set; }
 
-        public string Spell6 { get; set; }
+        public string Normal { get; set; }
 
-        public string Spell7 { get; set; }
-
-        public string Spell8 { get; set; }
-
-        public string Spell9 { get; set; }
+        public string Special { get; set; }
 
         public string FullText { get; set; }
 

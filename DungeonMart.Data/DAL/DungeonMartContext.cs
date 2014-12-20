@@ -20,6 +20,10 @@ namespace DungeonMart.Data.DAL
 
         public DbSet<Domain> Domains { get; set; }
 
+        public DbSet<Equipment> Equipments { get; set; }
+
+        public DbSet<Feat> Feats { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
