@@ -24,6 +24,16 @@ namespace DungeonMart.Data.DAL
 
         public DbSet<Feat> Feats { get; set; }
 
+        public DbSet<Item> Items { get; set; }
+
+        public DbSet<Monster> Monsters { get; set; }
+
+        public DbSet<Power> Powers { get; set; }
+
+        public DbSet<Skill> Skills { get; set; }
+
+        public DbSet<Spell> Spells { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

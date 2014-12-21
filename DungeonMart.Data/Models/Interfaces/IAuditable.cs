@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DungeonMart.Data.Models
+namespace DungeonMart.Data.Models.Interfaces
 {
     public interface IAuditable
     {

@@ -13,6 +13,12 @@ namespace DungeonMart.Data.DAL
             SeedClassProgression(context);
             SeedDomain(context);
             SeedEquipment(context);
+            SeedFeat(context);
+            SeedItem(context);
+            SeedMonster(context);
+            SeedPower(context);
+            SeedSkill(context);
+            SeedSpell(context);
         }
 
         private static void SeedCharacterClass(DungeonMartContext context)
@@ -187,6 +193,249 @@ namespace DungeonMart.Data.DAL
                         Weight = equipment.weight
                     };
                     context.Equipments.AddOrUpdate(dmEquipment);
+                }
+            }
+        }
+
+        private static void SeedFeat(DungeonMartContext context)
+        {
+            using (var srdContext = new SRDContext())
+            {
+                foreach (var feat in srdContext.feats)
+                {
+                    var dmFeat = new Feat
+                    {
+                        Benefit = feat.benefit,
+                        Choice = feat.choice,
+                        CreatedBy = "SeedFeat",
+                        CreatedDate = DateTime.UtcNow,
+                        FeatType = feat.type,
+                        FullText = feat.full_text,
+                        Id = feat.Id,
+                        ModifiedBy = "SeedFeat",
+                        ModifiedDate = DateTime.UtcNow,
+                        Multiple = feat.multiple,
+                        Name = feat.name,
+                        Normal = feat.normal,
+                        Prerequisite = feat.prerequisite,
+                        Reference = feat.reference,
+                        Special = feat.special,
+                        Stack = feat.stack
+                    };
+                    context.Feats.AddOrUpdate(dmFeat);
+                }
+            }
+        }
+
+        private static void SeedItem(DungeonMartContext context)
+        {
+            using (var srdContext = new SRDContext())
+            {
+                foreach (var item in srdContext.items)
+                {
+                    var dmItem = new Item
+                    {
+                        Aura = item.aura,
+                        CasterLevel = item.caster_level,
+                        Category = item.category,
+                        Cost = item.cost,
+                        CreatedBy = "SeedItem",
+                        CreatedDate = DateTime.UtcNow,
+                        FullText = item.full_text,
+                        Id = item.Id,
+                        ManifesterLevel = item.manifester_level,
+                        ModifiedBy = "SeedItem",
+                        ModifiedDate = DateTime.UtcNow,
+                        Name = item.name,
+                        Prerequisites = item.prereq,
+                        Price = item.price,
+                        Reference = item.reference,
+                        SpecialAbility = item.special_ability,
+                        Subcategory = item.subcategory,
+                        Weight = item.weight
+                    };
+                    context.Items.AddOrUpdate(dmItem);
+                }
+            }
+        }
+
+        private static void SeedMonster(DungeonMartContext context)
+        {
+            using (var srdContext = new SRDContext())
+            {
+                foreach (var monster in srdContext.monsters)
+                {
+                    var dmMonster = new Monster
+                    {
+                        Abilities = monster.abilities,
+                        Advancement = monster.advancement,
+                        Alignment = monster.alignment,
+                        AlternateName = monster.altname,
+                        ArmorClass = monster.armor_class,
+                        Attack = monster.attack,
+                        BaseAttack = monster.base_attack,
+                        BonusFeats = monster.bonus_feats,
+                        ChallengeRating = monster.challenge_rating,
+                        CreatedBy = "SeedMonster",
+                        CreatedDate = DateTime.UtcNow,
+                        Descriptor = monster.descriptor,
+                        Environment = monster.environment,
+                        EpicFeats = monster.epic_feats,
+                        Family = monster.family,
+                        Feats = monster.feats,
+                        FullAttack = monster.full_attack,
+                        FullText = monster.full_text,
+                        Grapple = monster.grapple,
+                        HitDice = monster.hit_dice,
+                        Id = monster.Id,
+                        Initiative = monster.initiative,
+                        LevelAdjustment = monster.level_adjustment,
+                        ModifiedBy = "SeedMonster",
+                        ModifiedDate = DateTime.UtcNow,
+                        Name = monster.name,
+                        Organization = monster.organization,
+                        Reach = monster.reach,
+                        Reference = monster.reference,
+                        Saves = monster.saves,
+                        Size = monster.size,
+                        Skills = monster.skills,
+                        Space = monster.space,
+                        SpecialAbilities = monster.special_abilities,
+                        SpecialAttacks = monster.special_attacks,
+                        SpecialQualities = monster.special_qualities,
+                        Speed = monster.speed,
+                        StatBlock = monster.stat_block,
+                        Treasure = monster.treasure,
+                        Type = monster.type
+                    };
+                    context.Monsters.AddOrUpdate(dmMonster);
+                }
+            }
+        }
+
+        private static void SeedPower(DungeonMartContext context)
+        {
+            using (var srdContext = new SRDContext())
+            {
+                foreach (var power in srdContext.powers)
+                {
+                    var dmPower = new Power
+                    {
+                        Area = power.area,
+                        Augment = power.augment,
+                        CreatedBy = "SeedPower",
+                        CreatedDate = DateTime.UtcNow,
+                        Description = power.description,
+                        Descriptor = power.descriptor,
+                        Discipline = power.discipline,
+                        Display = power.display,
+                        Duration = power.duration,
+                        Effect = power.effect,
+                        FullText = power.full_text,
+                        Id = power.Id,
+                        Level = power.level,
+                        ManifestingTime = power.manifesting_time,
+                        ModifiedBy = "SeedPower",
+                        ModifiedDate = DateTime.UtcNow,
+                        Name = power.name,
+                        PowerPoints = power.power_points,
+                        PowerResistance = power.power_resistance,
+                        Range = power.range,
+                        Reference = power.reference,
+                        SavingThrow = power.saving_throw,
+                        ShortDescription = power.short_description,
+                        Subdiscipline = power.subdiscipline,
+                        Target = power.target,
+                        XPCost = power.xp_cost
+                    };
+                    context.Powers.AddOrUpdate(dmPower);
+                }
+            }
+        }
+
+        private static void SeedSkill(DungeonMartContext context)
+        {
+            using (var srdContext = new SRDContext())
+            {
+                foreach (var skill in srdContext.skills)
+                {
+                    var dmSkill = new Skill
+                    {
+                        Action = skill.action,
+                        ArmorCheck = skill.armor_check,
+                        CreatedBy = "SeedSkill",
+                        CreatedDate = DateTime.UtcNow,
+                        Description = skill.description,
+                        EpicUse = skill.epic_use,
+                        FullText = skill.full_text,
+                        Id = skill.Id,
+                        KeyAbility = skill.key_ability,
+                        ModifiedBy = "SeedSkill",
+                        ModifiedDate = DateTime.UtcNow,
+                        Name = skill.name,
+                        Psionic = skill.psionic,
+                        Reference = skill.reference,
+                        Restriction = skill.restriction,
+                        SkillCheck = skill.skill_check,
+                        Special = skill.special,
+                        Subtype = skill.subtype,
+                        Synergy = skill.synergy,
+                        Trained = skill.trained,
+                        TryAgain = skill.try_again,
+                        Untrained = skill.untrained
+                    };
+                    context.Skills.AddOrUpdate(dmSkill);
+                }
+            }
+        }
+
+        private static void SeedSpell(DungeonMartContext context)
+        {
+            using (var srdContext = new SRDContext())
+            {
+                foreach (var spell in srdContext.spells)
+                {
+                    var dmSpell = new Spell
+                    {
+                        AlternateName = spell.altname,
+                        ArcaneFocus = spell.arcane_focus,
+                        ArcaneMaterialComponents = spell.arcane_material_components,
+                        Area = spell.area,
+                        BardFocus = spell.bard_focus,
+                        CastingTime = spell.casting_time,
+                        ClericFocus = spell.cleric_focus,
+                        Components = spell.components,
+                        CreatedBy = "SeedSpell",
+                        CreatedDate = DateTime.UtcNow,
+                        Description = spell.description,
+                        Descriptor = spell.descriptor,
+                        DruidFocus = spell.druid_focus,
+                        Duration = spell.duration,
+                        Effect = spell.effect,
+                        Focus = spell.focus,
+                        FullText = spell.full_text,
+                        Id = spell.Id,
+                        Level = spell.level,
+                        MaterialComponents = spell.material_components,
+                        ModifiedBy = "SeedSpell",
+                        ModifiedDate = DateTime.UtcNow,
+                        Name = spell.name,
+                        Range = spell.range,
+                        Reference = spell.reference,
+                        SavingThrow = spell.saving_throw,
+                        School = spell.school,
+                        ShortDescription = spell.short_description,
+                        SorcererFocus = spell.sorcerer_focus,
+                        SpellResistance = spell.spell_resistance,
+                        SpellcraftDC = spell.spellcraft_dc,
+                        Subschool = spell.subschool,
+                        Target = spell.target,
+                        ToDevelop = spell.to_develop,
+                        VerbalComponents = spell.verbal_components,
+                        WizardFocus = spell.wizard_focus,
+                        XPCost = spell.xp_cost
+                    };
+                    context.Spells.AddOrUpdate(dmSpell);
                 }
             }
         }

@@ -4,27 +4,31 @@ using DungeonMart.Data.Models.Interfaces;
 
 namespace DungeonMart.Data.Models
 {
-    public class Feat : IAuditable
+    public class Item : IAuditable
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public string FeatType { get; set; }
+        public string Category { get; set; }
 
-        public string Multiple { get; set; }
+        public string Subcategory { get; set; }
 
-        public string Stack { get; set; }
+        public string SpecialAbility { get; set; }
 
-        public string Choice { get; set; }
+        public string Aura { get; set; }
 
-        public string Prerequisite { get; set; }
+        public string CasterLevel { get; set; }
 
-        public string Benefit { get; set; }
+        public string Price { get; set; }
 
-        public string Normal { get; set; }
+        public string ManifesterLevel { get; set; }
 
-        public string Special { get; set; }
+        public string Prerequisites { get; set; }
+
+        public string Cost { get; set; }
+
+        public string Weight { get; set; }
 
         public string FullText { get; set; }
 

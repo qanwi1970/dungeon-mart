@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using DungeonMart.Data.Models.Interfaces;
 
 namespace DungeonMart.Data.Models
 {

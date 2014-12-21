@@ -178,10 +178,193 @@ namespace DungeonMart.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Item",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Category = c.String(),
+                        Subcategory = c.String(),
+                        SpecialAbility = c.String(),
+                        Aura = c.String(),
+                        CasterLevel = c.String(),
+                        Price = c.String(),
+                        ManifesterLevel = c.String(),
+                        Prerequisites = c.String(),
+                        Cost = c.String(),
+                        Weight = c.String(),
+                        FullText = c.String(),
+                        Reference = c.String(),
+                        CreatedBy = c.String(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        ModifiedBy = c.String(nullable: false),
+                        ModifiedDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Monster",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Family = c.String(),
+                        Name = c.String(),
+                        AlternateName = c.String(),
+                        Size = c.String(),
+                        Type = c.String(),
+                        Descriptor = c.String(),
+                        HitDice = c.String(),
+                        Initiative = c.String(),
+                        Speed = c.String(),
+                        ArmorClass = c.String(),
+                        BaseAttack = c.String(),
+                        Grapple = c.String(),
+                        Attack = c.String(),
+                        FullAttack = c.String(),
+                        Space = c.String(),
+                        Reach = c.String(),
+                        SpecialAttacks = c.String(),
+                        SpecialQualities = c.String(),
+                        Saves = c.String(),
+                        Abilities = c.String(),
+                        Skills = c.String(),
+                        BonusFeats = c.String(),
+                        Feats = c.String(),
+                        EpicFeats = c.String(),
+                        Environment = c.String(),
+                        Organization = c.String(),
+                        ChallengeRating = c.String(),
+                        Treasure = c.String(),
+                        Alignment = c.String(),
+                        Advancement = c.String(),
+                        LevelAdjustment = c.String(),
+                        SpecialAbilities = c.String(),
+                        StatBlock = c.String(),
+                        FullText = c.String(),
+                        Reference = c.String(),
+                        CreatedBy = c.String(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        ModifiedBy = c.String(nullable: false),
+                        ModifiedDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Power",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Discipline = c.String(),
+                        Subdiscipline = c.String(),
+                        Descriptor = c.String(),
+                        Level = c.String(),
+                        Display = c.String(),
+                        ManifestingTime = c.String(),
+                        Range = c.String(),
+                        Target = c.String(),
+                        Area = c.String(),
+                        Effect = c.String(),
+                        Duration = c.String(),
+                        SavingThrow = c.String(),
+                        PowerPoints = c.String(),
+                        PowerResistance = c.String(),
+                        ShortDescription = c.String(),
+                        XPCost = c.String(),
+                        Description = c.String(),
+                        Augment = c.String(),
+                        FullText = c.String(),
+                        Reference = c.String(),
+                        CreatedBy = c.String(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        ModifiedBy = c.String(nullable: false),
+                        ModifiedDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Skill",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Subtype = c.String(),
+                        KeyAbility = c.String(),
+                        Psionic = c.String(),
+                        Trained = c.String(),
+                        ArmorCheck = c.String(),
+                        Description = c.String(),
+                        SkillCheck = c.String(),
+                        Action = c.String(),
+                        TryAgain = c.String(),
+                        Special = c.String(),
+                        Restriction = c.String(),
+                        Synergy = c.String(),
+                        EpicUse = c.String(),
+                        Untrained = c.String(),
+                        FullText = c.String(),
+                        Reference = c.String(),
+                        CreatedBy = c.String(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        ModifiedBy = c.String(nullable: false),
+                        ModifiedDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Spell",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        AlternateName = c.String(),
+                        School = c.String(),
+                        Subschool = c.String(),
+                        Descriptor = c.String(),
+                        SpellcraftDC = c.String(),
+                        Level = c.String(),
+                        Components = c.String(),
+                        CastingTime = c.String(),
+                        Range = c.String(),
+                        Target = c.String(),
+                        Area = c.String(),
+                        Effect = c.String(),
+                        Duration = c.String(),
+                        SavingThrow = c.String(),
+                        SpellResistance = c.String(),
+                        ShortDescription = c.String(),
+                        ToDevelop = c.String(),
+                        MaterialComponents = c.String(),
+                        ArcaneMaterialComponents = c.String(),
+                        Focus = c.String(),
+                        Description = c.String(),
+                        XPCost = c.String(),
+                        ArcaneFocus = c.String(),
+                        WizardFocus = c.String(),
+                        VerbalComponents = c.String(),
+                        SorcererFocus = c.String(),
+                        BardFocus = c.String(),
+                        ClericFocus = c.String(),
+                        DruidFocus = c.String(),
+                        FullText = c.String(),
+                        Reference = c.String(),
+                        CreatedBy = c.String(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        ModifiedBy = c.String(nullable: false),
+                        ModifiedDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropTable("dbo.Spell");
+            DropTable("dbo.Skill");
+            DropTable("dbo.Power");
+            DropTable("dbo.Monster");
+            DropTable("dbo.Item");
             DropTable("dbo.Feat");
             DropTable("dbo.Equipment");
             DropTable("dbo.Domain");

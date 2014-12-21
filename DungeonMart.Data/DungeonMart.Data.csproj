@@ -36,13 +36,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Documents.Client">
-      <HintPath>..\packages\Microsoft.Azure.Documents.Client.0.9.0-preview\lib\net40\Microsoft.Azure.Documents.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -59,13 +52,33 @@
     <Compile Include="DAL\DungeonMartContext.cs" />
     <Compile Include="DAL\DungeonMartInitializer.cs" />
     <Compile Include="DAL\SeedData.cs" />
+    <Compile Include="Interfaces\ICharacterClassRepository.cs" />
+    <Compile Include="Interfaces\IClassProgressionRepository.cs" />
+    <Compile Include="Interfaces\ICrudActions.cs" />
+    <Compile Include="Interfaces\IDomainRepository.cs" />
+    <Compile Include="Interfaces\IEquipmentRepository.cs" />
+    <Compile Include="Interfaces\IFeatRepository.cs" />
+    <Compile Include="Interfaces\IItemRepository.cs" />
+    <Compile Include="Interfaces\IMonsterRepository.cs" />
+    <Compile Include="Interfaces\IPowerRepository.cs" />
+    <Compile Include="Interfaces\ISkillRepository.cs" />
+    <Compile Include="Interfaces\ISpellRepository.cs" />
+    <Compile Include="Migrations\201412201830515_BaseSrd.cs" />
+    <Compile Include="Migrations\201412201830515_BaseSrd.Designer.cs">
+      <DependentUpon>201412201830515_BaseSrd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CharacterClass.cs" />
     <Compile Include="Models\ClassProgression.cs" />
     <Compile Include="Models\Domain.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Feat.cs" />
-    <Compile Include="Models\IAuditable.cs" />
+    <Compile Include="Models\Interfaces\IAuditable.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Monster.cs" />
+    <Compile Include="Models\Power.cs" />
+    <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\Spell.cs" />
     <Compile Include="OldSql\class.cs">
       <DependentUpon>OriginalSrd.tt</DependentUpon>
     </Compile>
@@ -112,6 +125,18 @@
       <DependentUpon>OriginalSrd.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CharacterClassRepository.cs" />
+    <Compile Include="Repositories\ClassProgressionRepository.cs" />
+    <Compile Include="Repositories\DomainRepository.cs" />
+    <Compile Include="Repositories\EquipmentRepository.cs" />
+    <Compile Include="Repositories\FeatRepository.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="Repositories\MonsterRepository.cs" />
+    <Compile Include="Repositories\PowerRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\SkillRepository.cs" />
+    <Compile Include="Repositories\SpellRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -139,7 +164,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +174,11 @@
       <Project>{c4b8a0c7-4804-4d00-9e4e-291820337512}</Project>
       <Name>DungeonMart.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201412201830515_BaseSrd.resx">
+      <DependentUpon>201412201830515_BaseSrd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
