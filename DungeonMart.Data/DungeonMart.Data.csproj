@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="DAL\DungeonMartContext.cs" />
     <Compile Include="DAL\DungeonMartInitializer.cs" />
+    <Compile Include="DAL\IDungeonMartContext.cs" />
     <Compile Include="DAL\SeedData.cs" />
     <Compile Include="Interfaces\ICharacterClassRepository.cs" />
     <Compile Include="Interfaces\IClassProgressionRepository.cs" />
@@ -72,7 +73,7 @@
     <Compile Include="Models\ClassProgression.cs" />
     <Compile Include="Models\Domain.cs" />
     <Compile Include="Models\Equipment.cs" />
-    <Compile Include="Models\Feat.cs" />
+    <Compile Include="Models\FeatEntity.cs" />
     <Compile Include="Models\Interfaces\IAuditable.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Monster.cs" />

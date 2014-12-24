@@ -10,7 +10,7 @@ using DungeonMart.Data.OldSql;
 namespace DungeonMart.ApiControllers.v1
 {
     [RoutePrefix("api/v1/feat")]
-    public class FeatController : ApiController
+    public class V1FeatController : ApiController
     {
         private SRDContext db = new SRDContext();
 

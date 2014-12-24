@@ -9,15 +9,15 @@ namespace DungeonMart.Data.Repositories
     public interface IUnitOfWork
     {
         Guid SessionID { get; }
-        DungeonMartContext DbContext { get; }
+        IDungeonMartContext DbContext { get; }
         int Commit();
     }
     
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DungeonMartContext _context;
+        private readonly IDungeonMartContext _context;
 
-        public UnitOfWork(DungeonMartContext context)
+        public UnitOfWork(IDungeonMartContext context)
         {
             this.SessionID = Guid.NewGuid();
             _context = context;
@@ -25,7 +25,7 @@ namespace DungeonMart.Data.Repositories
 
         public Guid SessionID { get; private set; }
 
-        public DungeonMartContext DbContext
+        public IDungeonMartContext DbContext
         {
             get { return _context; }
         }

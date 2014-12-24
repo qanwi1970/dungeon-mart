@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F1EBF4C-0DC2-4FFC-B6CD-3AEBCA8B1537}</ProjectGuid>
+    <ProjectGuid>{5AD21CF5-B22D-42CC-A167-0A9E5060BFB9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DungeonMart.Service</RootNamespace>
-    <AssemblyName>DungeonMart.Service</AssemblyName>
+    <RootNamespace>DungeonMart.Shared</RootNamespace>
+    <AssemblyName>DungeonMart.Shared</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,25 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EquipmentService.cs" />
-    <Compile Include="FeatService.cs" />
-    <Compile Include="Interfaces\IEquipmentService.cs" />
-    <Compile Include="Interfaces\IFeatService.cs" />
-    <Compile Include="Mappers\FeatMapper.cs" />
+    <Compile Include="Models\Feat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DungeonMart.Data\DungeonMart.Data.csproj">
-      <Project>{7536182f-9b13-4a80-a59c-e71299cab249}</Project>
-      <Name>DungeonMart.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DungeonMart.Shared\DungeonMart.Shared.csproj">
-      <Project>{5ad21cf5-b22d-42cc-a167-0a9e5060bfb9}</Project>
-      <Name>DungeonMart.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

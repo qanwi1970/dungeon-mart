@@ -137,12 +137,13 @@
     <Compile Include="ApiControllers\v1\ClassTableController.cs" />
     <Compile Include="ApiControllers\v1\DomainController.cs" />
     <Compile Include="ApiControllers\v1\EquipmentController.cs" />
-    <Compile Include="ApiControllers\v1\FeatController.cs" />
+    <Compile Include="ApiControllers\v1\V1FeatController.cs" />
     <Compile Include="ApiControllers\v1\ItemController.cs" />
     <Compile Include="ApiControllers\v1\MonsterController.cs" />
     <Compile Include="ApiControllers\v1\PowerController.cs" />
     <Compile Include="ApiControllers\v1\SkillController.cs" />
     <Compile Include="ApiControllers\v1\SpellController.cs" />
+    <Compile Include="ApiControllers\v2\FeatController.cs" />
     <Compile Include="ApiControllers\v2\MonsterController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
@@ -174,6 +175,14 @@
     <ProjectReference Include="..\DungeonMart.Data\DungeonMart.Data.csproj">
       <Project>{7536182f-9b13-4a80-a59c-e71299cab249}</Project>
       <Name>DungeonMart.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DungeonMart.Service\DungeonMart.Service.csproj">
+      <Project>{6f1ebf4c-0dc2-4ffc-b6cd-3aebca8b1537}</Project>
+      <Name>DungeonMart.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DungeonMart.Shared\DungeonMart.Shared.csproj">
+      <Project>{5ad21cf5-b22d-42cc-a167-0a9e5060bfb9}</Project>
+      <Name>DungeonMart.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using DungeonMart.Data.Models.Interfaces;
 
 namespace DungeonMart.Data.Models
 {
-    public class Feat : IAuditable
+    [Table("Feat")]
+    public class FeatEntity : IAuditable
     {
         public int Id { get; set; }
 

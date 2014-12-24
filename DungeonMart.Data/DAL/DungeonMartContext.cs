@@ -4,7 +4,7 @@ using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.DAL
 {
-    public class DungeonMartContext : DbContext
+    public class DungeonMartContext : DbContext, IDungeonMartContext
     {
         public DungeonMartContext() : base("name=DungeonMartContext")
         {
@@ -22,7 +22,7 @@ namespace DungeonMart.Data.DAL
 
         public DbSet<Equipment> Equipments { get; set; }
 
-        public DbSet<Feat> Feats { get; set; }
+        public DbSet<FeatEntity> Feats { get; set; }
 
         public DbSet<Item> Items { get; set; }
 

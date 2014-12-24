@@ -203,7 +203,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var feat in srdContext.feats)
                 {
-                    var dmFeat = new Feat
+                    var dmFeat = new FeatEntity
                     {
                         Benefit = feat.benefit,
                         Choice = feat.choice,

@@ -8,10 +8,10 @@ namespace DungeonMart.Data.Repositories
 {
     public abstract class Repository<T> where T : class
     {
-        protected readonly DungeonMartContext DBContext;
+        protected readonly IDungeonMartContext DBContext;
         protected readonly IDbSet<T> DBSet;
 
-        public DungeonMartContext Context
+        public IDungeonMartContext Context
         {
             get { return DBContext; }
         }
