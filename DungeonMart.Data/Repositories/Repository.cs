@@ -8,6 +8,7 @@ namespace DungeonMart.Data.Repositories
 {
     public abstract class Repository<T> where T : class
     {
+        protected readonly IUnitOfWork UnitOfWork;
         protected readonly IDungeonMartContext DBContext;
         protected readonly IDbSet<T> DBSet;
 
@@ -18,6 +19,7 @@ namespace DungeonMart.Data.Repositories
 
         protected Repository(IUnitOfWork unitOfWork)
         {
+            UnitOfWork = unitOfWork;
             DBContext = unitOfWork.DbContext;
             DBSet = DBContext.Set<T>();
         }
@@ -52,6 +54,9 @@ namespace DungeonMart.Data.Repositories
                 DBSet.Add(entity);
             }
 
+            // TODO: I have to do this to get an id for proper post responses. Need a better way
+            Context.SaveChanges();
+            
             return entity;
         }
 

@@ -139,7 +139,7 @@
     <Compile Include="ApiControllers\v1\EquipmentController.cs" />
     <Compile Include="ApiControllers\v1\V1FeatController.cs" />
     <Compile Include="ApiControllers\v1\ItemController.cs" />
-    <Compile Include="ApiControllers\v1\MonsterController.cs" />
+    <Compile Include="ApiControllers\v1\V1MonsterController.cs" />
     <Compile Include="ApiControllers\v1\PowerController.cs" />
     <Compile Include="ApiControllers\v1\SkillController.cs" />
     <Compile Include="ApiControllers\v1\SpellController.cs" />
@@ -149,6 +149,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Filters\ExceptionAttribute.cs" />
+    <Compile Include="Filters\UnitOfWorkAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

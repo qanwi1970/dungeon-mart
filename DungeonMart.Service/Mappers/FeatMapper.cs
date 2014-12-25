@@ -28,5 +28,24 @@ namespace DungeonMart.Service.Mappers
                 Stack = featEntity.Stack
             };
         }
+
+        public static FeatEntity MapModelToEntity(Feat feat)
+        {
+            return new FeatEntity
+            {
+                Benefit = feat.Benefit,
+                Choice = feat.Choice,
+                FeatType = feat.FeatType,
+                FullText = feat.FullText,
+                Id = feat.Id,
+                Multiple = feat.Multiple,
+                Name = feat.Name,
+                Normal = feat.Normal,
+                Prerequisite = feat.Prerequisite,
+                Reference = feat.Reference,
+                Special = feat.Special,
+                Stack = feat.Stack
+            };
+        }
     }
 }

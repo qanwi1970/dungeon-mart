@@ -9,8 +9,11 @@ using DungeonMart.Data.OldSql;
 
 namespace DungeonMart.ApiControllers.v1
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [RoutePrefix("api/v1/monster")]
-    public class MonsterController : ApiController
+    public class V1MonsterController : ApiController
     {
         private SRDContext db = new SRDContext();
 
