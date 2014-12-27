@@ -23,7 +23,7 @@ namespace DungeonMart.Data.Tests.Repositories
         {
             protected override void Seed(DungeonMartContext context)
             {
-                context.Monsters.Add(new Monster
+                context.Monsters.Add(new MonsterEntity
                 {
                     CreatedBy = "Seed",
                     CreatedDate = DateTime.UtcNow,
@@ -44,7 +44,7 @@ namespace DungeonMart.Data.Tests.Repositories
         [Test]
         public void CreateReadUpdateDelete()
         {
-            var newMonster = new Monster
+            var newMonster = new MonsterEntity
             {
                 Abilities = "Abilities",
                 Advancement = "Advancement",

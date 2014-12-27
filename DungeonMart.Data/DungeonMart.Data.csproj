@@ -76,7 +76,7 @@
     <Compile Include="Models\FeatEntity.cs" />
     <Compile Include="Models\Interfaces\IAuditable.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\Monster.cs" />
+    <Compile Include="Models\MonsterEntity.cs" />
     <Compile Include="Models\Power.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\Spell.cs" />

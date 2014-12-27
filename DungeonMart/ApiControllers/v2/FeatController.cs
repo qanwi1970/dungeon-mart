@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Web;
+using DungeonMart.Service.Interfaces;
+using DungeonMart.Shared.Models;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using DungeonMart.Data.Interfaces;
-using DungeonMart.Data.Repositories;
-using DungeonMart.Service.Interfaces;
-using DungeonMart.Shared.Models;
+using DungeonMart.Utils;
 
 namespace DungeonMart.ApiControllers.v2
 {
@@ -34,10 +36,10 @@ namespace DungeonMart.ApiControllers.v2
         /// <returns></returns>
         [Route("")]
         [ResponseType(typeof(Feat))]
-        // GET: api/v2/Feat
-        public IQueryable<Feat> Get()
+        public IHttpActionResult Get()
         {
-            return _featService.GetFeats();
+            var featListResponse = ControllerUtils.ListResponse(Request, _featService.GetFeats());
+            return featListResponse;
         }
 
         /// <summary>
@@ -47,7 +49,6 @@ namespace DungeonMart.ApiControllers.v2
         /// <returns>a single feat object</returns>
         [Route("{id}", Name = "FeatGet")]
         [ResponseType(typeof(Feat))]
-        // GET: api/v2/Feat/5
         public async Task<IHttpActionResult> Get(int id)
         {
             return Ok(_featService.GetFeatById(id));
@@ -60,7 +61,6 @@ namespace DungeonMart.ApiControllers.v2
         /// <returns></returns>
         [Route("", Name = "FeatPost")]
         [ResponseType(typeof(Feat))]
-        // POST: api/Feat
         public async Task<IHttpActionResult> Post([FromBody]Feat value)
         {
             var postedFeat = _featService.AddFeat(value);
@@ -75,7 +75,6 @@ namespace DungeonMart.ApiControllers.v2
         /// <returns></returns>
         [Route("{id}")]
         [ResponseType(typeof(Feat))]
-        // PUT: api/Feat/5
         public async Task<IHttpActionResult> Put(int id, [FromBody]Feat value)
         {
             var updatedFeat = _featService.PutFeat(id, value);
@@ -88,7 +87,6 @@ namespace DungeonMart.ApiControllers.v2
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("{id}")]
-        // DELETE: api/Feat/5
         public async Task<IHttpActionResult> Delete(int id)
         {
             _featService.DeleteFeat(id);

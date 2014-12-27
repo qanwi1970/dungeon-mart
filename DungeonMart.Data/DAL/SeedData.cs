@@ -265,7 +265,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var monster in srdContext.monsters)
                 {
-                    var dmMonster = new Monster
+                    var dmMonster = new MonsterEntity
                     {
                         Abilities = monster.abilities,
                         Advancement = monster.advancement,

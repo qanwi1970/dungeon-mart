@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface IMonsterRepository : ICrudActions<Monster>
+    public interface IMonsterRepository : ICrudActions<MonsterEntity>
     {
     }
 }

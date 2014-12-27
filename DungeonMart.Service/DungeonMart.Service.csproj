@@ -43,7 +43,10 @@
     <Compile Include="FeatService.cs" />
     <Compile Include="Interfaces\IEquipmentService.cs" />
     <Compile Include="Interfaces\IFeatService.cs" />
+    <Compile Include="Interfaces\IMonsterService.cs" />
     <Compile Include="Mappers\FeatMapper.cs" />
+    <Compile Include="Mappers\MonsterMapper.cs" />
+    <Compile Include="MonsterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

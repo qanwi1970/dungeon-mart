@@ -26,7 +26,7 @@ namespace DungeonMart.Data.DAL
 
         public DbSet<Item> Items { get; set; }
 
-        public DbSet<Monster> Monsters { get; set; }
+        public DbSet<MonsterEntity> Monsters { get; set; }
 
         public DbSet<Power> Powers { get; set; }
 
