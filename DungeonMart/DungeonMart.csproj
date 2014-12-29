@@ -123,8 +123,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\bootstrap-theme.css" />
-    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\featControllers.js" />
+    <Content Include="app\services\featServices.js" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\dungeonmart.css" />
@@ -132,12 +133,15 @@
     <Content Include="feats.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\loading.gif" />
     <Content Include="index.html" />
     <Content Include="license.html" />
     <Content Include="monsters.html" />
     <Content Include="scripts\ai.js" />
     <Content Include="scripts\ai.min.js" />
     <Content Include="scripts\angular-mocks.js" />
+    <Content Include="scripts\angular-resource.js" />
+    <Content Include="scripts\angular-resource.min.js" />
     <Content Include="scripts\angular-ui-router.js" />
     <Content Include="scripts\angular-ui-router.min.js" />
     <Content Include="scripts\angular-ui\ui-bootstrap-tpls.js" />
@@ -181,14 +185,13 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
-    <Content Include="css\bootstrap-theme.css.map" />
-    <Content Include="css\bootstrap.css.map" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\dungeonmart - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\dungeonmart - Web Deploy.pubxml" />
     <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\angular-resource.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -197,7 +200,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\" />
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
   </ItemGroup>

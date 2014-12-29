@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using DungeonMart.Data.Models;
 using DungeonMart.Shared.Models;
 
@@ -14,10 +15,10 @@ namespace DungeonMart.Service.Mappers
         {
             return new Feat
             {
-                Benefit = featEntity.Benefit,
+                Benefit = HttpUtility.HtmlDecode(featEntity.Benefit),
                 Choice = featEntity.Choice,
                 FeatType = featEntity.FeatType,
-                FullText = featEntity.FullText,
+                FullText = HttpUtility.HtmlDecode(featEntity.FullText),
                 Id = featEntity.Id,
                 Multiple = featEntity.Multiple,
                 Name = featEntity.Name,
