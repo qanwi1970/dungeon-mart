@@ -9,48 +9,48 @@ using DungeonMart.Data.OldSql;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [RoutePrefix("api/v1/spell")]
-    public class SpellController : ApiController
+    [RoutePrefix("api/v1/classTable")]
+    public class V1ClassTableController : ApiController
     {
         private SRDContext db = new SRDContext();
 
-        // GET: api/Spell
+        // GET: api/ClassTable
         [Route("")]
-        public IQueryable<spell> Getspells()
+        public IQueryable<class_table> Getclass_table()
         {
-            return db.spells;
+            return db.class_table;
         }
 
-        // GET: api/Spell/5
+        // GET: api/ClassTable/5
         [Route("{id}")]
-        [ResponseType(typeof(spell))]
-        public async Task<IHttpActionResult> Getspell(int id)
+        [ResponseType(typeof(class_table))]
+        public async Task<IHttpActionResult> Getclass_table(int id)
         {
-            spell spell = await db.spells.FindAsync(id);
-            if (spell == null)
+            class_table class_table = await db.class_table.FindAsync(id);
+            if (class_table == null)
             {
                 return NotFound();
             }
 
-            return Ok(spell);
+            return Ok(class_table);
         }
 
-        // PUT: api/Spell/5
+        // PUT: api/ClassTable/5
         [Route("{id}")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putspell(int id, spell spell)
+        public async Task<IHttpActionResult> Putclass_table(int id, class_table class_table)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != spell.Id)
+            if (id != class_table.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(spell).State = EntityState.Modified;
+            db.Entry(class_table).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!spellExists(id))
+                if (!class_tableExists(id))
                 {
                     return NotFound();
                 }
@@ -71,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Spell
+        // POST: api/ClassTable
         [Route("")]
-        [ResponseType(typeof(spell))]
-        public async Task<IHttpActionResult> Postspell(spell spell)
+        [ResponseType(typeof(class_table))]
+        public async Task<IHttpActionResult> Postclass_table(class_table class_table)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.spells.Add(spell);
+            db.class_table.Add(class_table);
 
             try
             {
@@ -89,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (spellExists(spell.Id))
+                if (class_tableExists(class_table.Id))
                 {
                     return Conflict();
                 }
@@ -99,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = spell.Id }, spell);
+            return CreatedAtRoute("DefaultApi", new { id = class_table.Id }, class_table);
         }
 
-        // DELETE: api/Spell/5
+        // DELETE: api/ClassTable/5
         [Route("{id}")]
-        [ResponseType(typeof(spell))]
-        public async Task<IHttpActionResult> Deletespell(int id)
+        [ResponseType(typeof(class_table))]
+        public async Task<IHttpActionResult> Deleteclass_table(int id)
         {
-            spell spell = await db.spells.FindAsync(id);
-            if (spell == null)
+            class_table class_table = await db.class_table.FindAsync(id);
+            if (class_table == null)
             {
                 return NotFound();
             }
 
-            db.spells.Remove(spell);
+            db.class_table.Remove(class_table);
             await db.SaveChangesAsync();
 
-            return Ok(spell);
+            return Ok(class_table);
         }
 
         protected override void Dispose(bool disposing)
@@ -128,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool spellExists(int id)
+        private bool class_tableExists(int id)
         {
-            return db.spells.Count(e => e.Id == id) > 0;
+            return db.class_table.Count(e => e.Id == id) > 0;
         }
     }
 }

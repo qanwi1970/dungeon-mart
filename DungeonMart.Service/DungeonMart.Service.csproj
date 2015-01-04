@@ -41,13 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EquipmentService.cs" />
-    <Compile Include="FeatService.cs" />
     <Compile Include="Interfaces\IEquipmentService.cs" />
-    <Compile Include="Interfaces\IFeatService.cs" />
-    <Compile Include="Interfaces\IMonsterService.cs" />
-    <Compile Include="Mappers\FeatMapper.cs" />
-    <Compile Include="Mappers\MonsterMapper.cs" />
-    <Compile Include="MonsterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mappers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

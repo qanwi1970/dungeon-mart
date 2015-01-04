@@ -9,48 +9,48 @@ using DungeonMart.Data.OldSql;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [RoutePrefix("api/v1/skill")]
-    public class SkillController : ApiController
+    [RoutePrefix("api/v1/power")]
+    public class V1PowerController : ApiController
     {
         private SRDContext db = new SRDContext();
 
-        // GET: api/Skill
+        // GET: api/Power
         [Route("")]
-        public IQueryable<skill> Getskills()
+        public IQueryable<power> Getpowers()
         {
-            return db.skills;
+            return db.powers;
         }
 
-        // GET: api/Skill/5
+        // GET: api/Power/5
         [Route("{id}")]
-        [ResponseType(typeof(skill))]
-        public async Task<IHttpActionResult> Getskill(int id)
+        [ResponseType(typeof(power))]
+        public async Task<IHttpActionResult> Getpower(int id)
         {
-            skill skill = await db.skills.FindAsync(id);
-            if (skill == null)
+            power power = await db.powers.FindAsync(id);
+            if (power == null)
             {
                 return NotFound();
             }
 
-            return Ok(skill);
+            return Ok(power);
         }
 
-        // PUT: api/Skill/5
+        // PUT: api/Power/5
         [Route("{id}")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putskill(int id, skill skill)
+        public async Task<IHttpActionResult> Putpower(int id, power power)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != skill.Id)
+            if (id != power.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(skill).State = EntityState.Modified;
+            db.Entry(power).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!skillExists(id))
+                if (!powerExists(id))
                 {
                     return NotFound();
                 }
@@ -71,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Skill
+        // POST: api/Power
         [Route("")]
-        [ResponseType(typeof(skill))]
-        public async Task<IHttpActionResult> Postskill(skill skill)
+        [ResponseType(typeof(power))]
+        public async Task<IHttpActionResult> Postpower(power power)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.skills.Add(skill);
+            db.powers.Add(power);
 
             try
             {
@@ -89,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (skillExists(skill.Id))
+                if (powerExists(power.Id))
                 {
                     return Conflict();
                 }
@@ -99,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = skill.Id }, skill);
+            return CreatedAtRoute("DefaultApi", new { id = power.Id }, power);
         }
 
-        // DELETE: api/Skill/5
+        // DELETE: api/Power/5
         [Route("{id}")]
-        [ResponseType(typeof(skill))]
-        public async Task<IHttpActionResult> Deleteskill(int id)
+        [ResponseType(typeof(power))]
+        public async Task<IHttpActionResult> Deletepower(int id)
         {
-            skill skill = await db.skills.FindAsync(id);
-            if (skill == null)
+            power power = await db.powers.FindAsync(id);
+            if (power == null)
             {
                 return NotFound();
             }
 
-            db.skills.Remove(skill);
+            db.powers.Remove(power);
             await db.SaveChangesAsync();
 
-            return Ok(skill);
+            return Ok(power);
         }
 
         protected override void Dispose(bool disposing)
@@ -128,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool skillExists(int id)
+        private bool powerExists(int id)
         {
-            return db.skills.Count(e => e.Id == id) > 0;
+            return db.powers.Count(e => e.Id == id) > 0;
         }
     }
 }

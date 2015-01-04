@@ -157,27 +157,35 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiControllers\v1\ClassController.cs" />
-    <Compile Include="ApiControllers\v1\ClassTableController.cs" />
-    <Compile Include="ApiControllers\v1\DomainController.cs" />
-    <Compile Include="ApiControllers\v1\EquipmentController.cs" />
+    <Compile Include="ApiControllers\v1\V1ClassController.cs" />
+    <Compile Include="ApiControllers\v1\V1ClassTableController.cs" />
+    <Compile Include="ApiControllers\v1\V1DomainController.cs" />
+    <Compile Include="ApiControllers\v1\V1EquipmentController.cs" />
     <Compile Include="ApiControllers\v1\V1FeatController.cs" />
-    <Compile Include="ApiControllers\v1\ItemController.cs" />
+    <Compile Include="ApiControllers\v1\V1ItemController.cs" />
     <Compile Include="ApiControllers\v1\V1MonsterController.cs" />
-    <Compile Include="ApiControllers\v1\PowerController.cs" />
-    <Compile Include="ApiControllers\v1\SkillController.cs" />
-    <Compile Include="ApiControllers\v1\SpellController.cs" />
+    <Compile Include="ApiControllers\v1\V1PowerController.cs" />
+    <Compile Include="ApiControllers\v1\V1SkillController.cs" />
+    <Compile Include="ApiControllers\v1\V1SpellController.cs" />
     <Compile Include="ApiControllers\v2\FeatController.cs" />
     <Compile Include="ApiControllers\v2\MonsterController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Enums\Alignment.cs" />
     <Compile Include="Filters\ExceptionAttribute.cs" />
     <Compile Include="Filters\UnitOfWorkAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\EquipmentImport.cs" />
+    <Compile Include="Mappers\FeatMapper.cs" />
+    <Compile Include="Mappers\MonsterMapper.cs" />
+    <Compile Include="Models\Feat.cs" />
+    <Compile Include="Models\Monster.cs" />
+    <Compile Include="Services\FeatService.cs" />
+    <Compile Include="Services\Interfaces\IFeatService.cs" />
+    <Compile Include="Services\Interfaces\IMonsterService.cs" />
+    <Compile Include="Services\MonsterService.cs" />
     <Compile Include="Utils\PagedListResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ControllerUtils.cs" />
@@ -207,14 +215,6 @@
     <ProjectReference Include="..\DungeonMart.Data\DungeonMart.Data.csproj">
       <Project>{7536182f-9b13-4a80-a59c-e71299cab249}</Project>
       <Name>DungeonMart.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DungeonMart.Service\DungeonMart.Service.csproj">
-      <Project>{6f1ebf4c-0dc2-4ffc-b6cd-3aebca8b1537}</Project>
-      <Name>DungeonMart.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DungeonMart.Shared\DungeonMart.Shared.csproj">
-      <Project>{5ad21cf5-b22d-42cc-a167-0a9e5060bfb9}</Project>
-      <Name>DungeonMart.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -15,7 +15,7 @@ namespace DungeonMart.ApiControllers.v1
     /// </summary>
     [Exception]
     [RoutePrefix("api/v1/equipment")]
-    public class EquipmentController : ApiController
+    public class V1EquipmentController : ApiController
     {
         private SRDContext db = new SRDContext();
 

@@ -9,48 +9,48 @@ using DungeonMart.Data.OldSql;
 
 namespace DungeonMart.ApiControllers.v1
 {
-    [RoutePrefix("api/v1/classTable")]
-    public class ClassTableController : ApiController
+    [RoutePrefix("api/v1/skill")]
+    public class V1SkillController : ApiController
     {
         private SRDContext db = new SRDContext();
 
-        // GET: api/ClassTable
+        // GET: api/Skill
         [Route("")]
-        public IQueryable<class_table> Getclass_table()
+        public IQueryable<skill> Getskills()
         {
-            return db.class_table;
+            return db.skills;
         }
 
-        // GET: api/ClassTable/5
+        // GET: api/Skill/5
         [Route("{id}")]
-        [ResponseType(typeof(class_table))]
-        public async Task<IHttpActionResult> Getclass_table(int id)
+        [ResponseType(typeof(skill))]
+        public async Task<IHttpActionResult> Getskill(int id)
         {
-            class_table class_table = await db.class_table.FindAsync(id);
-            if (class_table == null)
+            skill skill = await db.skills.FindAsync(id);
+            if (skill == null)
             {
                 return NotFound();
             }
 
-            return Ok(class_table);
+            return Ok(skill);
         }
 
-        // PUT: api/ClassTable/5
+        // PUT: api/Skill/5
         [Route("{id}")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Putclass_table(int id, class_table class_table)
+        public async Task<IHttpActionResult> Putskill(int id, skill skill)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != class_table.Id)
+            if (id != skill.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(class_table).State = EntityState.Modified;
+            db.Entry(skill).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!class_tableExists(id))
+                if (!skillExists(id))
                 {
                     return NotFound();
                 }
@@ -71,17 +71,17 @@ namespace DungeonMart.ApiControllers.v1
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ClassTable
+        // POST: api/Skill
         [Route("")]
-        [ResponseType(typeof(class_table))]
-        public async Task<IHttpActionResult> Postclass_table(class_table class_table)
+        [ResponseType(typeof(skill))]
+        public async Task<IHttpActionResult> Postskill(skill skill)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.class_table.Add(class_table);
+            db.skills.Add(skill);
 
             try
             {
@@ -89,7 +89,7 @@ namespace DungeonMart.ApiControllers.v1
             }
             catch (DbUpdateException)
             {
-                if (class_tableExists(class_table.Id))
+                if (skillExists(skill.Id))
                 {
                     return Conflict();
                 }
@@ -99,24 +99,24 @@ namespace DungeonMart.ApiControllers.v1
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = class_table.Id }, class_table);
+            return CreatedAtRoute("DefaultApi", new { id = skill.Id }, skill);
         }
 
-        // DELETE: api/ClassTable/5
+        // DELETE: api/Skill/5
         [Route("{id}")]
-        [ResponseType(typeof(class_table))]
-        public async Task<IHttpActionResult> Deleteclass_table(int id)
+        [ResponseType(typeof(skill))]
+        public async Task<IHttpActionResult> Deleteskill(int id)
         {
-            class_table class_table = await db.class_table.FindAsync(id);
-            if (class_table == null)
+            skill skill = await db.skills.FindAsync(id);
+            if (skill == null)
             {
                 return NotFound();
             }
 
-            db.class_table.Remove(class_table);
+            db.skills.Remove(skill);
             await db.SaveChangesAsync();
 
-            return Ok(class_table);
+            return Ok(skill);
         }
 
         protected override void Dispose(bool disposing)
@@ -128,9 +128,9 @@ namespace DungeonMart.ApiControllers.v1
             base.Dispose(disposing);
         }
 
-        private bool class_tableExists(int id)
+        private bool skillExists(int id)
         {
-            return db.class_table.Count(e => e.Id == id) > 0;
+            return db.skills.Count(e => e.Id == id) > 0;
         }
     }
 }

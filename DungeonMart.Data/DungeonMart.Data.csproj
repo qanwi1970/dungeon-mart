@@ -143,8 +143,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="json\Classes.json" />
-    <None Include="json\Equipment.json" />
     <EntityDeploy Include="OldSql\OriginalSrd.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OriginalSrd.Designer.cs</LastGenOutput>
@@ -169,12 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DungeonMart.Common\DungeonMart.Common.csproj">
-      <Project>{c4b8a0c7-4804-4d00-9e4e-291820337512}</Project>
-      <Name>DungeonMart.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201412201830515_BaseSrd.resx">
