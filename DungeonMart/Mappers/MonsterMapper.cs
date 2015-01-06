@@ -1,4 +1,5 @@
-﻿using DungeonMart.Data.Models;
+﻿using System.Web;
+using DungeonMart.Data.Models;
 using DungeonMart.Shared.Models;
 
 namespace DungeonMart.Service.Mappers
@@ -24,7 +25,7 @@ namespace DungeonMart.Service.Mappers
                 Family = monsterEntity.Family,
                 Feats = monsterEntity.Feats,
                 FullAttack = monsterEntity.FullAttack,
-                FullText = monsterEntity.FullText,
+                FullText = HttpUtility.HtmlDecode(monsterEntity.FullText),
                 Grapple = monsterEntity.Grapple,
                 HitDice = monsterEntity.HitDice,
                 Id = monsterEntity.Id,

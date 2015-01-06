@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.css" rel="stylesheet"/>
 
     <!-- Custom styles for this site -->
     <link href="/css/dungeonmart.css" rel="stylesheet">
@@ -38,32 +37,32 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="feats.html">Feats</a></li>
-                    <li><a href="monsters.html">Monsters</a></li>
+                    <li><a ui-sref="home">Home</a></li>
+                    <li><a ui-sref="featList">Feats</a></li>
+                    <li><a ui-sref="monsterList">Monsters</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/swagger">API Doc</a></li>
                     <li><a href="license.html">License</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container" ui-view></div> <!-- /container -->
 
-        <!-- Main component for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <h1>Welcome to DungeonMart</h1>
-            <p>This site will serve two main purposes. First, give people a place to edit and store characters.
-              Second, have a searchable reference location for the game data and maybe some utilities for players and DMs.</p>
-        </div>
-
-    </div> <!-- /container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/scripts/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-resource.js"></script>
+    <script src="/scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="/scripts/angular-ui-router.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/homeControllers.js"></script>
+    <script src="/app/controllers/featControllers.js"></script>
+    <script src="/app/services/featServices.js"></script>
+    <script src="/app/controllers/monsterControllers.js"></script>
+    <script src="/app/services/monsterServices.js"></script>
 </body>
 </html>

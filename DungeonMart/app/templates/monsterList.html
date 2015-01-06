@@ -1,0 +1,30 @@
+﻿<h1>Monsters</h1>
+
+<div>
+    Search: <input ng-model="searchStr" />
+</div>
+
+<table id="monstersTable" class="table table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>CR</th>
+            <th>Full Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="monster in monsters | filter:searchStr">
+            <td>{{monster.id}}</td>
+            <td>{{monster.name}}</td>
+            <td>{{monster.type}}</td>
+            <td>{{monster.challengeRating}}</td>
+            <td tooltip-html-unsafe="{{monster.fullText}}" tooltip-placement="left">{{monster.fullText | limitTo : 50}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="text-center">
+    <img src="/images/loading.gif" alt="Loading..." ng-show="loading" class="text-center" />
+</p>

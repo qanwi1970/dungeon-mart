@@ -125,18 +125,22 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\featControllers.js" />
+    <Content Include="app\controllers\homeControllers.js" />
+    <Content Include="app\controllers\monsterControllers.js" />
     <Content Include="app\services\featServices.js" />
+    <Content Include="app\services\monsterServices.js" />
+    <Content Include="app\templates\home.html" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\dungeonmart.css" />
     <Content Include="favicon.ico" />
-    <Content Include="feats.html" />
+    <Content Include="app\templates\featList.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\loading.gif" />
     <Content Include="index.html" />
     <Content Include="license.html" />
-    <Content Include="monsters.html" />
+    <Content Include="app\templates\monsterList.html" />
     <Content Include="scripts\ai.js" />
     <Content Include="scripts\ai.min.js" />
     <Content Include="scripts\angular-mocks.js" />

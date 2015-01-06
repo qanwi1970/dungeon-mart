@@ -69,6 +69,8 @@ namespace DungeonMart
             kernel.Load(Assembly.GetExecutingAssembly());
             kernel.Bind<IFeatService>().To<FeatService>();
             kernel.Bind<IFeatRepository>().To<FeatRepository>();
+            kernel.Bind<IMonsterService>().To<MonsterService>();
+            kernel.Bind<IMonsterRepository>().To<MonsterRepository>();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InThreadScope();
             kernel.Bind<IDungeonMartContext>().To<DungeonMartContext>();
         }        
