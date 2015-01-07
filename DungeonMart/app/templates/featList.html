@@ -30,10 +30,10 @@
             <td>{{feat.stack}}</td>
             <td>{{feat.choice}}</td>
             <td>{{feat.prerequisite}}</td>
-            <td><span tooltip="{{feat.benefit}}">{{feat.benefit | limitTo : 50}}</span></td>
+            <td><span tooltip-html-unsafe="{{feat.benefit}}" tooltip-placement="left">{{feat.benefit | limitTo : 50}}</span></td>
             <td>{{feat.normal}}</td>
             <td>{{feat.special}}</td>
-            <td><span tooltip="{{feat.fullText}}">{{feat.fullText | limitTo : 50}}</span></td>
+            <td><span tooltip-html-unsafe="{{feat.fullText}}" tooltip-placement="left">{{feat.fullText | limitTo : 50}}</span></td>
             <td>{{feat.reference}}</td>
         </tr>
     </tbody>

@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-var homeControllers = angular.module('homeControllers', ['ui.bootstrap', 'ui.router']);
+var app = angular.module('app');
 
-homeControllers.controller('homeController', [
+app.controller('homeController', [
     '$scope', function($scope) {
 
     }

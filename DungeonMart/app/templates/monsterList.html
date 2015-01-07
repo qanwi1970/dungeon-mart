@@ -20,7 +20,7 @@
             <td>{{monster.name}}</td>
             <td>{{monster.type}}</td>
             <td>{{monster.challengeRating}}</td>
-            <td tooltip-html-unsafe="{{monster.fullText}}" tooltip-placement="left">{{monster.fullText | limitTo : 50}}</td>
+            <td><span tooltip-html-unsafe="{{monster.fullText}}" tooltip-placement="left">{{monster.fullText | limitTo : 50}}</span></td>
         </tr>
     </tbody>
 </table>

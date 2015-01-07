@@ -127,8 +127,6 @@
     <Content Include="app\controllers\featControllers.js" />
     <Content Include="app\controllers\homeControllers.js" />
     <Content Include="app\controllers\monsterControllers.js" />
-    <Content Include="app\services\featServices.js" />
-    <Content Include="app\services\monsterServices.js" />
     <Content Include="app\templates\home.html" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />

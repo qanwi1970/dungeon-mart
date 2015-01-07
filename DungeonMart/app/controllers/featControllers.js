@@ -1,25 +1,61 @@
 ﻿'use strict';
 
-var featControllers = angular.module('featControllers', ['featServices', 'ui.bootstrap']);
+var app = angular.module('app');
 
-featControllers.controller('featListController', [
-    '$scope', 'featService', '$http', function ($scope, featService, $http) {
+app.controller('featListController', [
+    '$scope', '$http', '$q', function ($scope, $http, $q) {
         $scope.loading = true;
         getData();
 
         function getData() {
             console.log("Getting data");
-            $http.get('/api/v2/feat').success(function(data) {
-                $scope.feats = data;
+            getFeats().then(function(feats) {
+                $scope.feats = feats;
+                $scope.loading = false;
             });
-            //TODO: figure out why this code fails so I can use it instead of $http
-            //featService.getFeats({},
-            //    function (value) {
-            //        $scope.feats = value;
-            //    }, function (response) {
-            //        console.log(response);
-            //    });
-            $scope.loading = false;
         };
+
+        // Move this to a service when I can figure out why my stuff isn't getting injected
+        function getFeats() {
+            var deferred = $q.defer();
+            $http.get('/api/v2/feat')
+                .success(function(data) {
+                    deferred.resolve(data);
+                })
+                .error(function(data, status, header, config) {
+                    deferred.reject(status);
+                });
+            return deferred.promise;
+        }
     }
 ]);
+
+/* from featService
+(function() {
+    'use strict';
+
+    var app = angular.module('app');
+
+    app.factory('featService',
+    [
+        '$http', '$q',
+        function($http, $q) {
+            var getFeats = function() {
+                var deferred = $q.defer();
+                $http.get('/api/v2/feat')
+                    .success(function(data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function(data, status, header, config) {
+                        deferred.reject(status);
+                    });
+                return deferred.promise;
+            };
+
+            return {
+                getFeats: getFeats,
+            };
+
+        }
+    ]);
+})();*/

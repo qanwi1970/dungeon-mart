@@ -1,10 +1,6 @@
 ﻿'use strict';
 
-var app = angular.module('app', [
-    'homeControllers',
-    'featControllers', 'featServices',
-    'monsterControllers', 'monsterServices',
-    'ngResource', 'ui.bootstrap', 'ui.router']);
+var app = angular.module('app', ['ui.bootstrap', 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
