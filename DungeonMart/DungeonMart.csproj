@@ -169,11 +169,55 @@
     <Compile Include="ApiControllers\v1\V1PowerController.cs" />
     <Compile Include="ApiControllers\v1\V1SkillController.cs" />
     <Compile Include="ApiControllers\v1\V1SpellController.cs" />
+    <Compile Include="ApiControllers\v2\ClassController.cs" />
     <Compile Include="ApiControllers\v2\FeatController.cs" />
     <Compile Include="ApiControllers\v2\MonsterController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Data\DAL\DungeonMartContext.cs" />
+    <Compile Include="Data\DAL\DungeonMartInitializer.cs" />
+    <Compile Include="Data\DAL\IDungeonMartContext.cs" />
+    <Compile Include="Data\DAL\SeedData.cs" />
+    <Compile Include="Data\Interfaces\ICharacterClassRepository.cs" />
+    <Compile Include="Data\Interfaces\IClassProgressionRepository.cs" />
+    <Compile Include="Data\Interfaces\ICrudActions.cs" />
+    <Compile Include="Data\Interfaces\IDomainRepository.cs" />
+    <Compile Include="Data\Interfaces\IEquipmentRepository.cs" />
+    <Compile Include="Data\Interfaces\IFeatRepository.cs" />
+    <Compile Include="Data\Interfaces\IItemRepository.cs" />
+    <Compile Include="Data\Interfaces\IMonsterRepository.cs" />
+    <Compile Include="Data\Interfaces\IPowerRepository.cs" />
+    <Compile Include="Data\Interfaces\ISkillRepository.cs" />
+    <Compile Include="Data\Interfaces\ISpellRepository.cs" />
+    <Compile Include="Data\Migrations\201412201830515_BaseSrd.cs" />
+    <Compile Include="Data\Migrations\201412201830515_BaseSrd.Designer.cs">
+      <DependentUpon>201412201830515_BaseSrd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\Configuration.cs" />
+    <Compile Include="Data\Models\CharacterClass.cs" />
+    <Compile Include="Data\Models\ClassProgression.cs" />
+    <Compile Include="Data\Models\Domain.cs" />
+    <Compile Include="Data\Models\Equipment.cs" />
+    <Compile Include="Data\Models\FeatEntity.cs" />
+    <Compile Include="Data\Models\Interfaces\IAuditable.cs" />
+    <Compile Include="Data\Models\Item.cs" />
+    <Compile Include="Data\Models\MonsterEntity.cs" />
+    <Compile Include="Data\Models\Power.cs" />
+    <Compile Include="Data\Models\Skill.cs" />
+    <Compile Include="Data\Models\Spell.cs" />
+    <Compile Include="Data\Repositories\CharacterClassRepository.cs" />
+    <Compile Include="Data\Repositories\ClassProgressionRepository.cs" />
+    <Compile Include="Data\Repositories\DomainRepository.cs" />
+    <Compile Include="Data\Repositories\EquipmentRepository.cs" />
+    <Compile Include="Data\Repositories\FeatRepository.cs" />
+    <Compile Include="Data\Repositories\ItemRepository.cs" />
+    <Compile Include="Data\Repositories\MonsterRepository.cs" />
+    <Compile Include="Data\Repositories\PowerRepository.cs" />
+    <Compile Include="Data\Repositories\Repository.cs" />
+    <Compile Include="Data\Repositories\SkillRepository.cs" />
+    <Compile Include="Data\Repositories\SpellRepository.cs" />
+    <Compile Include="Data\Repositories\UnitOfWork.cs" />
     <Compile Include="Enums\Alignment.cs" />
     <Compile Include="Filters\ExceptionAttribute.cs" />
     <Compile Include="Filters\UnitOfWorkAttribute.cs" />
@@ -218,6 +262,11 @@
       <Project>{7536182f-9b13-4a80-a59c-e71299cab249}</Project>
       <Name>DungeonMart.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Migrations\201412201830515_BaseSrd.resx">
+      <DependentUpon>201412201830515_BaseSrd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Web;
-using DungeonMart.Service.Interfaces;
+﻿using DungeonMart.Service.Interfaces;
 using DungeonMart.Shared.Models;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;

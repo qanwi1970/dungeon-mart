@@ -64,6 +64,10 @@
       <Project>{7536182f-9b13-4a80-a59c-e71299cab249}</Project>
       <Name>DungeonMart.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DungeonMart\DungeonMart.csproj">
+      <Project>{89ebb166-3b8f-4506-841c-3090ef84cd07}</Project>
+      <Name>DungeonMart</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
