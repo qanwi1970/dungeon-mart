@@ -3,7 +3,7 @@ using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.Repositories
 {
-    public class CharacterClassRepository : Repository<CharacterClass>, ICharacterClassRepository
+    internal class CharacterClassRepository : Repository<CharacterClassEntity>, ICharacterClassRepository
     {
         public CharacterClassRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

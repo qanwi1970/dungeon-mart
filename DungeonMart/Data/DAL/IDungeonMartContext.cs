@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.DAL
 {
-    public interface IDungeonMartContext
+    internal interface IDungeonMartContext
     {
-        DbSet<CharacterClass> CharacterClasses { get; set; }
+        DbSet<CharacterClassEntity> CharacterClasses { get; set; }
         DbSet<ClassProgression> ClassProgressions { get; set; }
         DbSet<Domain> Domains { get; set; }
         DbSet<Equipment> Equipments { get; set; }

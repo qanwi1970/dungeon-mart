@@ -6,7 +6,7 @@ using DungeonMart.Data.Models.Interfaces;
 
 namespace DungeonMart.Data.Repositories
 {
-    public abstract class Repository<T> where T : class
+    internal abstract class Repository<T> where T : class
     {
         protected readonly IUnitOfWork UnitOfWork;
         protected readonly IDungeonMartContext DBContext;

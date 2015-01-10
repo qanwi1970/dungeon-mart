@@ -1,4 +1,4 @@
-namespace DungeonMart.Data.Migrations
+namespace DungeonMart.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

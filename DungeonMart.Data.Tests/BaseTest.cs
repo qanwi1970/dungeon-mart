@@ -12,9 +12,9 @@ namespace DungeonMart.Data.Tests
     [TestFixture]
     public abstract class BaseTest
     {
-        protected UnitOfWork UnitOfWork;
-        protected DropCreateDatabaseAlways<DungeonMartContext> Initializer;
-        protected DungeonMartContext Context;
+        internal UnitOfWork UnitOfWork;
+        internal DropCreateDatabaseAlways<DungeonMartContext> Initializer;
+        internal DungeonMartContext Context;
 
         [SetUp]
         public void CommonSetup()

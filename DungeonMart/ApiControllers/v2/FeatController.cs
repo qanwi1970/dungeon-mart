@@ -3,7 +3,6 @@ using DungeonMart.Shared.Models;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using DungeonMart.Utils;
 
 namespace DungeonMart.ApiControllers.v2
 {
@@ -30,10 +29,10 @@ namespace DungeonMart.ApiControllers.v2
         /// <returns></returns>
         [Route("")]
         [ResponseType(typeof(Feat))]
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
-            var featListResponse = ControllerUtils.ListResponse(Request, _featService.GetFeats());
-            return featListResponse;
+            var featList = await Task.Run(() => _featService.GetFeats());
+            return Ok(featList);
         }
 
         /// <summary>
@@ -45,7 +44,8 @@ namespace DungeonMart.ApiControllers.v2
         [ResponseType(typeof(Feat))]
         public async Task<IHttpActionResult> Get(int id)
         {
-            return Ok(_featService.GetFeatById(id));
+            var feat = await Task.Run(() => _featService.GetFeatById(id));
+            return Ok(feat);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace DungeonMart.ApiControllers.v2
         [ResponseType(typeof(Feat))]
         public async Task<IHttpActionResult> Post([FromBody]Feat value)
         {
-            var postedFeat = _featService.AddFeat(value);
+            var postedFeat = await Task.Run(() => _featService.AddFeat(value));
             return CreatedAtRoute("FeatGet", new {id = postedFeat.Id}, postedFeat);
         }
 
@@ -71,7 +71,7 @@ namespace DungeonMart.ApiControllers.v2
         [ResponseType(typeof(Feat))]
         public async Task<IHttpActionResult> Put(int id, [FromBody]Feat value)
         {
-            var updatedFeat = _featService.PutFeat(id, value);
+            var updatedFeat = await Task.Run(() => _featService.PutFeat(id, value));
             return Ok(updatedFeat);
         }
 
@@ -83,7 +83,7 @@ namespace DungeonMart.ApiControllers.v2
         [Route("{id}")]
         public async Task<IHttpActionResult> Delete(int id)
         {
-            _featService.DeleteFeat(id);
+            await Task.Run(() => _featService.DeleteFeat(id));
             return Ok();
         }
     }

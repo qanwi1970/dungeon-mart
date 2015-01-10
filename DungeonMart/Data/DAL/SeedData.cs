@@ -5,7 +5,7 @@ using DungeonMart.Data.OldSql;
 
 namespace DungeonMart.Data.DAL
 {
-    public class SeedData
+    internal class SeedData
     {
         public static void Seed(DungeonMartContext context)
         {
@@ -27,7 +27,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var charClass in srdContext.classes)
                 {
-                    var characterClass = new CharacterClass
+                    var characterClass = new CharacterClassEntity
                     {
                         Alignment = charClass.alignment,
                         ClassSkills = charClass.class_skills,

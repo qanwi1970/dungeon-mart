@@ -1,35 +1,61 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
+using DungeonMart.Models;
 
 namespace DungeonMart.ApiControllers.v2
 {
+    /// <summary>
+    /// Rest service for character classes
+    /// </summary>
+    [RoutePrefix("api/v2/class")]
     public class ClassController : ApiController
     {
-        // GET: api/Class
-        public IEnumerable<string> Get()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IHttpActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(new string[] { "value1", "value2" });
         }
 
-        // GET: api/Class/5
-        public string Get(int id)
+        /// <summary>
+        /// Gets a single character class
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IHttpActionResult> Get(int id)
         {
-            return "value";
+            return Ok("value");
         }
 
-        // POST: api/Class
-        public void Post([FromBody]string value)
+        /// <summary>
+        /// Adds a new character class
+        /// </summary>
+        /// <param name="characterClass"></param>
+        public async Task<IHttpActionResult> Post([FromBody]CharacterClass characterClass)
         {
+            return Ok();
         }
 
-        // PUT: api/Class/5
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        /// Updates a character class
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="characterClass"></param>
+        public async Task<IHttpActionResult> Put(int id, [FromBody]CharacterClass characterClass)
         {
+            return Ok();
         }
 
-        // DELETE: api/Class/5
-        public void Delete(int id)
+        /// <summary>
+        /// Deletes a character class
+        /// </summary>
+        /// <param name="id"></param>
+        public async Task<IHttpActionResult> Delete(int id)
         {
+            return Ok();
         }
     }
 }

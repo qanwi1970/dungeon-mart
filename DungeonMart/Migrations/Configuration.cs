@@ -1,7 +1,7 @@
 using System.Data.Entity.Migrations;
 using DungeonMart.Data.DAL;
 
-namespace DungeonMart.Data.Migrations
+namespace DungeonMart.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<DungeonMartContext>
     {

@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface ICharacterClassRepository : ICrudActions<CharacterClass>
+    internal interface ICharacterClassRepository : ICrudActions<CharacterClassEntity>
     {
     }
 }

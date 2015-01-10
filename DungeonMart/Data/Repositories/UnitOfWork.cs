@@ -5,24 +5,24 @@ using DungeonMart.Data.DAL;
 
 namespace DungeonMart.Data.Repositories
 {
-    public interface IUnitOfWork
+    internal interface IUnitOfWork
     {
-        Guid SessionID { get; }
+        Guid SessionId { get; }
         IDungeonMartContext DbContext { get; }
         int Commit();
     }
     
-    public class UnitOfWork : IUnitOfWork
+    internal class UnitOfWork : IUnitOfWork
     {
         private readonly IDungeonMartContext _context;
 
         public UnitOfWork(IDungeonMartContext context)
         {
-            this.SessionID = Guid.NewGuid();
+            SessionId = Guid.NewGuid();
             _context = context;
         }
 
-        public Guid SessionID { get; private set; }
+        public Guid SessionId { get; private set; }
 
         public IDungeonMartContext DbContext
         {

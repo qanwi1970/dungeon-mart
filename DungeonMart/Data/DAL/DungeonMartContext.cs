@@ -4,7 +4,7 @@ using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.DAL
 {
-    public class DungeonMartContext : DbContext, IDungeonMartContext
+    internal class DungeonMartContext : DbContext, IDungeonMartContext
     {
         public DungeonMartContext() : base("name=DungeonMartContext")
         {
@@ -14,7 +14,7 @@ namespace DungeonMart.Data.DAL
         {    
         }
 
-        public DbSet<CharacterClass> CharacterClasses { get; set; }
+        public DbSet<CharacterClassEntity> CharacterClasses { get; set; }
 
         public DbSet<ClassProgression> ClassProgressions { get; set; }
 
