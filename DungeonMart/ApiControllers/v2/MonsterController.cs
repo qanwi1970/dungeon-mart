@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using DungeonMart.Service.Interfaces;
+using DungeonMart.Services.Interfaces;
 using DungeonMart.Shared.Models;
 using DungeonMart.Utils;
 

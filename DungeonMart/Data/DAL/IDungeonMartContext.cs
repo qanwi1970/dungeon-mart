@@ -8,7 +8,7 @@ namespace DungeonMart.Data.DAL
     internal interface IDungeonMartContext
     {
         DbSet<CharacterClassEntity> CharacterClasses { get; set; }
-        DbSet<ClassProgression> ClassProgressions { get; set; }
+        DbSet<ClassProgressionEntity> ClassProgressions { get; set; }
         DbSet<Domain> Domains { get; set; }
         DbSet<Equipment> Equipments { get; set; }
         DbSet<FeatEntity> Feats { get; set; }

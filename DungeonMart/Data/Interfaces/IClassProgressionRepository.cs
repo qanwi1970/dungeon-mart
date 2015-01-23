@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface IClassProgressionRepository : ICrudActions<ClassProgression>
+    public interface IClassProgressionRepository : ICrudActions<ClassProgressionEntity>
     {
     }
 }

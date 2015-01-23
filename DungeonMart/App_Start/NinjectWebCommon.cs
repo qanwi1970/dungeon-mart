@@ -7,6 +7,8 @@ using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Repositories;
 using DungeonMart.Service;
 using DungeonMart.Service.Interfaces;
+using DungeonMart.Services;
+using DungeonMart.Services.Interfaces;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
@@ -71,6 +73,10 @@ namespace DungeonMart
             kernel.Bind<IFeatRepository>().To<FeatRepository>();
             kernel.Bind<IMonsterService>().To<MonsterService>();
             kernel.Bind<IMonsterRepository>().To<MonsterRepository>();
+            kernel.Bind<ICharacterClassRepository>().To<CharacterClassRepository>();
+            kernel.Bind<ICharacterClassService>().To<CharacterClassService>();
+            kernel.Bind<IClassProgressionRepository>().To<ClassProgressionRepository>();
+            kernel.Bind<IClassLevelService>().To<ClassLevelService>();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InThreadScope();
             kernel.Bind<IDungeonMartContext>().To<DungeonMartContext>();
         }        

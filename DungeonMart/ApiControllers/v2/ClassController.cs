@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 using DungeonMart.Models;
+using DungeonMart.Services.Interfaces;
 
 namespace DungeonMart.ApiControllers.v2
 {
@@ -11,13 +12,27 @@ namespace DungeonMart.ApiControllers.v2
     [RoutePrefix("api/v2/class")]
     public class ClassController : ApiController
     {
+        private readonly ICharacterClassService _characterClassService;
+
         /// <summary>
-        /// 
+        /// ctor
+        /// </summary>
+        /// <param name="characterClassService"></param>
+        public ClassController(ICharacterClassService characterClassService)
+        {
+            _characterClassService = characterClassService;
+        }
+
+        /// <summary>
+        /// Gets all the character classes
         /// </summary>
         /// <returns></returns>
+        [Route("")]
+        [ResponseType(typeof(CharacterClass))]
         public async Task<IHttpActionResult> Get()
         {
-            return Ok(new string[] { "value1", "value2" });
+            var classes = await Task.Run(() => _characterClassService.GetClasses());
+            return Ok(classes);
         }
 
         /// <summary>
@@ -25,18 +40,24 @@ namespace DungeonMart.ApiControllers.v2
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Route("{id}", Name = "GetClassById")]
+        [ResponseType(typeof(CharacterClass))]
         public async Task<IHttpActionResult> Get(int id)
         {
-            return Ok("value");
+            var characterClass = await Task.Run(() => _characterClassService.GetClassById(id));
+            return Ok(characterClass);
         }
 
         /// <summary>
         /// Adds a new character class
         /// </summary>
         /// <param name="characterClass"></param>
+        [Route("")]
+        [ResponseType(typeof(CharacterClass))]
         public async Task<IHttpActionResult> Post([FromBody]CharacterClass characterClass)
         {
-            return Ok();
+            var newCharacterClass = await Task.Run(() => _characterClassService.AddClass(characterClass));
+            return CreatedAtRoute("GetClassById", new {id = newCharacterClass.Id}, newCharacterClass);
         }
 
         /// <summary>
@@ -44,17 +65,23 @@ namespace DungeonMart.ApiControllers.v2
         /// </summary>
         /// <param name="id"></param>
         /// <param name="characterClass"></param>
+        [Route("{id}")]
+        [ResponseType(typeof(CharacterClass))]
         public async Task<IHttpActionResult> Put(int id, [FromBody]CharacterClass characterClass)
         {
-            return Ok();
+            var updatedCharacterClass = await Task.Run(() => _characterClassService.UpdateClass(id, characterClass));
+            return Ok(updatedCharacterClass);
         }
 
         /// <summary>
         /// Deletes a character class
         /// </summary>
         /// <param name="id"></param>
+        [Route("{id}")]
+        [ResponseType(typeof(CharacterClass))]
         public async Task<IHttpActionResult> Delete(int id)
         {
+            await Task.Run(() => _characterClassService.DeleteClass(id));
             return Ok();
         }
     }

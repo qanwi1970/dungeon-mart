@@ -1,0 +1,95 @@
+﻿using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Description;
+using DungeonMart.Models;
+using DungeonMart.Services.Interfaces;
+
+namespace DungeonMart.ApiControllers.v2
+{
+    /// <summary>
+    /// Provides character class level progression tables
+    /// </summary>
+    [RoutePrefix("api/v2/classlevel")]
+    public class ClassLevelController : ApiController
+    {
+        private readonly IClassLevelService _classLevelService;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="classLevelService"></param>
+        public ClassLevelController(IClassLevelService classLevelService)
+        {
+            _classLevelService = classLevelService;
+        }
+
+        /// <summary>
+        /// Returns all the class level table information
+        /// </summary>
+        /// <returns></returns>
+        [Route("")]
+        [ResponseType(typeof(ClassLevel))]
+        // GET: api/ClassLevel
+        public async Task<IHttpActionResult> Get()
+        {
+            var classLevels = await Task.Run(() => _classLevelService.GetClassLevels());
+            return Ok(classLevels);
+        }
+
+        /// <summary>
+        /// Get a class and level table row by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("{id}", Name = "GetClassLevelById")]
+        [ResponseType(typeof(ClassLevel))]
+        // GET: api/ClassLevel/5
+        public async Task<IHttpActionResult> Get(int id)
+        {
+            var classLevel = await Task.Run(() => _classLevelService.GetClassLevelById(id));
+            return Ok(classLevel);
+        }
+
+        /// <summary>
+        /// Add a class level row
+        /// </summary>
+        /// <param name="classLevel"></param>
+        /// <returns></returns>
+        [Route("")]
+        [ResponseType(typeof(ClassLevel))]
+        // POST: api/ClassLevel
+        public async Task<IHttpActionResult> Post([FromBody]ClassLevel classLevel)
+        {
+            var addedClassLevel = await Task.Run(() => _classLevelService.AddClassLevel(classLevel));
+            return CreatedAtRoute("GetClassLevelById", new {id = addedClassLevel.Id}, addedClassLevel);
+        }
+
+        /// <summary>
+        /// Updates a class level row
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="classLevel"></param>
+        /// <returns></returns>
+        [Route("{id}")]
+        [ResponseType(typeof(ClassLevel))]
+        // PUT: api/ClassLevel/5
+        public async Task<IHttpActionResult> Put(int id, [FromBody]ClassLevel classLevel)
+        {
+            var updatedClassLevel = await Task.Run(() => _classLevelService.UpdateClassLevel(id, classLevel));
+            return Ok(updatedClassLevel);
+        }
+
+        /// <summary>
+        /// Deletes a class level row
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("{id}")]
+        // DELETE: api/ClassLevel/5
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            await Task.Run(() => _classLevelService.DeleteClassLevel(id));
+            return Ok();
+        }
+    }
+}

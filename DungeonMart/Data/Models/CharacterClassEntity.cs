@@ -6,7 +6,7 @@ using DungeonMart.Data.Models.Interfaces;
 namespace DungeonMart.Data.Models
 {
     [Table("CharacterClass")]
-    internal class CharacterClassEntity : IAuditable
+    public class CharacterClassEntity : IAuditable
     {
         public int Id { get; set; }
 

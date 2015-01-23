@@ -77,7 +77,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var classTable in srdContext.class_table)
                 {
-                    var classProgression = new ClassProgression
+                    var classProgression = new ClassProgressionEntity
                     {
                         ArmorClassBonus = classTable.ac_bonus,
                         BaseAttackBonus = classTable.base_attack_bonus,
