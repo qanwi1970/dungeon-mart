@@ -133,7 +133,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var domain in srdContext.domains)
                 {
-                    var dmDomain = new Domain
+                    var dmDomain = new DomainEntity
                     {
                         CreatedBy = "SeedDomain",
                         CreatedDate = DateTime.UtcNow,

@@ -1,8 +1,8 @@
-﻿namespace DungeonMart.Common.Enums
+﻿namespace DungeonMart.Enums
 {
     public enum Alignment
     {
-        unknown = 0,
+        Unknown = 0,
         LawfulGood = 1,
         NeutralGood = 2,
         ChaoticGood = 3,

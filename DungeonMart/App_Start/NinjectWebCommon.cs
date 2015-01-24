@@ -5,7 +5,6 @@ using DungeonMart;
 using DungeonMart.Data.DAL;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Repositories;
-using DungeonMart.Service;
 using DungeonMart.Service.Interfaces;
 using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
@@ -77,6 +76,8 @@ namespace DungeonMart
             kernel.Bind<ICharacterClassService>().To<CharacterClassService>();
             kernel.Bind<IClassProgressionRepository>().To<ClassProgressionRepository>();
             kernel.Bind<IClassLevelService>().To<ClassLevelService>();
+            kernel.Bind<IDomainRepository>().To<DomainRepository>();
+            kernel.Bind<IDomainService>().To<DomainService>();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InThreadScope();
             kernel.Bind<IDungeonMartContext>().To<DungeonMartContext>();
         }        

@@ -9,7 +9,7 @@ namespace DungeonMart.Data.DAL
     {
         DbSet<CharacterClassEntity> CharacterClasses { get; set; }
         DbSet<ClassProgressionEntity> ClassProgressions { get; set; }
-        DbSet<Domain> Domains { get; set; }
+        DbSet<DomainEntity> Domains { get; set; }
         DbSet<Equipment> Equipments { get; set; }
         DbSet<FeatEntity> Feats { get; set; }
         DbSet<Item> Items { get; set; }

@@ -20,6 +20,9 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <ApplicationInsightsResourceId>/subscriptions/0bc196d0-4c91-4261-b367-ae291899742e/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/DungeonMart</ApplicationInsightsResourceId>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>1fefb120</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\DungeonMart.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -177,6 +181,7 @@
     <Compile Include="ApiControllers\v1\V1SpellController.cs" />
     <Compile Include="ApiControllers\v2\ClassController.cs" />
     <Compile Include="ApiControllers\v2\ClassLevelController.cs" />
+    <Compile Include="ApiControllers\v2\DomainController.cs" />
     <Compile Include="ApiControllers\v2\FeatController.cs" />
     <Compile Include="ApiControllers\v2\MonsterController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -199,6 +204,7 @@
     <Compile Include="Data\Interfaces\ISpellRepository.cs" />
     <Compile Include="Mappers\CharacterClassMapper.cs" />
     <Compile Include="Mappers\ClassLevelMapper.cs" />
+    <Compile Include="Mappers\DomainMapper.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.Designer.cs">
       <DependentUpon>201501100624375_BaseSrd.cs</DependentUpon>
@@ -206,7 +212,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Data\Models\CharacterClassEntity.cs" />
     <Compile Include="Data\Models\ClassProgressionEntity.cs" />
-    <Compile Include="Data\Models\Domain.cs" />
+    <Compile Include="Data\Models\DomainEntity.cs" />
     <Compile Include="Data\Models\Equipment.cs" />
     <Compile Include="Data\Models\FeatEntity.cs" />
     <Compile Include="Data\Models\Interfaces\IAuditable.cs" />
@@ -236,14 +242,17 @@
     <Compile Include="Mappers\FeatMapper.cs" />
     <Compile Include="Mappers\MonsterMapper.cs" />
     <Compile Include="Models\CharacterClass.cs" />
+    <Compile Include="Models\Domain.cs" />
     <Compile Include="Models\Feat.cs" />
     <Compile Include="Models\ClassLevel.cs" />
     <Compile Include="Models\Monster.cs" />
     <Compile Include="Services\CharacterClassService.cs" />
     <Compile Include="Services\ClassLevelService.cs" />
+    <Compile Include="Services\DomainService.cs" />
     <Compile Include="Services\FeatService.cs" />
     <Compile Include="Services\Interfaces\ICharacterClassService.cs" />
     <Compile Include="Services\Interfaces\IClassLevelService.cs" />
+    <Compile Include="Services\Interfaces\IDomainService.cs" />
     <Compile Include="Services\Interfaces\IFeatService.cs" />
     <Compile Include="Services\Interfaces\IMonsterService.cs" />
     <Compile Include="Services\MonsterService.cs" />
@@ -308,17 +317,21 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
   <Import Project="..\packages\Microsoft.ApplicationInsights.0.10.0-build17704\tools\net40\Microsoft.ApplicationInsights.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.0.10.0-build17704\tools\net40\Microsoft.ApplicationInsights.targets')" />
   <Target Name="EnsureApplicationInsightsImported" BeforeTargets="BeforeBuild" Condition="'$(ApplicationInsightsImported)' == ''">
     <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.0.10.0-build17704\tools\net40\Microsoft.ApplicationInsights.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." />
     <Error Condition="Exists('..\packages\Microsoft.ApplicationInsights.0.10.0-build17704\tools\net40\Microsoft.ApplicationInsights.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." />
   </Target>
   <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -3,7 +3,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DungeonMart.Services.Interfaces;
 using DungeonMart.Shared.Models;
-using DungeonMart.Utils;
 
 namespace DungeonMart.ApiControllers.v2
 {
@@ -30,10 +29,10 @@ namespace DungeonMart.ApiControllers.v2
         /// <returns></returns>
         [Route("")]
         [ResponseType(typeof(Monster))]
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
-            var monsterListResponse = ControllerUtils.ListResponse(Request, _monsterService.GetMonsters());
-            return monsterListResponse;
+            var monsterListResponse = await Task.Run(() => _monsterService.GetMonsters());
+            return Ok(monsterListResponse);
         }
 
         /// <summary>
@@ -41,36 +40,39 @@ namespace DungeonMart.ApiControllers.v2
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Route("{id}")]
+        [Route("{id}", Name = "GetMonsterById")]
         [ResponseType(typeof(Monster))]
         public async Task<IHttpActionResult> Get(int id)
         {
-            return Ok(_monsterService.GetMonsterById(id));
+            var monster = await Task.Run(() => _monsterService.GetMonsterById(id));
+            return Ok(monster);
         }
 
         /// <summary>
         /// Adds a new monster
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="monster"></param>
         /// <returns></returns>
         [Route("")]
         [ResponseType(typeof(Monster))]
         public async Task<IHttpActionResult> Post([FromBody]Monster monster)
         {
-            return Ok(_monsterService.AddMonster(monster));
+            var addedMonster = await Task.Run(() => _monsterService.AddMonster(monster));
+            return CreatedAtRoute("GetMonsterById", new {id = addedMonster.Id}, monster);
         }
 
         /// <summary>
         /// Updates a monster
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="value"></param>
+        /// <param name="monster"></param>
         /// <returns></returns>
         [Route("{id}")]
         [ResponseType(typeof(Monster))]
         public async Task<IHttpActionResult> Put(int id, [FromBody]Monster monster)
         {
-            return Ok(_monsterService.UpdateMonster(id, monster));
+            var updatedMonster = await Task.Run(() => _monsterService.UpdateMonster(id, monster));
+            return Ok(updatedMonster);
         }
 
         /// <summary>
@@ -81,7 +83,7 @@ namespace DungeonMart.ApiControllers.v2
         [Route("{id}")]
         public async Task<IHttpActionResult> Delete(int id)
         {
-            _monsterService.DeleteMonster(id);
+            await Task.Run(() => _monsterService.DeleteMonster(id));
             return Ok();
         }
     }

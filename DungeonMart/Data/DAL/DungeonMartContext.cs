@@ -18,7 +18,7 @@ namespace DungeonMart.Data.DAL
 
         public DbSet<ClassProgressionEntity> ClassProgressions { get; set; }
 
-        public DbSet<Domain> Domains { get; set; }
+        public DbSet<DomainEntity> Domains { get; set; }
 
         public DbSet<Equipment> Equipments { get; set; }
 
