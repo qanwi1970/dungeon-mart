@@ -182,6 +182,7 @@
     <Compile Include="ApiControllers\v2\ClassController.cs" />
     <Compile Include="ApiControllers\v2\ClassLevelController.cs" />
     <Compile Include="ApiControllers\v2\DomainController.cs" />
+    <Compile Include="ApiControllers\v2\EquipmentController.cs" />
     <Compile Include="ApiControllers\v2\FeatController.cs" />
     <Compile Include="ApiControllers\v2\MonsterController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Mappers\CharacterClassMapper.cs" />
     <Compile Include="Mappers\ClassLevelMapper.cs" />
     <Compile Include="Mappers\DomainMapper.cs" />
+    <Compile Include="Mappers\EquipmentMapper.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.Designer.cs">
       <DependentUpon>201501100624375_BaseSrd.cs</DependentUpon>
@@ -213,7 +215,7 @@
     <Compile Include="Data\Models\CharacterClassEntity.cs" />
     <Compile Include="Data\Models\ClassProgressionEntity.cs" />
     <Compile Include="Data\Models\DomainEntity.cs" />
-    <Compile Include="Data\Models\Equipment.cs" />
+    <Compile Include="Data\Models\EquipmentEntity.cs" />
     <Compile Include="Data\Models\FeatEntity.cs" />
     <Compile Include="Data\Models\Interfaces\IAuditable.cs" />
     <Compile Include="Data\Models\Item.cs" />
@@ -243,16 +245,19 @@
     <Compile Include="Mappers\MonsterMapper.cs" />
     <Compile Include="Models\CharacterClass.cs" />
     <Compile Include="Models\Domain.cs" />
+    <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Feat.cs" />
     <Compile Include="Models\ClassLevel.cs" />
     <Compile Include="Models\Monster.cs" />
     <Compile Include="Services\CharacterClassService.cs" />
     <Compile Include="Services\ClassLevelService.cs" />
     <Compile Include="Services\DomainService.cs" />
+    <Compile Include="Services\EquipmentService.cs" />
     <Compile Include="Services\FeatService.cs" />
     <Compile Include="Services\Interfaces\ICharacterClassService.cs" />
     <Compile Include="Services\Interfaces\IClassLevelService.cs" />
     <Compile Include="Services\Interfaces\IDomainService.cs" />
+    <Compile Include="Services\Interfaces\IEquipmentService.cs" />
     <Compile Include="Services\Interfaces\IFeatService.cs" />
     <Compile Include="Services\Interfaces\IMonsterService.cs" />
     <Compile Include="Services\MonsterService.cs" />

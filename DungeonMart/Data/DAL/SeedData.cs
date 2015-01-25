@@ -165,7 +165,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var equipment in srdContext.equipments)
                 {
-                    var dmEquipment = new Equipment
+                    var dmEquipment = new EquipmentEntity
                     {
                         ArcaneSpellFailureChance = equipment.arcane_spell_failure_chance,
                         ArmorCheckPenalty = equipment.armor_check_penalty,

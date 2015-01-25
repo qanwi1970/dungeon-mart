@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface IEquipmentRepository : ICrudActions<Equipment>
+    public interface IEquipmentRepository : ICrudActions<EquipmentEntity>
     {
     }
 }
