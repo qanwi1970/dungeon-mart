@@ -10,5 +10,6 @@ namespace DungeonMart.Services.Interfaces
         CharacterClass AddClass(CharacterClass characterClass);
         CharacterClass UpdateClass(int id, CharacterClass characterClass);
         void DeleteClass(int id);
+        void SeedClass();
     }
 }

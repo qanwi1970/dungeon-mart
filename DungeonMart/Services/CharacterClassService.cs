@@ -1,8 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
+using DungeonMart.Data.DAL;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Mappers;
 using DungeonMart.Models;
 using DungeonMart.Services.Interfaces;
+using Newtonsoft.Json;
 
 namespace DungeonMart.Services
 {
@@ -78,6 +82,15 @@ namespace DungeonMart.Services
         public void DeleteClass(int id)
         {
             _characterClassRepository.Delete(id);
+        }
+
+        /// <summary>
+        /// Reseed the character class table from the json text file
+        /// </summary>
+        public void SeedClass()
+        {
+            var classStream = new StreamReader("SeedData/class.json");
+            var classes = JsonConvert.DeserializeObject<ClassSeed[]>(classStream.ReadToEnd());
         }
     }
 }

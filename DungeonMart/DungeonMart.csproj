@@ -271,6 +271,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="SeedData\class.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\classtable.json" />
+    <Content Include="SeedData\domain.json" />
+    <Content Include="SeedData\equipment.json" />
+    <Content Include="SeedData\feat.json" />
+    <Content Include="SeedData\item.json" />
+    <Content Include="SeedData\monster.json" />
+    <Content Include="SeedData\power.json" />
+    <Content Include="SeedData\skill.json" />
+    <Content Include="SeedData\spell.json" />
     <None Include="Properties\PublishProfiles\dungeonmart - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\dungeonmart - Web Deploy.pubxml" />
     <Content Include="scripts\angular.min.js.map" />

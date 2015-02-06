@@ -84,5 +84,12 @@ namespace DungeonMart.ApiControllers.v2
             await Task.Run(() => _characterClassService.DeleteClass(id));
             return Ok();
         }
+
+        [Route("0/seed")]
+        public async Task<IHttpActionResult> Seed()
+        {
+            await Task.Run(() => _characterClassService.SeedClass());
+            return Ok();
+        }
     }
 }
