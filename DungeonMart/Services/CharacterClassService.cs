@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using DungeonMart.Data.DAL;
 using DungeonMart.Data.Interfaces;
@@ -66,12 +65,10 @@ namespace DungeonMart.Services
         /// <returns></returns>
         public CharacterClass UpdateClass(int id, CharacterClass characterClass)
         {
-            var characterClassToUpdate = CharacterClassMapper.MapModelToEntity(characterClass);
             var originalCharacterClass = _characterClassRepository.GetById(id);
-            characterClassToUpdate.CreatedBy = originalCharacterClass.CreatedBy;
-            characterClassToUpdate.CreatedDate = originalCharacterClass.CreatedDate;
-            characterClassToUpdate.ModifiedBy = "TEST";
-            var updatedCharacterClass = _characterClassRepository.Update(characterClassToUpdate);
+            CharacterClassMapper.MapModelToEntity(characterClass, originalCharacterClass);
+            originalCharacterClass.ModifiedBy = "TEST";
+            var updatedCharacterClass = _characterClassRepository.Update(originalCharacterClass);
             return CharacterClassMapper.MapEntityToModel(updatedCharacterClass);
         }
 
@@ -87,10 +84,29 @@ namespace DungeonMart.Services
         /// <summary>
         /// Reseed the character class table from the json text file
         /// </summary>
-        public void SeedClass()
+        public void SeedClass(string seedDataPath)
         {
-            var classStream = new StreamReader("SeedData/class.json");
-            var classes = JsonConvert.DeserializeObject<ClassSeed[]>(classStream.ReadToEnd());
+            ClassSeed[] classArray;
+            using (var classStream = new StreamReader(seedDataPath + "/class.json"))
+            {
+                classArray = JsonConvert.DeserializeObject<ClassSeed[]>(classStream.ReadToEnd());
+            }
+            foreach (var classSeed in classArray)
+            {
+                var dbClass = _characterClassRepository.GetById(classSeed.Id);
+                if (dbClass == null)
+                {
+                    var newClass = CharacterClassMapper.MapSeedToEntity(classSeed);
+                    newClass.CreatedBy = "SeedClass";
+                    _characterClassRepository.Add(newClass);
+                }
+                else
+                {
+                    CharacterClassMapper.MapSeedToEntity(classSeed, dbClass);
+                    dbClass.ModifiedBy = "SeedClass";
+                    _characterClassRepository.Update(dbClass);
+                }
+            }
         }
     }
 }

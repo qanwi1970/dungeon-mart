@@ -441,7 +441,7 @@ namespace DungeonMart.Data.DAL
         }
     }
 
-    internal class ClassSeed
+    public class ClassSeed
     {
         public int Id { get; set; }
         public string name { get; set; }
