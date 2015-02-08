@@ -74,6 +74,9 @@ namespace DungeonMart.Data.Repositories
                 DBSet.Attach(entity);
             }
             DBContext.Entry(entity).State = EntityState.Modified;
+
+            Context.SaveChanges();
+
             return entity;
         }
 
@@ -89,6 +92,8 @@ namespace DungeonMart.Data.Repositories
                 DBSet.Attach(entity);
                 DBSet.Remove(entity);
             }
+
+            Context.SaveChanges();
         }
 
         public void Delete(int id)
