@@ -1,9 +1,11 @@
-﻿using System;
+﻿using System.IO;
 using System.Linq;
 using DungeonMart.Data.Interfaces;
+using DungeonMart.Data.SrdSeed;
 using DungeonMart.Mappers;
 using DungeonMart.Models;
 using DungeonMart.Services.Interfaces;
+using Newtonsoft.Json;
 
 namespace DungeonMart.Services
 {
@@ -36,18 +38,44 @@ namespace DungeonMart.Services
 
         public ClassLevel UpdateClassLevel(int id, ClassLevel classLevel)
         {
-            var classLevelEntity = ClassLevelMapper.MapModelToEntity(classLevel);
             var originalClassLevel = _classProgressionRepository.GetById(id);
-            classLevelEntity.CreatedBy = originalClassLevel.CreatedBy;
-            classLevelEntity.CreatedDate = originalClassLevel.CreatedDate;
-            classLevelEntity.ModifiedBy = "TEST";
-            var updatedClassLevel = _classProgressionRepository.Update(classLevelEntity);
+            ClassLevelMapper.MapModelToEntity(classLevel, originalClassLevel);
+            originalClassLevel.ModifiedBy = "TEST";
+            var updatedClassLevel = _classProgressionRepository.Update(originalClassLevel);
             return ClassLevelMapper.MapEntityToModel(updatedClassLevel);
         }
 
         public void DeleteClassLevel(int id)
         {
             _classProgressionRepository.Delete(id);
+        }
+
+        /// <summary>
+        /// Reseed the character class table from the json text file
+        /// </summary>
+        public void SeedClassLevel(string seedDataPath)
+        {
+            ClassLevelSeed[] classArray;
+            using (var classStream = new StreamReader(seedDataPath + "/class.json"))
+            {
+                classArray = JsonConvert.DeserializeObject<ClassLevelSeed[]>(classStream.ReadToEnd());
+            }
+            foreach (var classLevelSeed in classArray)
+            {
+                var dbClass = _classProgressionRepository.GetById(classLevelSeed.Id);
+                if (dbClass == null)
+                {
+                    var newClass = ClassLevelMapper.MapSeedToEntity(classLevelSeed);
+                    newClass.CreatedBy = "SeedClassLevel";
+                    _classProgressionRepository.Add(newClass);
+                }
+                else
+                {
+                    ClassLevelMapper.MapSeedToEntity(classLevelSeed, dbClass);
+                    dbClass.ModifiedBy = "SeedClassLevel";
+                    _classProgressionRepository.Update(dbClass);
+                }
+            }
         }
     }
 }

@@ -1,12 +1,9 @@
-﻿using System.IO;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
-using DungeonMart.Data.DAL;
 using DungeonMart.Models;
 using DungeonMart.Services.Interfaces;
-using Newtonsoft.Json;
 
 namespace DungeonMart.ApiControllers.v2
 {

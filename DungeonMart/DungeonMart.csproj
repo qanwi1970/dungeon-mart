@@ -188,7 +188,8 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Data\DAL\ClassSeed.cs" />
+    <Compile Include="Data\SrdSeed\ClassLevelSeed.cs" />
+    <Compile Include="Data\SrdSeed\ClassSeed.cs" />
     <Compile Include="Data\DAL\DungeonMartContext.cs" />
     <Compile Include="Data\DAL\DungeonMartInitializer.cs" />
     <Compile Include="Data\DAL\IDungeonMartContext.cs" />

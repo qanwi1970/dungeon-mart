@@ -10,5 +10,6 @@ namespace DungeonMart.Services.Interfaces
         ClassLevel AddClassLevel(ClassLevel classLevel);
         ClassLevel UpdateClassLevel(int id, ClassLevel classLevel);
         void DeleteClassLevel(int id);
+        void SeedClassLevel(string seedDataPath);
     }
 }
