@@ -7,7 +7,7 @@ using DungeonMart.Data.DAL;
 using DungeonMart.Data.Repositories;
 using NUnit.Framework;
 
-namespace DungeonMart.Data.Tests
+namespace DungeonMart.IntegratedTests.Data.Repositories
 {
     [TestFixture]
     public abstract class BaseTest

@@ -4,7 +4,7 @@ using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.DAL
 {
-    internal class DungeonMartContext : DbContext, IDungeonMartContext
+    public class DungeonMartContext : DbContext, IDungeonMartContext
     {
         public DungeonMartContext() : base("name=DungeonMartContext")
         {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using DungeonMart.Data.DAL;
@@ -7,7 +6,7 @@ using DungeonMart.Data.Models;
 using DungeonMart.Data.Repositories;
 using NUnit.Framework;
 
-namespace DungeonMart.Data.Tests.Repositories
+namespace DungeonMart.IntegratedTests.Data.Repositories
 {
     [TestFixture]
     public class MonsterRepositoryTests : BaseTest
@@ -23,6 +22,7 @@ namespace DungeonMart.Data.Tests.Repositories
         {
             protected override void Seed(DungeonMartContext context)
             {
+                base.Seed(context);
                 context.Monsters.Add(new MonsterEntity
                 {
                     CreatedBy = "Seed",
@@ -30,8 +30,6 @@ namespace DungeonMart.Data.Tests.Repositories
                     ModifiedBy = "Seed",
                     ModifiedDate = DateTime.UtcNow
                 });
-                // Don't do the whole Seed or each test will take 5 minutes
-                //base.Seed(context);
             }
         }
 

@@ -5,14 +5,14 @@ using DungeonMart.Data.DAL;
 
 namespace DungeonMart.Data.Repositories
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork
     {
         Guid SessionId { get; }
         IDungeonMartContext DbContext { get; }
         int Commit();
     }
-    
-    internal class UnitOfWork : IUnitOfWork
+
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly IDungeonMartContext _context;
 

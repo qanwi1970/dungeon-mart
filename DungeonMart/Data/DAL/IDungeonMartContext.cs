@@ -5,7 +5,7 @@ using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.DAL
 {
-    internal interface IDungeonMartContext
+    public interface IDungeonMartContext
     {
         DbSet<CharacterClassEntity> CharacterClasses { get; set; }
         DbSet<ClassProgressionEntity> ClassProgressions { get; set; }
