@@ -93,6 +93,10 @@ namespace DungeonMart.ApiControllers.v2
             return Ok();
         }
 
+        /// <summary>
+        /// Re-seeds the base SRD class level tables
+        /// </summary>
+        /// <returns></returns>
         [Route("0/seed")]
         public async Task<IHttpActionResult> Seed()
         {

@@ -10,5 +10,6 @@ namespace DungeonMart.Services.Interfaces
         Domain AddDomain(Domain domain);
         Domain UpdateDomain(int id, Domain domain);
         void DeleteDomain(int id);
+        void SeedDomain(string seedPath);
     }
 }

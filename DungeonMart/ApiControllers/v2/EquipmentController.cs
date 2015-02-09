@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DungeonMart.Models;
@@ -80,6 +81,18 @@ namespace DungeonMart.ApiControllers.v2
         public async Task<IHttpActionResult> Delete(int id)
         {
             await Task.Run(() => _equipmentService.DeleteEquipment(id));
+            return Ok();
+        }
+
+        /// <summary>
+        /// Re-seeds the base SRD domain data
+        /// </summary>
+        /// <returns></returns>
+        [Route("0/seed")]
+        public async Task<IHttpActionResult> Seed()
+        {
+            var seedDataPath = HttpContext.Current.Server.MapPath("~/SeedData");
+            await Task.Run(() => _equipmentService.SeedEquipment(seedDataPath));
             return Ok();
         }
     }

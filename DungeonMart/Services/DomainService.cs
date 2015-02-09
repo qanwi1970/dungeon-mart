@@ -1,10 +1,13 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using AutoMapper;
 using DungeonMart.Data.Interfaces;
+using DungeonMart.Data.SrdSeed;
 using DungeonMart.Mappers;
 using DungeonMart.Models;
 using DungeonMart.Services.Interfaces;
+using Newtonsoft.Json;
 
 namespace DungeonMart.Services
 {
@@ -37,10 +40,8 @@ namespace DungeonMart.Services
 
         public Domain UpdateDomain(int id, Domain domain)
         {
-            var domainToUpdate = DomainMapper.MapModelToEntity(domain);
-            var originalDomain = _domainRepository.GetById(id);
-            domainToUpdate.CreatedBy = originalDomain.CreatedBy;
-            domainToUpdate.CreatedDate = originalDomain.CreatedDate;
+            var domainToUpdate = _domainRepository.GetById(id);
+            DomainMapper.MapModelToEntity(domain, domainToUpdate);
             domainToUpdate.ModifiedBy = "TEST";
             var updatedDomain = _domainRepository.Update(domainToUpdate);
             return DomainMapper.MapEntityToModel(updatedDomain);
@@ -49,6 +50,31 @@ namespace DungeonMart.Services
         public void DeleteDomain(int id)
         {
             _domainRepository.Delete(id);
+        }
+
+        public void SeedDomain(string seedPath)
+        {
+            DomainSeed[] domainArray;
+            using (var domainStream = new StreamReader(seedPath + "/domain.json"))
+            {
+                domainArray = JsonConvert.DeserializeObject<DomainSeed[]>(domainStream.ReadToEnd());
+            }
+            foreach (var domainSeed in domainArray)
+            {
+                var dbDomain = _domainRepository.GetById(domainSeed.Id);
+                if (dbDomain == null)
+                {
+                    var newDomain = DomainMapper.MapSeedToEntity(domainSeed);
+                    newDomain.CreatedBy = "SeedDomain";
+                    _domainRepository.Add(newDomain);
+                }
+                else
+                {
+                    DomainMapper.MapSeedToEntity(domainSeed, dbDomain);
+                    dbDomain.ModifiedBy = "SeedDomain";
+                    _domainRepository.Update(dbDomain);
+                }
+            }
         }
     }
 }

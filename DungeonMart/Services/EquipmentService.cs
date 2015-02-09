@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using DungeonMart.Data.Interfaces;
+using DungeonMart.Data.SrdSeed;
 using DungeonMart.Mappers;
 using DungeonMart.Models;
 using DungeonMart.Services.Interfaces;
+using Newtonsoft.Json;
 
 namespace DungeonMart.Services
 {
@@ -47,6 +50,31 @@ namespace DungeonMart.Services
         public void DeleteEquipment(int id)
         {
             _equipmentRepository.Delete(id);
+        }
+
+        public void SeedEquipment(string seedPath)
+        {
+            EquipmentSeed[] equipmentArray;
+            using (var equipmentStream = new StreamReader(seedPath + "/equipment.json"))
+            {
+                equipmentArray = JsonConvert.DeserializeObject<EquipmentSeed[]>(equipmentStream.ReadToEnd());
+            }
+            foreach (var equipmentSeed in equipmentArray)
+            {
+                var equipmentEntity = _equipmentRepository.GetById(equipmentSeed.Id);
+                if (equipmentEntity == null)
+                {
+                    var newEquipment = EquipmentMapper.MapSeedToEntity(equipmentSeed);
+                    newEquipment.CreatedBy = "SeedEquipment";
+                    _equipmentRepository.Add(newEquipment);
+                }
+                else
+                {
+                    EquipmentMapper.MapSeedToEntity(equipmentSeed, equipmentEntity);
+                    equipmentEntity.ModifiedBy = "SeedEquipment";
+                    _equipmentRepository.Update(equipmentEntity);
+                }
+            }
         }
     }
 }

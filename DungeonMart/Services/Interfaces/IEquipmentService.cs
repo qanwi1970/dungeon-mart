@@ -10,5 +10,6 @@ namespace DungeonMart.Services.Interfaces
         Equipment AddEquipment(Equipment equipment);
         Equipment UpdateEquipment(int id, Equipment equipment);
         void DeleteEquipment(int id);
+        void SeedEquipment(string seedPath);
     }
 }

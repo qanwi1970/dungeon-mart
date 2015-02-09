@@ -56,7 +56,7 @@ namespace DungeonMart.Services
         public void SeedClassLevel(string seedDataPath)
         {
             ClassLevelSeed[] classArray;
-            using (var classStream = new StreamReader(seedDataPath + "/class.json"))
+            using (var classStream = new StreamReader(seedDataPath + "/classtable.json"))
             {
                 classArray = JsonConvert.DeserializeObject<ClassLevelSeed[]>(classStream.ReadToEnd());
             }

@@ -205,6 +205,8 @@
     <Compile Include="Data\Interfaces\IPowerRepository.cs" />
     <Compile Include="Data\Interfaces\ISkillRepository.cs" />
     <Compile Include="Data\Interfaces\ISpellRepository.cs" />
+    <Compile Include="Data\SrdSeed\DomainSeed.cs" />
+    <Compile Include="Data\SrdSeed\EquipmentSeed.cs" />
     <Compile Include="Mappers\CharacterClassMapper.cs" />
     <Compile Include="Mappers\ClassLevelMapper.cs" />
     <Compile Include="Mappers\DomainMapper.cs" />
@@ -276,15 +278,33 @@
     <Content Include="SeedData\class.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SeedData\classtable.json" />
-    <Content Include="SeedData\domain.json" />
-    <Content Include="SeedData\equipment.json" />
-    <Content Include="SeedData\feat.json" />
-    <Content Include="SeedData\item.json" />
-    <Content Include="SeedData\monster.json" />
-    <Content Include="SeedData\power.json" />
-    <Content Include="SeedData\skill.json" />
-    <Content Include="SeedData\spell.json" />
+    <Content Include="SeedData\classtable.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\domain.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\equipment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\feat.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\item.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\monster.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\power.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\skill.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SeedData\spell.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\dungeonmart - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\dungeonmart - Web Deploy.pubxml" />
     <Content Include="scripts\angular.min.js.map" />
