@@ -66,7 +66,7 @@ namespace DungeonMart.Services
         public Monster UpdateMonster(int id, Monster monster)
         {
             var originalMonster = _monsterRepository.GetById(id);
-            MonsterMapper.UpdateEntityFromModel(originalMonster, monster);
+            MonsterMapper.MapModelToEntity(monster, originalMonster);
             originalMonster.ModifiedBy = "UpdateMonster";
             var updatedMonster = _monsterRepository.Update(originalMonster);
             return MonsterMapper.MapEntityToModel(updatedMonster);

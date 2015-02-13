@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Web;
+using AutoMapper;
 using DungeonMart.Data.Models;
 using DungeonMart.Data.SrdSeed;
 using DungeonMart.Models;
@@ -37,7 +38,7 @@ namespace DungeonMart.Mappers
 
         public static void MapSeedToEntity(DomainSeed domainSeed, DomainEntity dbDomain)
         {
-            dbDomain.FullText = domainSeed.full_text;
+            dbDomain.FullText = HttpUtility.HtmlDecode(domainSeed.full_text);
             dbDomain.GrantedPowers = domainSeed.granted_powers;
             dbDomain.Id = domainSeed.Id;
             dbDomain.Name = domainSeed.name;
