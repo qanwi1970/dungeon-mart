@@ -37,5 +37,7 @@ namespace DungeonMart.Services.Interfaces
         /// </summary>
         /// <param name="id"></param>
         void DeleteMonster(int id);
+
+        void SeedMonster(string seedDataPath);
     }
 }

@@ -1,4 +1,5 @@
-﻿using DungeonMart.Service.Interfaces;
+﻿using System.Web;
+using DungeonMart.Services.Interfaces;
 using DungeonMart.Shared.Models;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -84,6 +85,18 @@ namespace DungeonMart.ApiControllers.v2
         public async Task<IHttpActionResult> Delete(int id)
         {
             await Task.Run(() => _featService.DeleteFeat(id));
+            return Ok();
+        }
+
+        /// <summary>
+        /// Re-seeds the base SRD feat data
+        /// </summary>
+        /// <returns></returns>
+        [Route("0/seed")]
+        public async Task<IHttpActionResult> Seed()
+        {
+            var seedDataPath = HttpContext.Current.Server.MapPath("~/SeedData");
+            await Task.Run(() => _featService.SeedFeat(seedDataPath));
             return Ok();
         }
     }

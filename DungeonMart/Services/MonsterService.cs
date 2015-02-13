@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using DungeonMart.Data.Interfaces;
-using DungeonMart.Service.Mappers;
+using DungeonMart.Data.SrdSeed;
+using DungeonMart.Mappers;
 using DungeonMart.Services.Interfaces;
 using DungeonMart.Shared.Models;
+using Newtonsoft.Json;
 
 namespace DungeonMart.Services
 {
@@ -76,6 +79,31 @@ namespace DungeonMart.Services
         public void DeleteMonster(int id)
         {
             _monsterRepository.Delete(id);
+        }
+
+        public void SeedMonster(string seedDataPath)
+        {
+            MonsterSeed[] monsterArray;
+            using (var monsterStream = new StreamReader(seedDataPath + "/monster.json"))
+            {
+                monsterArray = JsonConvert.DeserializeObject<MonsterSeed[]>(monsterStream.ReadToEnd());
+            }
+            foreach (var monsterSeed in monsterArray)
+            {
+                var monsterEntity = _monsterRepository.GetById(monsterSeed.Id);
+                if (monsterEntity == null)
+                {
+                    var newMonster = MonsterMapper.MapSeedToEntity(monsterSeed);
+                    newMonster.CreatedBy = "SeedMonster";
+                    _monsterRepository.Add(newMonster);
+                }
+                else
+                {
+                    MonsterMapper.MapSeedToEntity(monsterSeed, monsterEntity);
+                    monsterEntity.ModifiedBy = "SeedMonster";
+                    _monsterRepository.Update(monsterEntity);
+                }
+            }
         }
     }
 }

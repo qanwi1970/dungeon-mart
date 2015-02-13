@@ -85,7 +85,7 @@ namespace DungeonMart.ApiControllers.v2
         }
 
         /// <summary>
-        /// Re-seeds the base SRD domain data
+        /// Re-seeds the base SRD equipment data
         /// </summary>
         /// <returns></returns>
         [Route("0/seed")]

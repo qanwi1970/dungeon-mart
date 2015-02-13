@@ -38,12 +38,10 @@ namespace DungeonMart.Services
 
         public Equipment UpdateEquipment(int id, Equipment equipment)
         {
-            var equipmentToUpdate = EquipmentMapper.MapModelToEntity(equipment);
             var originalEquipment = _equipmentRepository.GetById(id);
-            equipmentToUpdate.CreatedBy = originalEquipment.CreatedBy;
-            equipmentToUpdate.CreatedDate = originalEquipment.CreatedDate;
-            equipmentToUpdate.ModifiedBy = "TEST";
-            var updatedEquipment = _equipmentRepository.Update(equipmentToUpdate);
+            EquipmentMapper.MapModelToEntity(equipment, originalEquipment);
+            originalEquipment.ModifiedBy = "TEST";
+            var updatedEquipment = _equipmentRepository.Update(originalEquipment);
             return EquipmentMapper.MapEntityToModel(updatedEquipment);
         }
 

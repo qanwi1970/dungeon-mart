@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Web;
 using AutoMapper;
 using DungeonMart.Data.DAL;
 using DungeonMart.Data.Models;
@@ -31,43 +31,9 @@ namespace DungeonMart.Mappers
 
         public static CharacterClassEntity MapSeedToEntity(ClassSeed classSeed)
         {
-            return new CharacterClassEntity
-            {
-                Alignment = classSeed.alignment,
-                ClassSkills = classSeed.class_skills,
-                EpicFeatBaseLevel = classSeed.epic_feat_base_level,
-                EpicFeatInterval = classSeed.epic_feat_interval,
-                EpicFeatList = classSeed.epic_feat_list,
-                EpicFullText = classSeed.epic_full_text,
-                FullText = classSeed.full_text,
-                HitDie = classSeed.hit_die,
-                Id = classSeed.Id,
-                Name = classSeed.name,
-                Proficiencies = classSeed.proficiencies,
-                Reference = classSeed.reference,
-                RequiredBaseAttackBonus = classSeed.req_base_attack_bonus,
-                RequiredEpicFeat = classSeed.req_epic_feat,
-                RequiredFeat = classSeed.req_feat,
-                RequiredLanguages = classSeed.req_languages,
-                RequiredPsionics = classSeed.req_psionics,
-                RequiredRace = classSeed.req_race,
-                RequiredSkill = classSeed.req_skill,
-                RequiredSpecial = classSeed.req_special,
-                RequiredSpells = classSeed.req_spells,
-                RequiredWeaponProficiency = classSeed.req_weapon_proficiency,
-                SkillPoints = classSeed.skill_points,
-                SkillPointsAbility = classSeed.skill_points_ability,
-                SpellList1 = classSeed.spell_list_1,
-                SpellList2 = classSeed.spell_list_2,
-                SpellList3 = classSeed.spell_list_3,
-                SpellList4 = classSeed.spell_list_4,
-                SpellList5 = classSeed.spell_list_5,
-                SpellStat = classSeed.spell_stat,
-                SpellType = classSeed.spell_type,
-                Type = classSeed.type,
-                CreatedBy = "MapSeedToEntity",
-                CreatedDate = DateTime.UtcNow
-            };
+            var characterClass = new CharacterClassEntity();
+            MapSeedToEntity(classSeed, characterClass);
+            return characterClass;
         }
 
         public static void MapSeedToEntity(ClassSeed classSeed, CharacterClassEntity dbClass)
@@ -77,8 +43,8 @@ namespace DungeonMart.Mappers
             dbClass.EpicFeatBaseLevel = classSeed.epic_feat_base_level;
             dbClass.EpicFeatInterval = classSeed.epic_feat_interval;
             dbClass.EpicFeatList = classSeed.epic_feat_list;
-            dbClass.EpicFullText = classSeed.epic_full_text;
-            dbClass.FullText = classSeed.full_text;
+            dbClass.EpicFullText = HttpUtility.HtmlDecode(classSeed.epic_full_text);
+            dbClass.FullText = HttpUtility.HtmlDecode(classSeed.full_text);
             dbClass.HitDie = classSeed.hit_die;
             dbClass.Id = classSeed.Id;
             dbClass.Name = classSeed.name;

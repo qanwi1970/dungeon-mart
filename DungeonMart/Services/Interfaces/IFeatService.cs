@@ -1,7 +1,7 @@
-﻿using DungeonMart.Shared.Models;
-using System.Linq;
+﻿using System.Linq;
+using DungeonMart.Shared.Models;
 
-namespace DungeonMart.Service.Interfaces
+namespace DungeonMart.Services.Interfaces
 {
     public interface IFeatService
     {
@@ -14,5 +14,7 @@ namespace DungeonMart.Service.Interfaces
         Feat PutFeat(int id, Feat feat);
 
         void DeleteFeat(int id);
+
+        void SeedFeat(string seedDataPath);
     }
 }

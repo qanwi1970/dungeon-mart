@@ -23,6 +23,11 @@ namespace DungeonMart.Mappers
             return Mapper.Map<EquipmentEntity>(equipment);
         }
 
+        public static void MapModelToEntity(Equipment equipment, EquipmentEntity equipmentEntity)
+        {
+            Mapper.Map(equipment, equipmentEntity);
+        }
+
         public static EquipmentEntity MapSeedToEntity(EquipmentSeed equipmentSeed)
         {
             var entity = new EquipmentEntity();

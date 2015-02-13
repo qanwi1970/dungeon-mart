@@ -5,7 +5,6 @@ using DungeonMart;
 using DungeonMart.Data.DAL;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Repositories;
-using DungeonMart.Service.Interfaces;
 using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;

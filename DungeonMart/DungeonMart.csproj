@@ -207,6 +207,8 @@
     <Compile Include="Data\Interfaces\ISpellRepository.cs" />
     <Compile Include="Data\SrdSeed\DomainSeed.cs" />
     <Compile Include="Data\SrdSeed\EquipmentSeed.cs" />
+    <Compile Include="Data\SrdSeed\FeatSeed.cs" />
+    <Compile Include="Data\SrdSeed\MonsterSeed.cs" />
     <Compile Include="Mappers\CharacterClassMapper.cs" />
     <Compile Include="Mappers\ClassLevelMapper.cs" />
     <Compile Include="Mappers\DomainMapper.cs" />

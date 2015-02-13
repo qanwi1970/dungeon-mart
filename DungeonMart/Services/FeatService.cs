@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using DungeonMart.Data.Interfaces;
-using DungeonMart.Service.Interfaces;
-using DungeonMart.Service.Mappers;
+using DungeonMart.Data.SrdSeed;
+using DungeonMart.Mappers;
+using DungeonMart.Services.Interfaces;
 using DungeonMart.Shared.Models;
+using Newtonsoft.Json;
 
 namespace DungeonMart.Services
 {
@@ -63,18 +66,8 @@ namespace DungeonMart.Services
         public Feat PutFeat(int id, Feat feat)
         {
             var featToUpdate = _featRepository.GetById(id);
-            featToUpdate.Benefit = feat.Benefit;
-            featToUpdate.Choice = feat.Choice;
-            featToUpdate.FeatType = feat.FeatType;
-            featToUpdate.FullText = feat.FullText;
+            FeatMapper.MapModelToEntity(feat, featToUpdate);
             featToUpdate.ModifiedBy = "TEST";
-            featToUpdate.Multiple = feat.Multiple;
-            featToUpdate.Name = feat.Name;
-            featToUpdate.Normal = feat.Normal;
-            featToUpdate.Prerequisite = feat.Prerequisite;
-            featToUpdate.Reference = feat.Reference;
-            featToUpdate.Special = feat.Special;
-            featToUpdate.Stack = feat.Stack;
             var updatedFeat = _featRepository.Update(featToUpdate);
             return FeatMapper.MapEntityToModel(updatedFeat);
         }
@@ -86,6 +79,31 @@ namespace DungeonMart.Services
         public void DeleteFeat(int id)
         {
             _featRepository.Delete(id);
+        }
+
+        public void SeedFeat(string seedDataPath)
+        {
+            FeatSeed[] featArray;
+            using (var featStream = new StreamReader(seedDataPath + "/feat.json"))
+            {
+                featArray = JsonConvert.DeserializeObject<FeatSeed[]>(featStream.ReadToEnd());
+            }
+            foreach (var featSeed in featArray)
+            {
+                var featEntity = _featRepository.GetById(featSeed.Id);
+                if (featEntity == null)
+                {
+                    var newFeat = FeatMapper.MapSeedToEntity(featSeed);
+                    newFeat.CreatedBy = "SeedFeat";
+                    _featRepository.Add(newFeat);
+                }
+                else
+                {
+                    FeatMapper.MapSeedToEntity(featSeed, featEntity);
+                    featEntity.ModifiedBy = "SeedFeat";
+                    _featRepository.Update(featEntity);
+                }
+            }
         }
     }
 }
