@@ -184,6 +184,7 @@
     <Compile Include="ApiControllers\v2\DomainController.cs" />
     <Compile Include="ApiControllers\v2\EquipmentController.cs" />
     <Compile Include="ApiControllers\v2\FeatController.cs" />
+    <Compile Include="ApiControllers\v2\ItemController.cs" />
     <Compile Include="ApiControllers\v2\MonsterController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
@@ -208,11 +209,13 @@
     <Compile Include="Data\SrdSeed\DomainSeed.cs" />
     <Compile Include="Data\SrdSeed\EquipmentSeed.cs" />
     <Compile Include="Data\SrdSeed\FeatSeed.cs" />
+    <Compile Include="Data\SrdSeed\ItemSeed.cs" />
     <Compile Include="Data\SrdSeed\MonsterSeed.cs" />
     <Compile Include="Mappers\CharacterClassMapper.cs" />
     <Compile Include="Mappers\ClassLevelMapper.cs" />
     <Compile Include="Mappers\DomainMapper.cs" />
     <Compile Include="Mappers\EquipmentMapper.cs" />
+    <Compile Include="Mappers\ItemMapper.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.Designer.cs">
       <DependentUpon>201501100624375_BaseSrd.cs</DependentUpon>
@@ -224,7 +227,7 @@
     <Compile Include="Data\Models\EquipmentEntity.cs" />
     <Compile Include="Data\Models\FeatEntity.cs" />
     <Compile Include="Data\Models\Interfaces\IAuditable.cs" />
-    <Compile Include="Data\Models\Item.cs" />
+    <Compile Include="Data\Models\ItemEntity.cs" />
     <Compile Include="Data\Models\MonsterEntity.cs" />
     <Compile Include="Data\Models\Power.cs" />
     <Compile Include="Data\Models\Skill.cs" />
@@ -254,6 +257,7 @@
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Feat.cs" />
     <Compile Include="Models\ClassLevel.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Monster.cs" />
     <Compile Include="Services\CharacterClassService.cs" />
     <Compile Include="Services\ClassLevelService.cs" />
@@ -265,7 +269,9 @@
     <Compile Include="Services\Interfaces\IDomainService.cs" />
     <Compile Include="Services\Interfaces\IEquipmentService.cs" />
     <Compile Include="Services\Interfaces\IFeatService.cs" />
+    <Compile Include="Services\Interfaces\IItemService.cs" />
     <Compile Include="Services\Interfaces\IMonsterService.cs" />
+    <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\MonsterService.cs" />
     <Compile Include="Utils\PagedListResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,7 +3,7 @@ using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.Repositories
 {
-    internal class ItemRepository : Repository<Item>, IItemRepository
+    internal class ItemRepository : Repository<ItemEntity>, IItemRepository
     {
         public ItemRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

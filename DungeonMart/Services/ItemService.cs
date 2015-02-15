@@ -1,0 +1,80 @@
+﻿using System.IO;
+using System.Linq;
+using AutoMapper;
+using DungeonMart.Data.Interfaces;
+using DungeonMart.Data.Models;
+using DungeonMart.Data.SrdSeed;
+using DungeonMart.Mappers;
+using DungeonMart.Models;
+using DungeonMart.Services.Interfaces;
+using Newtonsoft.Json;
+
+namespace DungeonMart.Services
+{
+    public class ItemService : IItemService
+    {
+        private readonly IItemRepository _itemRepository;
+
+        public ItemService(IItemRepository itemRepository)
+        {
+            _itemRepository = itemRepository;
+        }
+
+        public IQueryable<Item> GetItems()
+        {
+            return _itemRepository.GetAll().Select(ItemMapper.MapEntityToModel).AsQueryable();
+        }
+
+        public Item GetItemById(int id)
+        {
+            return ItemMapper.MapEntityToModel(_itemRepository.GetById(id));
+        }
+
+        public Item AddItem(Item item)
+        {
+            var newItem = ItemMapper.MapModelToEntity(item);
+            newItem.CreatedBy = "TEST";
+            var addedItem = _itemRepository.Add(newItem);
+            return ItemMapper.MapEntityToModel(addedItem);
+        }
+
+        public Item UpdateItem(int id, Item item)
+        {
+            var originalItem = _itemRepository.GetById(id);
+            ItemMapper.MapModelToEntity(item, originalItem);
+            originalItem.ModifiedBy = "TEST";
+            var updatedItem = _itemRepository.Update(originalItem);
+            return ItemMapper.MapEntityToModel(updatedItem);
+        }
+
+        public void DeleteItem(int id)
+        {
+            _itemRepository.Delete(id);
+        }
+
+        public void SeedItems(string seedPath)
+        {
+            ItemSeed[] itemArray;
+            using (var itemStream = new StreamReader(seedPath + "/item.json"))
+            {
+                itemArray = JsonConvert.DeserializeObject<ItemSeed[]>(itemStream.ReadToEnd());
+            }
+            foreach (var itemSeed in itemArray)
+            {
+                var itemEntity = _itemRepository.GetById(itemSeed.Id);
+                if (itemEntity == null)
+                {
+                    var newItem = ItemMapper.MapSeedToEntity(itemSeed);
+                    newItem.CreatedBy = "SeedItems";
+                    _itemRepository.Add(newItem);
+                }
+                else
+                {
+                    ItemMapper.MapSeedToEntity(itemSeed, itemEntity);
+                    itemEntity.ModifiedBy = "SeedItems";
+                    _itemRepository.Update(itemEntity);
+                }
+            }
+        }
+    }
+}

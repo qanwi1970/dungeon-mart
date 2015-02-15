@@ -233,7 +233,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var item in srdContext.items)
                 {
-                    var dmItem = new Item
+                    var dmItem = new ItemEntity
                     {
                         Aura = item.aura,
                         CasterLevel = item.caster_level,

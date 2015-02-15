@@ -50,9 +50,6 @@ namespace DungeonMart.Services
             _classProgressionRepository.Delete(id);
         }
 
-        /// <summary>
-        /// Reseed the character class table from the json text file
-        /// </summary>
         public void SeedClassLevel(string seedDataPath)
         {
             ClassLevelSeed[] classArray;

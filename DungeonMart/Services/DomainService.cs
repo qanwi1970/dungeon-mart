@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using AutoMapper;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.SrdSeed;
 using DungeonMart.Mappers;

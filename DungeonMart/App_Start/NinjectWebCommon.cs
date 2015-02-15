@@ -79,6 +79,8 @@ namespace DungeonMart
             kernel.Bind<IDomainService>().To<DomainService>();
             kernel.Bind<IEquipmentRepository>().To<EquipmentRepository>();
             kernel.Bind<IEquipmentService>().To<EquipmentService>();
+            kernel.Bind<IItemService>().To<ItemService>();
+            kernel.Bind<IItemRepository>().To<ItemRepository>();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InThreadScope();
             kernel.Bind<IDungeonMartContext>().To<DungeonMartContext>();
         }        

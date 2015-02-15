@@ -12,7 +12,7 @@ namespace DungeonMart.Data.DAL
         DbSet<DomainEntity> Domains { get; set; }
         DbSet<EquipmentEntity> Equipments { get; set; }
         DbSet<FeatEntity> Feats { get; set; }
-        DbSet<Item> Items { get; set; }
+        DbSet<ItemEntity> Items { get; set; }
         DbSet<MonsterEntity> Monsters { get; set; }
         DbSet<Power> Powers { get; set; }
         DbSet<Skill> Skills { get; set; }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using DungeonMart.Data.Models.Interfaces;
-
-namespace DungeonMart.Data.Models
+﻿namespace DungeonMart.Models
 {
-    public class Item : IAuditable
+    public class Item
     {
         public int Id { get; set; }
 
@@ -33,15 +29,5 @@ namespace DungeonMart.Data.Models
         public string FullText { get; set; }
 
         public string Reference { get; set; }
-
-        [Required]
-        public string CreatedBy { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        [Required]
-        public string ModifiedBy { get; set; }
-
-        public DateTime ModifiedDate { get; set; }
     }
 }
