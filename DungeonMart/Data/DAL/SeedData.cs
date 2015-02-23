@@ -319,7 +319,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var power in srdContext.powers)
                 {
-                    var dmPower = new Power
+                    var dmPower = new PowerEntity
                     {
                         Area = power.area,
                         Augment = power.augment,

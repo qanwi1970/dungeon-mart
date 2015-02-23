@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface IPowerRepository : ICrudActions<Power>
+    public interface IPowerRepository : ICrudActions<PowerEntity>
     {
     }
 }

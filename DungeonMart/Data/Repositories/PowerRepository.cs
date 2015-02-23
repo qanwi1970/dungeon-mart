@@ -3,7 +3,7 @@ using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.Repositories
 {
-    internal class PowerRepository : Repository<Power>, IPowerRepository
+    internal class PowerRepository : Repository<PowerEntity>, IPowerRepository
     {
         public PowerRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
