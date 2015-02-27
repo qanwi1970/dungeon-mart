@@ -359,7 +359,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var skill in srdContext.skills)
                 {
-                    var dmSkill = new Skill
+                    var dmSkill = new SkillEntity
                     {
                         Action = skill.action,
                         ArmorCheck = skill.armor_check,
@@ -395,7 +395,7 @@ namespace DungeonMart.Data.DAL
             {
                 foreach (var spell in srdContext.spells)
                 {
-                    var dmSpell = new Spell
+                    var dmSpell = new SpellEntity
                     {
                         AlternateName = spell.altname,
                         ArcaneFocus = spell.arcane_focus,

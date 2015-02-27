@@ -15,8 +15,8 @@ namespace DungeonMart.Data.DAL
         DbSet<ItemEntity> Items { get; set; }
         DbSet<MonsterEntity> Monsters { get; set; }
         DbSet<PowerEntity> Powers { get; set; }
-        DbSet<Skill> Skills { get; set; }
-        DbSet<Spell> Spells { get; set; }
+        DbSet<SkillEntity> Skills { get; set; }
+        DbSet<SpellEntity> Spells { get; set; }
 
         int SaveChanges();
         DbSet<TEntity> Set<TEntity>() where TEntity : class;

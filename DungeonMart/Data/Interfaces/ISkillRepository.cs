@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface ISkillRepository : ICrudActions<Skill>
+    public interface ISkillRepository : ICrudActions<SkillEntity>
     {
     }
 }

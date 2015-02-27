@@ -30,9 +30,9 @@ namespace DungeonMart.Data.DAL
 
         public DbSet<PowerEntity> Powers { get; set; }
 
-        public DbSet<Skill> Skills { get; set; }
+        public DbSet<SkillEntity> Skills { get; set; }
 
-        public DbSet<Spell> Spells { get; set; }
+        public DbSet<SpellEntity> Spells { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

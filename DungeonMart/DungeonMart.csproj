@@ -213,12 +213,17 @@
     <Compile Include="Data\SrdSeed\ItemSeed.cs" />
     <Compile Include="Data\SrdSeed\MonsterSeed.cs" />
     <Compile Include="Data\SrdSeed\PowerSeed.cs" />
+    <Compile Include="Data\SrdSeed\SkillSeed.cs" />
+    <Compile Include="Data\SrdSeed\SpellSeed.cs" />
+    <Compile Include="Mappers\BaseMapper.cs" />
     <Compile Include="Mappers\CharacterClassMapper.cs" />
     <Compile Include="Mappers\ClassLevelMapper.cs" />
     <Compile Include="Mappers\DomainMapper.cs" />
     <Compile Include="Mappers\EquipmentMapper.cs" />
     <Compile Include="Mappers\ItemMapper.cs" />
     <Compile Include="Mappers\PowerMapper.cs" />
+    <Compile Include="Mappers\SkillMapper.cs" />
+    <Compile Include="Mappers\SpellMapper.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.cs" />
     <Compile Include="Migrations\201501100624375_BaseSrd.Designer.cs">
       <DependentUpon>201501100624375_BaseSrd.cs</DependentUpon>
@@ -233,8 +238,8 @@
     <Compile Include="Data\Models\ItemEntity.cs" />
     <Compile Include="Data\Models\MonsterEntity.cs" />
     <Compile Include="Data\Models\PowerEntity.cs" />
-    <Compile Include="Data\Models\Skill.cs" />
-    <Compile Include="Data\Models\Spell.cs" />
+    <Compile Include="Data\Models\SkillEntity.cs" />
+    <Compile Include="Data\Models\SpellEntity.cs" />
     <Compile Include="Data\Repositories\CharacterClassRepository.cs" />
     <Compile Include="Data\Repositories\ClassProgressionRepository.cs" />
     <Compile Include="Data\Repositories\DomainRepository.cs" />
@@ -263,6 +268,8 @@
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Monster.cs" />
     <Compile Include="Models\Power.cs" />
+    <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\Spell.cs" />
     <Compile Include="Services\CharacterClassService.cs" />
     <Compile Include="Services\ClassLevelService.cs" />
     <Compile Include="Services\DomainService.cs" />

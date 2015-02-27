@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface ISpellRepository : ICrudActions<Spell>
+    public interface ISpellRepository : ICrudActions<SpellEntity>
     {
     }
 }

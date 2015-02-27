@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DungeonMart.Data.Models.Interfaces;
-
-namespace DungeonMart.Data.Models
+﻿namespace DungeonMart.Models
 {
-    public class Spell : IAuditable
+    public class Spell
     {
         public int Id { get; set; }
 
@@ -75,15 +67,5 @@ namespace DungeonMart.Data.Models
         public string FullText { get; set; }
 
         public string Reference { get; set; }
-
-        [Required]
-        public string CreatedBy { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        [Required]
-        public string ModifiedBy { get; set; }
-
-        public DateTime ModifiedDate { get; set; }
     }
 }
