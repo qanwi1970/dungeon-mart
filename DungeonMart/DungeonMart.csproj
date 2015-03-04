@@ -283,9 +283,13 @@
     <Compile Include="Services\Interfaces\IItemService.cs" />
     <Compile Include="Services\Interfaces\IMonsterService.cs" />
     <Compile Include="Services\Interfaces\IPowerService.cs" />
+    <Compile Include="Services\Interfaces\ISkillService.cs" />
+    <Compile Include="Services\Interfaces\ISpellService.cs" />
     <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\MonsterService.cs" />
     <Compile Include="Services\PowerService.cs" />
+    <Compile Include="Services\SkillService.cs" />
+    <Compile Include="Services\SpellService.cs" />
     <Compile Include="Utils\PagedListResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ControllerUtils.cs" />
