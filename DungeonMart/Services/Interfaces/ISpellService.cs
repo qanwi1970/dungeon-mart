@@ -3,7 +3,7 @@ using DungeonMart.Models;
 
 namespace DungeonMart.Services.Interfaces
 {
-    interface ISpellService
+    public interface ISpellService
     {
         IQueryable<Spell> GetSpells();
         Spell GetSpellById(int id);

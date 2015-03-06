@@ -187,6 +187,8 @@
     <Compile Include="ApiControllers\v2\ItemController.cs" />
     <Compile Include="ApiControllers\v2\MonsterController.cs" />
     <Compile Include="ApiControllers\v2\PowerController.cs" />
+    <Compile Include="ApiControllers\v2\SkillController.cs" />
+    <Compile Include="ApiControllers\v2\SpellController.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
