@@ -22,6 +22,12 @@ namespace DungeonMart
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                "~/scripts/angular.js",
+                "~/scripts/angular-resource.js",
+                "~/scripts/angular-ui/ui-bootstrap-tpls.js",
+                "~/scripts/angular-ui-router.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

@@ -1,0 +1,266 @@
+﻿@model DungeonMart.Models.CharacterClass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CharacterClass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alignment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alignment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HitDie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HitDie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassSkills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassSkills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillPoints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillPoints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillPointsAbility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillPointsAbility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellStat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellStat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proficiencies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proficiencies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EpicFeatBaseLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EpicFeatBaseLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EpicFeatInterval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EpicFeatInterval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EpicFeatList)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EpicFeatList)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EpicFullText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EpicFullText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredRace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredRace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredWeaponProficiency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredWeaponProficiency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredBaseAttackBonus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredBaseAttackBonus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredSkill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredSkill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredFeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredFeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredSpells)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredSpells)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredLanguages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredLanguages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredPsionics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredPsionics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredEpicFeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredEpicFeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredSpecial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredSpecial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellList1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellList1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellList2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellList2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellList3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellList3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellList4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellList4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpellList5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpellList5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reference)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
