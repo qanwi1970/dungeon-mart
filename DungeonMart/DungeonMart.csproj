@@ -282,6 +282,10 @@
     <Compile Include="Migrations\201501100624375_BaseSrd.Designer.cs">
       <DependentUpon>201501100624375_BaseSrd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503091803288_Add_SeedData.cs" />
+    <Compile Include="Migrations\201503091803288_Add_SeedData.Designer.cs">
+      <DependentUpon>201503091803288_Add_SeedData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Data\Models\CharacterClassEntity.cs" />
     <Compile Include="Data\Models\ClassProgressionEntity.cs" />
@@ -654,6 +658,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Classes\Details.cshtml" />
+    <Content Include="Views\Classes\Create.cshtml" />
+    <Content Include="Views\Classes\Edit.cshtml" />
+    <Content Include="Views\Classes\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -667,6 +674,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201501100624375_BaseSrd.resx">
       <DependentUpon>201501100624375_BaseSrd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503091803288_Add_SeedData.resx">
+      <DependentUpon>201503091803288_Add_SeedData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

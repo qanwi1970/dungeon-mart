@@ -29,5 +29,8 @@
         public string FullText { get; set; }
 
         public string Reference { get; set; }
+
+        public bool SeedData { get; set; }
+
     }
 }

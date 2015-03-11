@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var monsterToAdd = MonsterMapper.MapModelToEntity(monster);
             monsterToAdd.CreatedBy = "Test";
+            monsterToAdd.SeedData = false;
             var addedMonster = _monsterRepository.Add(monsterToAdd);
             return MonsterMapper.MapEntityToModel(addedMonster);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     var newMonster = MonsterMapper.MapSeedToEntity(monsterSeed);
                     newMonster.CreatedBy = "SeedMonster";
+                    newMonster.SeedData = true;
                     _monsterRepository.Add(newMonster);
                 }
                 else

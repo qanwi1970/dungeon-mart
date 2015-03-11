@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var equipmentToAdd = EquipmentMapper.MapModelToEntity(equipment);
             equipmentToAdd.CreatedBy = "TEST";
+            equipmentToAdd.SeedData = false;
             var addedEquipment = _equipmentRepository.Add(equipmentToAdd);
             return EquipmentMapper.MapEntityToModel(addedEquipment);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     var newEquipment = EquipmentMapper.MapSeedToEntity(equipmentSeed);
                     newEquipment.CreatedBy = "SeedEquipment";
+                    newEquipment.SeedData = true;
                     _equipmentRepository.Add(newEquipment);
                 }
                 else

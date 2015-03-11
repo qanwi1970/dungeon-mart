@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var classLevelEntity = ClassLevelMapper.MapModelToEntity(classLevel);
             classLevelEntity.CreatedBy = "TEST";
+            classLevelEntity.SeedData = false;
             var addedClassLevel = _classProgressionRepository.Add(classLevelEntity);
             return ClassLevelMapper.MapEntityToModel(addedClassLevel);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     var newClass = ClassLevelMapper.MapSeedToEntity(classLevelSeed);
                     newClass.CreatedBy = "SeedClassLevel";
+                    newClass.SeedData = true;
                     _classProgressionRepository.Add(newClass);
                 }
                 else

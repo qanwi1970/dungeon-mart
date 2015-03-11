@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var domainToAdd = DomainMapper.MapModelToEntity(domain);
             domainToAdd.CreatedBy = "TEST";
+            domainToAdd.SeedData = false;
             var addedDomain = _domainRepository.Add(domainToAdd);
             return DomainMapper.MapEntityToModel(addedDomain);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     var newDomain = DomainMapper.MapSeedToEntity(domainSeed);
                     newDomain.CreatedBy = "SeedDomain";
+                    newDomain.SeedData = true;
                     _domainRepository.Add(newDomain);
                 }
                 else

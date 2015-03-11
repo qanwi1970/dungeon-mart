@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var skillToAdd = SkillMapper.MapModelToEntity(skill);
             skillToAdd.CreatedBy = "TEST";
+            skillToAdd.SeedData = false;
             var addedSkill = _skillRepository.Add(skillToAdd);
             return SkillMapper.MapEntityToModel(addedSkill);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     skillEntity = SkillMapper.MapSeedToEntity(skillSeed);
                     skillEntity.CreatedBy = "SeedSkills";
+                    skillEntity.SeedData = true;
                     _skillRepository.Add(skillEntity);
                 }
                 else

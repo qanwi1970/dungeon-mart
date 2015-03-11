@@ -40,57 +40,59 @@ namespace DungeonMart.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                _characterClassService.AddClass(characterClass);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(characterClass);
             }
         }
 
         // GET: Classes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var characterClass = _characterClassService.GetClassById(id);
+            return View(characterClass);
         }
 
         // POST: Classes/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, CharacterClass characterClass)
         {
             try
             {
-                // TODO: Add update logic here
+                _characterClassService.UpdateClass(id, characterClass);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(characterClass);
             }
         }
 
         // GET: Classes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var characterClass = _characterClassService.GetClassById(id);
+            return View(characterClass);
         }
 
         // POST: Classes/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, CharacterClass characterClass)
         {
             try
             {
-                // TODO: Add delete logic here
+                _characterClassService.DeleteClass(id);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(characterClass);
             }
         }
     }

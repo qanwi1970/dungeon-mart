@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var newItem = ItemMapper.MapModelToEntity(item);
             newItem.CreatedBy = "TEST";
+            newItem.SeedData = false;
             var addedItem = _itemRepository.Add(newItem);
             return ItemMapper.MapEntityToModel(addedItem);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     var newItem = ItemMapper.MapSeedToEntity(itemSeed);
                     newItem.CreatedBy = "SeedItems";
+                    newItem.SeedData = true;
                     _itemRepository.Add(newItem);
                 }
                 else

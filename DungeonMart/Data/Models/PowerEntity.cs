@@ -61,5 +61,7 @@ namespace DungeonMart.Data.Models
         public string ModifiedBy { get; set; }
 
         public DateTime ModifiedDate { get; set; }
+
+        public bool SeedData { get; set; }
     }
 }

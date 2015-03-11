@@ -77,5 +77,7 @@
         public string SpellsKnown9 { get; set; }
 
         public string Reference { get; set; }
+
+        public bool SeedData { get; set; }
     }
 }

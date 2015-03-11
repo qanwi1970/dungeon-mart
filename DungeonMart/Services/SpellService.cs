@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var spellToAdd = SpellMapper.MapModelToEntity(spell);
             spellToAdd.CreatedBy = "TEST";
+            spellToAdd.SeedData = false;
             var addedSpell = _spellRepository.Add(spellToAdd);
             return SpellMapper.MapEntityToModel(addedSpell);
         }
@@ -65,6 +66,7 @@ namespace DungeonMart.Services
                 {
                     spellEntity = spellMapper.MapSeedToEntity(spellSeed);
                     spellEntity.CreatedBy = "SeedSpells";
+                    spellEntity.SeedData = true;
                     _spellRepository.Add(spellEntity);
                 }
                 else

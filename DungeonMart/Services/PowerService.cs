@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var newPower = PowerMapper.MapModelToEntity(power);
             newPower.CreatedBy = "TEST";
+            newPower.SeedData = false;
             var addedPower = _powerRepository.Add(newPower);
             return PowerMapper.MapEntityToModel(addedPower);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     powerEntity = PowerMapper.MapSeedToEntity(powerSeed);
                     powerEntity.CreatedBy = "SeedPowers";
+                    powerEntity.SeedData = true;
                     _powerRepository.Add(powerEntity);
                 }
                 else

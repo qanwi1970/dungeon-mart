@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var characterClassToAdd = CharacterClassMapper.MapModelToEntity(characterClass);
             characterClassToAdd.CreatedBy = "TEST";
+            characterClassToAdd.SeedData = false;
             var addedCharacterClass = _characterClassRepository.Add(characterClassToAdd);
             return CharacterClassMapper.MapEntityToModel(addedCharacterClass);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     var newClass = CharacterClassMapper.MapSeedToEntity(classSeed);
                     newClass.CreatedBy = "SeedClass";
+                    newClass.SeedData = true;
                     _characterClassRepository.Add(newClass);
                 }
                 else

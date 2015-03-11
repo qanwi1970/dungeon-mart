@@ -32,6 +32,7 @@ namespace DungeonMart.Services
         {
             var featToAdd = FeatMapper.MapModelToEntity(feat);
             featToAdd.CreatedBy = "TEST";
+            featToAdd.SeedData = false;
             var addedFeat = _featRepository.Add(featToAdd);
             return FeatMapper.MapEntityToModel(addedFeat);
         }
@@ -64,6 +65,7 @@ namespace DungeonMart.Services
                 {
                     var newFeat = FeatMapper.MapSeedToEntity(featSeed);
                     newFeat.CreatedBy = "SeedFeat";
+                    newFeat.SeedData = true;
                     _featRepository.Add(newFeat);
                 }
                 else
