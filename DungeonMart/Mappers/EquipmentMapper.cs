@@ -9,33 +9,33 @@ namespace DungeonMart.Mappers
     {
         static EquipmentMapper()
         {
-            Mapper.CreateMap<Equipment, EquipmentEntity>();
-            Mapper.CreateMap<EquipmentEntity, Equipment>();
+            Mapper.CreateMap<EquipmentViewModel, Equipment>();
+            Mapper.CreateMap<Equipment, EquipmentViewModel>();
         }
 
-        public static Equipment MapEntityToModel(EquipmentEntity equipmentEntity)
+        public static EquipmentViewModel MapEntityToModel(Equipment equipmentEntity)
         {
-            return Mapper.Map<Equipment>(equipmentEntity);
+            return Mapper.Map<EquipmentViewModel>(equipmentEntity);
         }
 
-        public static EquipmentEntity MapModelToEntity(Equipment equipment)
+        public static Equipment MapModelToEntity(EquipmentViewModel equipment)
         {
-            return Mapper.Map<EquipmentEntity>(equipment);
+            return Mapper.Map<Equipment>(equipment);
         }
 
-        public static void MapModelToEntity(Equipment equipment, EquipmentEntity equipmentEntity)
+        public static void MapModelToEntity(EquipmentViewModel equipment, Equipment equipmentEntity)
         {
             Mapper.Map(equipment, equipmentEntity);
         }
 
-        public static EquipmentEntity MapSeedToEntity(EquipmentSeed equipmentSeed)
+        public static Equipment MapSeedToEntity(EquipmentSeed equipmentSeed)
         {
-            var entity = new EquipmentEntity();
+            var entity = new Equipment();
             MapSeedToEntity(equipmentSeed, entity);
             return entity;
         }
 
-        public static void MapSeedToEntity(EquipmentSeed equipmentSeed, EquipmentEntity equipmentEntity)
+        public static void MapSeedToEntity(EquipmentSeed equipmentSeed, Equipment equipmentEntity)
         {
             equipmentEntity.ArcaneSpellFailureChance = equipmentSeed.arcane_spell_failure_chance;
             equipmentEntity.ArmorCheckPenalty = equipmentSeed.armor_check_penalty;

@@ -9,33 +9,33 @@ namespace DungeonMart.Mappers
     {
         static ClassLevelMapper()
         {
-            Mapper.CreateMap<ClassLevel, ClassProgressionEntity>();
-            Mapper.CreateMap<ClassProgressionEntity, ClassLevel>();
+            Mapper.CreateMap<ClassLevelViewModel, ClassProgression>();
+            Mapper.CreateMap<ClassProgression, ClassLevelViewModel>();
         }
 
-        public static ClassLevel MapEntityToModel(ClassProgressionEntity classProgressionEntity)
+        public static ClassLevelViewModel MapEntityToModel(ClassProgression classProgressionEntity)
         {
-            return Mapper.Map<ClassLevel>(classProgressionEntity);
+            return Mapper.Map<ClassLevelViewModel>(classProgressionEntity);
         }
 
-        public static ClassProgressionEntity MapModelToEntity(ClassLevel classLevel)
+        public static ClassProgression MapModelToEntity(ClassLevelViewModel classLevel)
         {
-            return Mapper.Map<ClassProgressionEntity>(classLevel);
+            return Mapper.Map<ClassProgression>(classLevel);
         }
 
-        public static void MapModelToEntity(ClassLevel classLevel, ClassProgressionEntity classProgressionEntity)
+        public static void MapModelToEntity(ClassLevelViewModel classLevel, ClassProgression classProgressionEntity)
         {
             Mapper.Map(classLevel, classProgressionEntity);
         }
 
-        public static ClassProgressionEntity MapSeedToEntity(ClassLevelSeed classLevelSeed)
+        public static ClassProgression MapSeedToEntity(ClassLevelSeed classLevelSeed)
         {
-            var classProgressionEntity = new ClassProgressionEntity();
+            var classProgressionEntity = new ClassProgression();
             MapSeedToEntity(classLevelSeed, classProgressionEntity);
             return classProgressionEntity;
         }
 
-        public static void MapSeedToEntity(ClassLevelSeed classLevelSeed, ClassProgressionEntity classProgressionEntity)
+        public static void MapSeedToEntity(ClassLevelSeed classLevelSeed, ClassProgression classProgressionEntity)
         {
             classProgressionEntity.ArmorClassBonus = classLevelSeed.ac_bonus;
             classProgressionEntity.BaseAttackBonus = classLevelSeed.base_attack_bonus;

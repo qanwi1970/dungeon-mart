@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _skillRepository = skillRepository;
         }
 
-        public IQueryable<Skill> GetSkills()
+        public IQueryable<SkillViewModel> GetSkills()
         {
             return _skillRepository.GetAll().Select(SkillMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Skill GetSkillById(int id)
+        public SkillViewModel GetSkillById(int id)
         {
             return SkillMapper.MapEntityToModel(_skillRepository.GetById(id));
         }
 
-        public Skill AddSkill(Skill skill)
+        public SkillViewModel AddSkill(SkillViewModel skill)
         {
             var skillToAdd = SkillMapper.MapModelToEntity(skill);
             skillToAdd.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return SkillMapper.MapEntityToModel(addedSkill);
         }
 
-        public Skill UdpateSkill(int id, Skill skill)
+        public SkillViewModel UdpateSkill(int id, SkillViewModel skill)
         {
             var skillToUpdate = _skillRepository.GetById(id);
             SkillMapper.MapModelToEntity(skill, skillToUpdate);

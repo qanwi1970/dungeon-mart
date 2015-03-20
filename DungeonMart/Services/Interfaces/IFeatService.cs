@@ -1,17 +1,17 @@
 ﻿using System.Linq;
-using DungeonMart.Shared.Models;
+using DungeonMart.Models;
 
 namespace DungeonMart.Services.Interfaces
 {
     public interface IFeatService
     {
-        IQueryable<Feat> GetFeats();
+        IQueryable<FeatViewModel> GetFeats();
 
-        Feat GetFeatById(int id);
+        FeatViewModel GetFeatById(int id);
 
-        Feat AddFeat(Feat feat);
+        FeatViewModel AddFeat(FeatViewModel feat);
 
-        Feat PutFeat(int id, Feat feat);
+        FeatViewModel PutFeat(int id, FeatViewModel feat);
 
         void DeleteFeat(int id);
 

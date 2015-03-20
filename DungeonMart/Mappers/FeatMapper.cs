@@ -2,7 +2,7 @@
 using AutoMapper;
 using DungeonMart.Data.Models;
 using DungeonMart.Data.SrdSeed;
-using DungeonMart.Shared.Models;
+using DungeonMart.Models;
 
 namespace DungeonMart.Mappers
 {
@@ -11,33 +11,33 @@ namespace DungeonMart.Mappers
 
         static FeatMapper()
         {
-            Mapper.CreateMap<Feat, FeatEntity>();
-            Mapper.CreateMap<FeatEntity, Feat>();
+            Mapper.CreateMap<Feat, FeatViewModel>();
+            Mapper.CreateMap<FeatViewModel, Feat>();
         }
 
-        public static Feat MapEntityToModel(FeatEntity featEntity)
+        public static FeatViewModel MapEntityToModel(Feat featEntity)
         {
-            return Mapper.Map<Feat>(featEntity);
+            return Mapper.Map<FeatViewModel>(featEntity);
         }
 
-        public static FeatEntity MapModelToEntity(Feat feat)
+        public static Feat MapModelToEntity(FeatViewModel featViewModel)
         {
-            return Mapper.Map<FeatEntity>(feat);
+            return Mapper.Map<Feat>(featViewModel);
         }
 
-        public static void MapModelToEntity(Feat feat, FeatEntity featEntity)
+        public static void MapModelToEntity(FeatViewModel feat, Feat featEntity)
         {
             Mapper.Map(feat, featEntity);
         }
 
-        public static FeatEntity MapSeedToEntity(FeatSeed featSeed)
+        public static Feat MapSeedToEntity(FeatSeed featSeed)
         {
-            var featEntity = new FeatEntity();
+            var featEntity = new Feat();
             MapSeedToEntity(featSeed, featEntity);
             return featEntity;
         }
 
-        public static void MapSeedToEntity(FeatSeed featSeed, FeatEntity featEntity)
+        public static void MapSeedToEntity(FeatSeed featSeed, Feat featEntity)
         {
             featEntity.Benefit = HttpUtility.HtmlDecode(featSeed.benefit);
             featEntity.Choice = featSeed.choice;

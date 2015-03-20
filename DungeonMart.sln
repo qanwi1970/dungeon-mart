@@ -3,20 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart", "DungeonMart\DungeonMart.csproj", "{89EBB166-3B8F-4506-841C-3090EF84CD07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart", "DungeonMart\DungeonMart.csproj", "{C64D0D94-71A6-4497-A1EA-AB10DB86C2C6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F87089AD-215A-4CC9-933F-D0494AB2B789}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.UnitTests", "DungeonMart.UnitTests\DungeonMart.UnitTests.csproj", "{258B4B32-9471-457D-B21A-F73FAE9BE846}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{85C1889F-21F9-4FD3-9C28-1A5BC3900121}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EC8795F4-787B-457F-ACC5-2CF9ECB3AB9A}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.UnitTests", "DungeonMart.UnitTests\DungeonMart.UnitTests.csproj", "{DA2524AF-8977-4BC0-99A5-0C2419F2F244}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.IntegratedTests", "DungeonMart.IntegratedTests\DungeonMart.IntegratedTests.csproj", "{582B45B1-685D-4ADD-ADF2-23D3A30C0C24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,24 +20,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89EBB166-3B8F-4506-841C-3090EF84CD07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA2524AF-8977-4BC0-99A5-0C2419F2F244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA2524AF-8977-4BC0-99A5-0C2419F2F244}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA2524AF-8977-4BC0-99A5-0C2419F2F244}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA2524AF-8977-4BC0-99A5-0C2419F2F244}.Release|Any CPU.Build.0 = Release|Any CPU
-		{582B45B1-685D-4ADD-ADF2-23D3A30C0C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{582B45B1-685D-4ADD-ADF2-23D3A30C0C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{582B45B1-685D-4ADD-ADF2-23D3A30C0C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{582B45B1-685D-4ADD-ADF2-23D3A30C0C24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64D0D94-71A6-4497-A1EA-AB10DB86C2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64D0D94-71A6-4497-A1EA-AB10DB86C2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64D0D94-71A6-4497-A1EA-AB10DB86C2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64D0D94-71A6-4497-A1EA-AB10DB86C2C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{258B4B32-9471-457D-B21A-F73FAE9BE846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{258B4B32-9471-457D-B21A-F73FAE9BE846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{258B4B32-9471-457D-B21A-F73FAE9BE846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{258B4B32-9471-457D-B21A-F73FAE9BE846}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DA2524AF-8977-4BC0-99A5-0C2419F2F244} = {F87089AD-215A-4CC9-933F-D0494AB2B789}
-		{582B45B1-685D-4ADD-ADF2-23D3A30C0C24} = {F87089AD-215A-4CC9-933F-D0494AB2B789}
 	EndGlobalSection
 EndGlobal

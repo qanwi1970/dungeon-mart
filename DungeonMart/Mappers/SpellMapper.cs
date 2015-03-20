@@ -5,9 +5,9 @@ using DungeonMart.Models;
 
 namespace DungeonMart.Mappers
 {
-    public class SpellMapper : BaseMapper<Spell, SpellEntity, SpellSeed>
+    public class SpellMapper : BaseMapper<SpellViewModel, Spell, SpellSeed>
     {
-        public override void MapSeedToEntity(SpellSeed seed, SpellEntity entity)
+        public override void MapSeedToEntity(SpellSeed seed, Spell entity)
         {
             entity.AlternateName = seed.altname;
             entity.ArcaneFocus = seed.arcane_focus;

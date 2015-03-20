@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _domainRepository = domainRepository;
         }
 
-        public IQueryable<Domain> GetDomains()
+        public IQueryable<DomainViewModel> GetDomains()
         {
             return _domainRepository.GetAll().Select(DomainMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Domain GetDomainById(int id)
+        public DomainViewModel GetDomainById(int id)
         {
             return DomainMapper.MapEntityToModel(_domainRepository.GetById(id));
         }
 
-        public Domain AddDomain(Domain domain)
+        public DomainViewModel AddDomain(DomainViewModel domain)
         {
             var domainToAdd = DomainMapper.MapModelToEntity(domain);
             domainToAdd.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return DomainMapper.MapEntityToModel(addedDomain);
         }
 
-        public Domain UpdateDomain(int id, Domain domain)
+        public DomainViewModel UpdateDomain(int id, DomainViewModel domain)
         {
             var domainToUpdate = _domainRepository.GetById(id);
             DomainMapper.MapModelToEntity(domain, domainToUpdate);

@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _powerRepository = powerRepository;
         }
 
-        public IQueryable<Power> GetPowers()
+        public IQueryable<PowerViewModel> GetPowers()
         {
             return _powerRepository.GetAll().Select(PowerMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Power GetPowerById(int id)
+        public PowerViewModel GetPowerById(int id)
         {
             return PowerMapper.MapEntityToModel(_powerRepository.GetById(id));
         }
 
-        public Power AddPower(Power power)
+        public PowerViewModel AddPower(PowerViewModel power)
         {
             var newPower = PowerMapper.MapModelToEntity(power);
             newPower.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return PowerMapper.MapEntityToModel(addedPower);
         }
 
-        public Power UdpatePower(int id, Power power)
+        public PowerViewModel UdpatePower(int id, PowerViewModel power)
         {
             var powerToUpdate = _powerRepository.GetById(id);
             PowerMapper.MapModelToEntity(power, powerToUpdate);

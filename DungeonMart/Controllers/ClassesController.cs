@@ -30,13 +30,13 @@ namespace DungeonMart.Controllers
         // GET: Classes/Create
         public ActionResult Create()
         {
-            var model = new CharacterClass();
+            var model = new CharacterClassViewModel();
             return View(model);
         }
 
         // POST: Classes/Create
         [HttpPost]
-        public ActionResult Create(CharacterClass characterClass)
+        public ActionResult Create(CharacterClassViewModel characterClass)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace DungeonMart.Controllers
 
         // POST: Classes/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, CharacterClass characterClass)
+        public ActionResult Edit(int id, CharacterClassViewModel characterClass)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace DungeonMart.Controllers
 
         // POST: Classes/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, CharacterClass characterClass)
+        public ActionResult Delete(int id, CharacterClassViewModel characterClass)
         {
             try
             {

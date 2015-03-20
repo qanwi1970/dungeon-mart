@@ -5,10 +5,10 @@ namespace DungeonMart.Services.Interfaces
 {
     public interface IEquipmentService
     {
-        IQueryable<Equipment> GetEquipments();
-        Equipment GetEquipmentById(int id);
-        Equipment AddEquipment(Equipment equipment);
-        Equipment UpdateEquipment(int id, Equipment equipment);
+        IQueryable<EquipmentViewModel> GetEquipments();
+        EquipmentViewModel GetEquipmentById(int id);
+        EquipmentViewModel AddEquipment(EquipmentViewModel equipment);
+        EquipmentViewModel UpdateEquipment(int id, EquipmentViewModel equipment);
         void DeleteEquipment(int id);
         void SeedEquipment(string seedPath);
     }

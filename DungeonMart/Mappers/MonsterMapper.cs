@@ -2,7 +2,7 @@
 using AutoMapper;
 using DungeonMart.Data.Models;
 using DungeonMart.Data.SrdSeed;
-using DungeonMart.Shared.Models;
+using DungeonMart.Models;
 
 namespace DungeonMart.Mappers
 {
@@ -10,32 +10,32 @@ namespace DungeonMart.Mappers
     {
         static MonsterMapper()
         {
-            Mapper.CreateMap<Monster, MonsterEntity>();
-            Mapper.CreateMap<MonsterEntity, Monster>();
+            Mapper.CreateMap<Monster, MonsterViewModel>();
+            Mapper.CreateMap<MonsterViewModel, Monster>();
         }
-        public static Monster MapEntityToModel(MonsterEntity monsterEntity)
+        public static MonsterViewModel MapEntityToModel(Monster monsterEntity)
         {
-            return Mapper.Map<Monster>(monsterEntity);
+            return Mapper.Map<MonsterViewModel>(monsterEntity);
         }
 
-        public static MonsterEntity MapModelToEntity(Monster monster)
+        public static Monster MapModelToEntity(MonsterViewModel monster)
         {
-            return Mapper.Map<MonsterEntity>(monster);
+            return Mapper.Map<Monster>(monster);
         }
 
-        public static void MapModelToEntity(Monster monster, MonsterEntity monsterEntity)
+        public static void MapModelToEntity(MonsterViewModel monster, Monster monsterEntity)
         {
             Mapper.Map(monster, monsterEntity);
         }
 
-        public static MonsterEntity MapSeedToEntity(MonsterSeed monsterSeed)
+        public static Monster MapSeedToEntity(MonsterSeed monsterSeed)
         {
-            var monsterEntity = new MonsterEntity();
+            var monsterEntity = new Monster();
             MapSeedToEntity(monsterSeed, monsterEntity);
             return monsterEntity;
         }
 
-        public static void MapSeedToEntity(MonsterSeed monsterSeed, MonsterEntity monsterEntity)
+        public static void MapSeedToEntity(MonsterSeed monsterSeed, Monster monsterEntity)
         {
             monsterEntity.Abilities = monsterSeed.abilities;
             monsterEntity.Advancement = monsterSeed.advancement;

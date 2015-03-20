@@ -1,44 +1,45 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity;
 using DungeonMart.Data.Models;
+using DungeonMart.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DungeonMart.Data.DAL
 {
-    public class DungeonMartContext : DbContext, IDungeonMartContext
+    public class DungeonMartContext : IdentityDbContext<ApplicationUser>
     {
-        public DungeonMartContext() : base("name=DungeonMartContext")
+        public DbSet<CharacterClass> CharacterClasses { get; set; }
+
+        public DbSet<ClassProgression> ClassProgressions { get; set; }
+
+        public DbSet<Domain> Domains { get; set; }
+
+        public DbSet<Equipment> Equipments { get; set; }
+
+        public DbSet<Feat> Feats { get; set; }
+
+        public DbSet<Item> Items { get; set; }
+
+        public DbSet<Monster> Monsters { get; set; }
+
+        public DbSet<Power> Powers { get; set; }
+
+        public DbSet<Skill> Skills { get; set; }
+
+        public DbSet<Spell> Spells { get; set; }
+
+        public DungeonMartContext()
+            : base("name=DungeonMartContext")
         {
         }
 
-        public DungeonMartContext(string connectionStringOrName) : base(connectionStringOrName)
-        {    
+        public DungeonMartContext(string connectionString)
+            : base(connectionString)
+        {
         }
 
-        public DbSet<CharacterClassEntity> CharacterClasses { get; set; }
-
-        public DbSet<ClassProgressionEntity> ClassProgressions { get; set; }
-
-        public DbSet<DomainEntity> Domains { get; set; }
-
-        public DbSet<EquipmentEntity> Equipments { get; set; }
-
-        public DbSet<FeatEntity> Feats { get; set; }
-
-        public DbSet<ItemEntity> Items { get; set; }
-
-        public DbSet<MonsterEntity> Monsters { get; set; }
-
-        public DbSet<PowerEntity> Powers { get; set; }
-
-        public DbSet<SkillEntity> Skills { get; set; }
-
-        public DbSet<SpellEntity> Spells { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public static DungeonMartContext Create()
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            base.OnModelCreating(modelBuilder);
+            return new DungeonMartContext();
         }
     }
 }

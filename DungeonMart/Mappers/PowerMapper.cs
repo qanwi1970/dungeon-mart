@@ -10,33 +10,33 @@ namespace DungeonMart.Mappers
     {
         static PowerMapper()
         {
-            Mapper.CreateMap<Power, PowerEntity>();
-            Mapper.CreateMap<PowerEntity, Power>();
+            Mapper.CreateMap<PowerViewModel, Power>();
+            Mapper.CreateMap<Power, PowerViewModel>();
         }
 
-        public static Power MapEntityToModel(PowerEntity powerEntity)
+        public static PowerViewModel MapEntityToModel(Power powerEntity)
         {
-            return Mapper.Map<Power>(powerEntity);
+            return Mapper.Map<PowerViewModel>(powerEntity);
         }
 
-        public static PowerEntity MapModelToEntity(Power power)
+        public static Power MapModelToEntity(PowerViewModel power)
         {
-            return Mapper.Map<PowerEntity>(power);
+            return Mapper.Map<Power>(power);
         }
 
-        public static void MapModelToEntity(Power power, PowerEntity powerEntity)
+        public static void MapModelToEntity(PowerViewModel power, Power powerEntity)
         {
             Mapper.Map(power, powerEntity);
         }
 
-        public static PowerEntity MapSeedToEntity(PowerSeed powerSeed)
+        public static Power MapSeedToEntity(PowerSeed powerSeed)
         {
-            var newPower = new PowerEntity();
+            var newPower = new Power();
             MapSeedToEntity(powerSeed, newPower);
             return newPower;
         }
 
-        public static void MapSeedToEntity(PowerSeed powerSeed, PowerEntity powerEntity)
+        public static void MapSeedToEntity(PowerSeed powerSeed, Power powerEntity)
         {
             powerEntity.Area = powerSeed.area;
             powerEntity.Augment = HttpUtility.HtmlDecode(powerSeed.augment);

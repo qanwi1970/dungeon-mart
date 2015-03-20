@@ -1,11 +1,12 @@
-﻿using DungeonMart.Data.Interfaces;
+﻿using DungeonMart.Data.DAL;
+using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.Repositories
 {
-    internal class SkillRepository : Repository<SkillEntity>, ISkillRepository
+    internal class SkillRepository : Repository<Skill>, ISkillRepository
     {
-        public SkillRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public SkillRepository(DungeonMartContext context) : base(context)
         {
         }
     }

@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _equipmentRepository = equipmentRepository;
         }
 
-        public IQueryable<Equipment> GetEquipments()
+        public IQueryable<EquipmentViewModel> GetEquipments()
         {
             return _equipmentRepository.GetAll().Select(EquipmentMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Equipment GetEquipmentById(int id)
+        public EquipmentViewModel GetEquipmentById(int id)
         {
             return EquipmentMapper.MapEntityToModel(_equipmentRepository.GetById(id));
         }
 
-        public Equipment AddEquipment(Equipment equipment)
+        public EquipmentViewModel AddEquipment(EquipmentViewModel equipment)
         {
             var equipmentToAdd = EquipmentMapper.MapModelToEntity(equipment);
             equipmentToAdd.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return EquipmentMapper.MapEntityToModel(addedEquipment);
         }
 
-        public Equipment UpdateEquipment(int id, Equipment equipment)
+        public EquipmentViewModel UpdateEquipment(int id, EquipmentViewModel equipment)
         {
             var originalEquipment = _equipmentRepository.GetById(id);
             EquipmentMapper.MapModelToEntity(equipment, originalEquipment);

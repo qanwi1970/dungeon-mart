@@ -1,11 +1,12 @@
-﻿using DungeonMart.Data.Interfaces;
+﻿using DungeonMart.Data.DAL;
+using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.Models;
 
 namespace DungeonMart.Data.Repositories
 {
-    internal class FeatRepository : Repository<FeatEntity>, IFeatRepository
+    internal class FeatRepository : Repository<Feat>, IFeatRepository
     {
-        public FeatRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public FeatRepository(DungeonMartContext context) : base(context)
         {
         }
     }

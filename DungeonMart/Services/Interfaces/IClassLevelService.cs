@@ -5,10 +5,10 @@ namespace DungeonMart.Services.Interfaces
 {
     public interface IClassLevelService
     {
-        IQueryable<ClassLevel> GetClassLevels();
-        ClassLevel GetClassLevelById(int id);
-        ClassLevel AddClassLevel(ClassLevel classLevel);
-        ClassLevel UpdateClassLevel(int id, ClassLevel classLevel);
+        IQueryable<ClassLevelViewModel> GetClassLevels();
+        ClassLevelViewModel GetClassLevelById(int id);
+        ClassLevelViewModel AddClassLevel(ClassLevelViewModel classLevel);
+        ClassLevelViewModel UpdateClassLevel(int id, ClassLevelViewModel classLevel);
         void DeleteClassLevel(int id);
         void SeedClassLevel(string seedDataPath);
     }

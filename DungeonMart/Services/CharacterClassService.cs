@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _characterClassRepository = characterClassRepository;
         }
 
-        public IQueryable<CharacterClass> GetClasses()
+        public IQueryable<CharacterClassViewModel> GetClasses()
         {
             return _characterClassRepository.GetAll().Select(CharacterClassMapper.MapEntityToModel).AsQueryable();
         }
 
-        public CharacterClass GetClassById(int id)
+        public CharacterClassViewModel GetClassById(int id)
         {
             return CharacterClassMapper.MapEntityToModel(_characterClassRepository.GetById(id));
         }
 
-        public CharacterClass AddClass(CharacterClass characterClass)
+        public CharacterClassViewModel AddClass(CharacterClassViewModel characterClass)
         {
             var characterClassToAdd = CharacterClassMapper.MapModelToEntity(characterClass);
             characterClassToAdd.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return CharacterClassMapper.MapEntityToModel(addedCharacterClass);
         }
 
-        public CharacterClass UpdateClass(int id, CharacterClass characterClass)
+        public CharacterClassViewModel UpdateClass(int id, CharacterClassViewModel characterClass)
         {
             var originalCharacterClass = _characterClassRepository.GetById(id);
             CharacterClassMapper.MapModelToEntity(characterClass, originalCharacterClass);

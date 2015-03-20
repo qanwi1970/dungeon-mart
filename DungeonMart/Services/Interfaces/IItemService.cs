@@ -5,10 +5,10 @@ namespace DungeonMart.Services.Interfaces
 {
     public interface IItemService
     {
-        IQueryable<Item> GetItems();
-        Item GetItemById(int id);
-        Item AddItem(Item item);
-        Item UpdateItem(int id, Item item);
+        IQueryable<ItemViewModel> GetItems();
+        ItemViewModel GetItemById(int id);
+        ItemViewModel AddItem(ItemViewModel item);
+        ItemViewModel UpdateItem(int id, ItemViewModel item);
         void DeleteItem(int id);
         void SeedItems(string seedPath);
     }

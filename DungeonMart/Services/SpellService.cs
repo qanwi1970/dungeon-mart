@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _spellRepository = spellRepository;
         }
 
-        public IQueryable<Spell> GetSpells()
+        public IQueryable<SpellViewModel> GetSpells()
         {
             return _spellRepository.GetAll().Select(SpellMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Spell GetSpellById(int id)
+        public SpellViewModel GetSpellById(int id)
         {
             return SpellMapper.MapEntityToModel(_spellRepository.GetById(id));
         }
 
-        public Spell AddSpell(Spell spell)
+        public SpellViewModel AddSpell(SpellViewModel spell)
         {
             var spellToAdd = SpellMapper.MapModelToEntity(spell);
             spellToAdd.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return SpellMapper.MapEntityToModel(addedSpell);
         }
 
-        public Spell UdpateSpell(int id, Spell spell)
+        public SpellViewModel UdpateSpell(int id, SpellViewModel spell)
         {
             var originalSpell = _spellRepository.GetById(id);
             SpellMapper.MapModelToEntity(spell, originalSpell);

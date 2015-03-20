@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _classProgressionRepository = classProgressionRepository;
         }
 
-        public IQueryable<ClassLevel> GetClassLevels()
+        public IQueryable<ClassLevelViewModel> GetClassLevels()
         {
             return _classProgressionRepository.GetAll().Select(ClassLevelMapper.MapEntityToModel).AsQueryable();
         }
 
-        public ClassLevel GetClassLevelById(int id)
+        public ClassLevelViewModel GetClassLevelById(int id)
         {
             return ClassLevelMapper.MapEntityToModel(_classProgressionRepository.GetById(id));
         }
 
-        public ClassLevel AddClassLevel(ClassLevel classLevel)
+        public ClassLevelViewModel AddClassLevel(ClassLevelViewModel classLevel)
         {
             var classLevelEntity = ClassLevelMapper.MapModelToEntity(classLevel);
             classLevelEntity.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return ClassLevelMapper.MapEntityToModel(addedClassLevel);
         }
 
-        public ClassLevel UpdateClassLevel(int id, ClassLevel classLevel)
+        public ClassLevelViewModel UpdateClassLevel(int id, ClassLevelViewModel classLevel)
         {
             var originalClassLevel = _classProgressionRepository.GetById(id);
             ClassLevelMapper.MapModelToEntity(classLevel, originalClassLevel);

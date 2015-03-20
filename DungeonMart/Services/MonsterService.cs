@@ -3,8 +3,8 @@ using System.Linq;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.SrdSeed;
 using DungeonMart.Mappers;
+using DungeonMart.Models;
 using DungeonMart.Services.Interfaces;
-using DungeonMart.Shared.Models;
 using Newtonsoft.Json;
 
 namespace DungeonMart.Services
@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _monsterRepository = monsterRepository;
         }
 
-        public IQueryable<Monster> GetMonsters()
+        public IQueryable<MonsterViewModel> GetMonsters()
         {
             return _monsterRepository.GetAll().Select(MonsterMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Monster GetMonsterById(int id)
+        public MonsterViewModel GetMonsterById(int id)
         {
             return MonsterMapper.MapEntityToModel(_monsterRepository.GetById(id));
         }
 
-        public Monster AddMonster(Monster monster)
+        public MonsterViewModel AddMonster(MonsterViewModel monster)
         {
             var monsterToAdd = MonsterMapper.MapModelToEntity(monster);
             monsterToAdd.CreatedBy = "Test";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return MonsterMapper.MapEntityToModel(addedMonster);
         }
 
-        public Monster UpdateMonster(int id, Monster monster)
+        public MonsterViewModel UpdateMonster(int id, MonsterViewModel monster)
         {
             var originalMonster = _monsterRepository.GetById(id);
             MonsterMapper.MapModelToEntity(monster, originalMonster);

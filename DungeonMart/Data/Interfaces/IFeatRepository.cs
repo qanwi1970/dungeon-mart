@@ -2,7 +2,7 @@
 
 namespace DungeonMart.Data.Interfaces
 {
-    public interface IFeatRepository : ICrudActions<FeatEntity>
+    public interface IFeatRepository : ICrudActions<Feat>
     {
     }
 }

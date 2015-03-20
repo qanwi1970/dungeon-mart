@@ -1,5 +1,4 @@
-﻿using DungeonMart.Filters;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
@@ -20,8 +19,6 @@ namespace DungeonMart
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            config.Filters.Add(new UnitOfWorkAttribute());
 
             ConfigSerialization(config);
         }

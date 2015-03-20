@@ -10,33 +10,33 @@ namespace DungeonMart.Mappers
     {
         static SkillMapper()
         {
-            Mapper.CreateMap<Skill, SkillEntity>();
-            Mapper.CreateMap<SkillEntity, Skill>();
+            Mapper.CreateMap<SkillViewModel, Skill>();
+            Mapper.CreateMap<Skill, SkillViewModel>();
         }
 
-        public static Skill MapEntityToModel(SkillEntity skillEntity)
+        public static SkillViewModel MapEntityToModel(Skill skillEntity)
         {
-            return Mapper.Map<Skill>(skillEntity);
+            return Mapper.Map<SkillViewModel>(skillEntity);
         }
 
-        public static SkillEntity MapModelToEntity(Skill skill)
+        public static Skill MapModelToEntity(SkillViewModel skill)
         {
-            return Mapper.Map<SkillEntity>(skill);
+            return Mapper.Map<Skill>(skill);
         }
 
-        public static void MapModelToEntity(Skill skill, SkillEntity skillEntity)
+        public static void MapModelToEntity(SkillViewModel skill, Skill skillEntity)
         {
             Mapper.Map(skill, skillEntity);
         }
 
-        public static SkillEntity MapSeedToEntity(SkillSeed skillSeed)
+        public static Skill MapSeedToEntity(SkillSeed skillSeed)
         {
-            var skillEntity = new SkillEntity();
+            var skillEntity = new Skill();
             MapSeedToEntity(skillSeed, skillEntity);
             return skillEntity;
         }
 
-        public static void MapSeedToEntity(SkillSeed skillSeed, SkillEntity skillEntity)
+        public static void MapSeedToEntity(SkillSeed skillSeed, Skill skillEntity)
         {
             skillEntity.Action = skillSeed.action;
             skillEntity.ArmorCheck = skillSeed.armor_check;

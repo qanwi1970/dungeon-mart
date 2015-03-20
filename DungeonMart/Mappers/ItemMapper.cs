@@ -10,33 +10,33 @@ namespace DungeonMart.Mappers
     {
         static ItemMapper()
         {
-            Mapper.CreateMap<Item, ItemEntity>();
-            Mapper.CreateMap<ItemEntity, Item>();
+            Mapper.CreateMap<ItemViewModel, Item>();
+            Mapper.CreateMap<Item, ItemViewModel>();
         }
 
-        public static Item MapEntityToModel(ItemEntity itemEntity)
+        public static ItemViewModel MapEntityToModel(Item itemEntity)
         {
-            return Mapper.Map<Item>(itemEntity);
+            return Mapper.Map<ItemViewModel>(itemEntity);
         }
 
-        public static ItemEntity MapModelToEntity(Item item)
+        public static Item MapModelToEntity(ItemViewModel item)
         {
-            return Mapper.Map<ItemEntity>(item);
+            return Mapper.Map<Item>(item);
         }
 
-        public static void MapModelToEntity(Item item, ItemEntity itemEntity)
+        public static void MapModelToEntity(ItemViewModel item, Item itemEntity)
         {
             Mapper.Map(item, itemEntity);
         }
 
-        public static ItemEntity MapSeedToEntity(ItemSeed itemSeed)
+        public static Item MapSeedToEntity(ItemSeed itemSeed)
         {
-            var itemEntity = new ItemEntity();
+            var itemEntity = new Item();
             MapSeedToEntity(itemSeed, itemEntity);
             return itemEntity;
         }
 
-        public static void MapSeedToEntity(ItemSeed itemSeed, ItemEntity itemEntity)
+        public static void MapSeedToEntity(ItemSeed itemSeed, Item itemEntity)
         {
             itemEntity.Aura = itemSeed.aura;
             itemEntity.CasterLevel = itemSeed.caster_level;

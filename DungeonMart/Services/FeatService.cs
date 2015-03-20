@@ -3,8 +3,8 @@ using System.Linq;
 using DungeonMart.Data.Interfaces;
 using DungeonMart.Data.SrdSeed;
 using DungeonMart.Mappers;
+using DungeonMart.Models;
 using DungeonMart.Services.Interfaces;
-using DungeonMart.Shared.Models;
 using Newtonsoft.Json;
 
 namespace DungeonMart.Services
@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _featRepository = featRepository;
         }
 
-        public IQueryable<Feat> GetFeats()
+        public IQueryable<FeatViewModel> GetFeats()
         {
             return _featRepository.GetAll().Select(FeatMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Feat GetFeatById(int id)
+        public FeatViewModel GetFeatById(int id)
         {
             return FeatMapper.MapEntityToModel(_featRepository.GetById(id));
         }
 
-        public Feat AddFeat(Feat feat)
+        public FeatViewModel AddFeat(FeatViewModel feat)
         {
             var featToAdd = FeatMapper.MapModelToEntity(feat);
             featToAdd.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return FeatMapper.MapEntityToModel(addedFeat);
         }
 
-        public Feat PutFeat(int id, Feat feat)
+        public FeatViewModel PutFeat(int id, FeatViewModel feat)
         {
             var featToUpdate = _featRepository.GetById(id);
             FeatMapper.MapModelToEntity(feat, featToUpdate);

@@ -5,10 +5,10 @@ namespace DungeonMart.Services.Interfaces
 {
     public interface IDomainService
     {
-        IQueryable<Domain> GetDomains();
-        Domain GetDomainById(int id);
-        Domain AddDomain(Domain domain);
-        Domain UpdateDomain(int id, Domain domain);
+        IQueryable<DomainViewModel> GetDomains();
+        DomainViewModel GetDomainById(int id);
+        DomainViewModel AddDomain(DomainViewModel domain);
+        DomainViewModel UpdateDomain(int id, DomainViewModel domain);
         void DeleteDomain(int id);
         void SeedDomain(string seedPath);
     }

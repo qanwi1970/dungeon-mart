@@ -5,10 +5,10 @@ namespace DungeonMart.Services.Interfaces
 {
     public interface ICharacterClassService
     {
-        IQueryable<CharacterClass> GetClasses();
-        CharacterClass GetClassById(int id);
-        CharacterClass AddClass(CharacterClass characterClass);
-        CharacterClass UpdateClass(int id, CharacterClass characterClass);
+        IQueryable<CharacterClassViewModel> GetClasses();
+        CharacterClassViewModel GetClassById(int id);
+        CharacterClassViewModel AddClass(CharacterClassViewModel characterClass);
+        CharacterClassViewModel UpdateClass(int id, CharacterClassViewModel characterClass);
         void DeleteClass(int id);
         void SeedClass(string seedDataPath);
     }

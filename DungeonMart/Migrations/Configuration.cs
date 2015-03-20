@@ -8,6 +8,7 @@ namespace DungeonMart.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "DungeonMart.Data.DAL.DungeonMartContext";
         }
 
         protected override void Seed(DungeonMartContext context)

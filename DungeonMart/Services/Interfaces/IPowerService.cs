@@ -5,10 +5,10 @@ namespace DungeonMart.Services.Interfaces
 {
     public interface IPowerService
     {
-        IQueryable<Power> GetPowers();
-        Power GetPowerById(int id);
-        Power AddPower(Power power);
-        Power UdpatePower(int id, Power power);
+        IQueryable<PowerViewModel> GetPowers();
+        PowerViewModel GetPowerById(int id);
+        PowerViewModel AddPower(PowerViewModel power);
+        PowerViewModel UdpatePower(int id, PowerViewModel power);
         void DeletePower(int id);
         void SeedPowers(string seedPath);
     }

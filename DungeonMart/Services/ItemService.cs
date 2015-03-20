@@ -18,17 +18,17 @@ namespace DungeonMart.Services
             _itemRepository = itemRepository;
         }
 
-        public IQueryable<Item> GetItems()
+        public IQueryable<ItemViewModel> GetItems()
         {
             return _itemRepository.GetAll().Select(ItemMapper.MapEntityToModel).AsQueryable();
         }
 
-        public Item GetItemById(int id)
+        public ItemViewModel GetItemById(int id)
         {
             return ItemMapper.MapEntityToModel(_itemRepository.GetById(id));
         }
 
-        public Item AddItem(Item item)
+        public ItemViewModel AddItem(ItemViewModel item)
         {
             var newItem = ItemMapper.MapModelToEntity(item);
             newItem.CreatedBy = "TEST";
@@ -37,7 +37,7 @@ namespace DungeonMart.Services
             return ItemMapper.MapEntityToModel(addedItem);
         }
 
-        public Item UpdateItem(int id, Item item)
+        public ItemViewModel UpdateItem(int id, ItemViewModel item)
         {
             var originalItem = _itemRepository.GetById(id);
             ItemMapper.MapModelToEntity(item, originalItem);

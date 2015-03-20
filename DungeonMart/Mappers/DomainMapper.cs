@@ -10,33 +10,33 @@ namespace DungeonMart.Mappers
     {
         static DomainMapper()
         {
-            Mapper.CreateMap<Domain, DomainEntity>();
-            Mapper.CreateMap<DomainEntity, Domain>();
+            Mapper.CreateMap<DomainViewModel, Domain>();
+            Mapper.CreateMap<Domain, DomainViewModel>();
         }
 
-        public static Domain MapEntityToModel(DomainEntity domainEntity)
+        public static DomainViewModel MapEntityToModel(Domain domainEntity)
         {
-            return Mapper.Map<Domain>(domainEntity);
+            return Mapper.Map<DomainViewModel>(domainEntity);
         }
 
-        public static DomainEntity MapModelToEntity(Domain domain)
+        public static Domain MapModelToEntity(DomainViewModel domain)
         {
-            return Mapper.Map<DomainEntity>(domain);
+            return Mapper.Map<Domain>(domain);
         }
 
-        public static void MapModelToEntity(Domain domain, DomainEntity domainEntity)
+        public static void MapModelToEntity(DomainViewModel domain, Domain domainEntity)
         {
             Mapper.Map(domain, domainEntity);
         }
 
-        public static DomainEntity MapSeedToEntity(DomainSeed domainSeed)
+        public static Domain MapSeedToEntity(DomainSeed domainSeed)
         {
-            var entity = new DomainEntity();
+            var entity = new Domain();
             MapSeedToEntity(domainSeed, entity);
             return entity;
         }
 
-        public static void MapSeedToEntity(DomainSeed domainSeed, DomainEntity dbDomain)
+        public static void MapSeedToEntity(DomainSeed domainSeed, Domain dbDomain)
         {
             dbDomain.FullText = HttpUtility.HtmlDecode(domainSeed.full_text);
             dbDomain.GrantedPowers = domainSeed.granted_powers;

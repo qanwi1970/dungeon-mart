@@ -10,33 +10,33 @@ namespace DungeonMart.Mappers
     {
         static CharacterClassMapper()
         {
-            Mapper.CreateMap<CharacterClassEntity, CharacterClass>();
-            Mapper.CreateMap<CharacterClass, CharacterClassEntity>();
+            Mapper.CreateMap<CharacterClass, CharacterClassViewModel>();
+            Mapper.CreateMap<CharacterClassViewModel, CharacterClass>();
         }
 
-        public static CharacterClass MapEntityToModel(CharacterClassEntity entity)
+        public static CharacterClassViewModel MapEntityToModel(CharacterClass entity)
         {
-            return Mapper.Map<CharacterClass>(entity);
+            return Mapper.Map<CharacterClassViewModel>(entity);
         }
 
-        public static CharacterClassEntity MapModelToEntity(CharacterClass characterClass)
+        public static CharacterClass MapModelToEntity(CharacterClassViewModel characterClass)
         {
-            return Mapper.Map<CharacterClassEntity>(characterClass);
+            return Mapper.Map<CharacterClass>(characterClass);
         }
 
-        public static void MapModelToEntity(CharacterClass characterClass, CharacterClassEntity originalCharacterClass)
+        public static void MapModelToEntity(CharacterClassViewModel characterClass, CharacterClass originalCharacterClass)
         {
             Mapper.Map(characterClass, originalCharacterClass);
         }
 
-        public static CharacterClassEntity MapSeedToEntity(ClassSeed classSeed)
+        public static CharacterClass MapSeedToEntity(ClassSeed classSeed)
         {
-            var characterClass = new CharacterClassEntity();
+            var characterClass = new CharacterClass();
             MapSeedToEntity(classSeed, characterClass);
             return characterClass;
         }
 
-        public static void MapSeedToEntity(ClassSeed classSeed, CharacterClassEntity dbClass)
+        public static void MapSeedToEntity(ClassSeed classSeed, CharacterClass dbClass)
         {
             dbClass.Alignment = classSeed.alignment;
             dbClass.ClassSkills = classSeed.class_skills;
