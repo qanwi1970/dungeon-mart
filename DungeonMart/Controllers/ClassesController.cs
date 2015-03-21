@@ -7,6 +7,7 @@ using DungeonMart.Services.Interfaces;
 
 namespace DungeonMart.Controllers
 {
+    [Authorize]
     public class ClassesController : Controller
     {
         private readonly ICharacterClassService _characterClassService;
@@ -21,6 +22,7 @@ namespace DungeonMart.Controllers
             _characterClassService = characterClassService;
         }
 
+        [AllowAnonymous]
         // GET: Classes
         public ActionResult Index()
         {
@@ -28,6 +30,7 @@ namespace DungeonMart.Controllers
             return View(classes);
         }
 
+        [AllowAnonymous]
         // GET: Classes/Details/5
         public ActionResult Details(int id)
         {
@@ -44,6 +47,7 @@ namespace DungeonMart.Controllers
 
         // POST: Classes/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CharacterClassViewModel characterClass)
         {
             try
@@ -67,6 +71,7 @@ namespace DungeonMart.Controllers
 
         // POST: Classes/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CharacterClassViewModel characterClass)
         {
             try
@@ -90,6 +95,7 @@ namespace DungeonMart.Controllers
 
         // POST: Classes/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, CharacterClassViewModel characterClass)
         {
             try
