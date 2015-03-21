@@ -2,18 +2,25 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
     /// <summary>
     /// Endpoint for cleric domains
     /// </summary>
-    [RoutePrefix("api/v2/domain")]
+    [RoutePrefix("api/v3.5/domain")]
     public class DomainController : ApiController
     {
         private readonly IDomainService _domainService;
+
+        public DomainController() : this(new DomainService(new DomainRepository(new DungeonMartContext())))
+        {
+        }
 
         public DomainController(IDomainService domainService)
         {

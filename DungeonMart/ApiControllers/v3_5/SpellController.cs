@@ -2,15 +2,22 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
-    [RoutePrefix("api/v2/spell")]
+    [RoutePrefix("api/v3.5/spell")]
     public class SpellController : ApiController
     {
         private readonly ISpellService _spellService;
+
+        public SpellController() : this(new SpellService(new SpellRepository(new DungeonMartContext())))
+        {
+        }
 
         public SpellController(ISpellService spellService)
         {

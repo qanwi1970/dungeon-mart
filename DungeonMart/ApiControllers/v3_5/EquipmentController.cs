@@ -2,18 +2,25 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
     /// <summary>
     /// REST service endpoint for Equipment
     /// </summary>
-    [RoutePrefix("api/v2/equipment")]
+    [RoutePrefix("api/v3.5/equipment")]
     public class EquipmentController : ApiController
     {
         private readonly IEquipmentService _equipmentService;
+
+        public EquipmentController() : this(new EquipmentService(new EquipmentRepository(new DungeonMartContext())))
+        {
+        }
 
         public EquipmentController(IEquipmentService equipmentService)
         {

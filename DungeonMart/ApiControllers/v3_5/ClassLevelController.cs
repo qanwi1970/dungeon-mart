@@ -2,23 +2,27 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
     /// <summary>
     /// Provides character class level progression tables
     /// </summary>
-    [RoutePrefix("api/v2/classlevel")]
+    [RoutePrefix("api/v3.5/classlevel")]
     public class ClassLevelController : ApiController
     {
         private readonly IClassLevelService _classLevelService;
 
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="classLevelService"></param>
+        public ClassLevelController()
+            : this(new ClassLevelService(new ClassProgressionRepository(new DungeonMartContext())))
+        {
+        }
+
         public ClassLevelController(IClassLevelService classLevelService)
         {
             _classLevelService = classLevelService;

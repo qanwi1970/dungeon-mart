@@ -1,24 +1,27 @@
-﻿using System.Web;
-using DungeonMart.Services.Interfaces;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
+using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
     /// <summary>
     /// REST service for Feats
     /// </summary>
-    [RoutePrefix("api/v2/feat")]
+    [RoutePrefix("api/v3.5/feat")]
     public class FeatController : ApiController
     {
         private readonly IFeatService _featService;
 
-        /// <summary>
-        /// Ok, it's a constructor
-        /// </summary>
-        /// <param name="featService">An implementation of IFeatService</param>
+        public FeatController() : this(new FeatService(new FeatRepository(new DungeonMartContext())))
+        {
+        }
+
         public FeatController(IFeatService featService)
         {
             _featService = featService;

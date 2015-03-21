@@ -2,23 +2,26 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
     /// <summary>
     /// REST service for Monsters
     /// </summary>
-    [RoutePrefix("api/v2/monster")]
+    [RoutePrefix("api/v3.5/monster")]
     public class MonsterController : ApiController
     {
         private readonly IMonsterService _monsterService;
 
-        /// <summary>
-        /// Constructor for injecting services
-        /// </summary>
-        /// <param name="monsterService"></param>
+        public MonsterController() : this(new MonsterService(new MonsterRepository(new DungeonMartContext())))
+        {
+        }
+
         public MonsterController(IMonsterService monsterService)
         {
             _monsterService = monsterService;

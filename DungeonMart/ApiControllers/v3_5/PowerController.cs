@@ -2,18 +2,25 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
     /// <summary>
     /// REST service for Powers
     /// </summary>
-    [RoutePrefix("api/v2/power")]
+    [RoutePrefix("api/v3.5/power")]
     public class PowerController : ApiController
     {
         private readonly IPowerService _powerService;
+
+        public PowerController() : this(new PowerService(new PowerRepository(new DungeonMartContext())))
+        {
+        }
 
         public PowerController(IPowerService powerService)
         {

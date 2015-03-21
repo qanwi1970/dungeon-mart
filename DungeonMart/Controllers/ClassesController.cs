@@ -1,5 +1,8 @@
 ﻿using System.Web.Mvc;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
 namespace DungeonMart.Controllers
@@ -7,6 +10,11 @@ namespace DungeonMart.Controllers
     public class ClassesController : Controller
     {
         private readonly ICharacterClassService _characterClassService;
+
+        public ClassesController()
+            : this(new CharacterClassService(new CharacterClassRepository(new DungeonMartContext())))
+        {
+        }
 
         public ClassesController(ICharacterClassService characterClassService)
         {

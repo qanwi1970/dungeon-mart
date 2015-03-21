@@ -2,18 +2,25 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DungeonMart.Data.DAL;
+using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
+using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
 
-namespace DungeonMart.ApiControllers.v2
+namespace DungeonMart.ApiControllers.v3_5
 {
     /// <summary>
     /// REST service for skills
     /// </summary>
-    [RoutePrefix("api/v2/skill")]
+    [RoutePrefix("api/v3.5/skill")]
     public class SkillController : ApiController
     {
         private readonly ISkillService _skillService;
+
+        public SkillController() : this(new SkillService(new SkillRepository(new DungeonMartContext())))
+        {
+        }
 
         public SkillController(ISkillService skillService)
         {
