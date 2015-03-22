@@ -8,6 +8,28 @@
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
     <h4>Change your account settings</h4>
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.FirstName)
+            </div>
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.LastName)
+            </div>
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.LastName)
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Change Settings" class="btn btn-default"/>
+        </div>
+    }
     <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
