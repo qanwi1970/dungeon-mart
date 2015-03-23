@@ -60,18 +60,45 @@ namespace DungeonMart.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.UpdateSuccess ? "Your account informaiton was updated."
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var user = await UserManager.FindByIdAsync(userId);
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                City = user.City,
+                State = user.State,
+                Country = user.Country
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Index(IndexViewModel indexViewModel)
+        {
+            var userId = User.Identity.GetUserId();
+            var user = await UserManager.FindByIdAsync(userId);
+            user.FirstName = indexViewModel.FirstName;
+            user.LastName = indexViewModel.LastName;
+            user.City = indexViewModel.City;
+            user.State = indexViewModel.State;
+            user.Country = indexViewModel.Country;
+
+            var updateResult = await UserManager.UpdateAsync(user);
+            if (updateResult == IdentityResult.Success)
+            {
+                return RedirectToAction("Index", new { Message = ManageMessageId.UpdateSuccess });
+            }
+
+            return RedirectToAction("Index", new { Message = ManageMessageId.Error });
         }
 
         //
@@ -378,7 +405,8 @@ namespace DungeonMart.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
+            UpdateSuccess
         }
 
 #endregion
