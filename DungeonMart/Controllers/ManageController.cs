@@ -60,7 +60,7 @@ namespace DungeonMart.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
-                : message == ManageMessageId.UpdateSuccess ? "Your account informaiton was updated."
+                : message == ManageMessageId.UpdateSuccess ? "Your account information was updated."
                 : "";
 
             var userId = User.Identity.GetUserId();
