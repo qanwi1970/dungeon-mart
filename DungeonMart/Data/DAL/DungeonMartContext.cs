@@ -27,6 +27,8 @@ namespace DungeonMart.Data.DAL
 
         public DbSet<Spell> Spells { get; set; }
 
+        public DbSet<Alignment> Alignments { get; set; }
+
         public DungeonMartContext()
             : base("name=DungeonMartContext")
         {
