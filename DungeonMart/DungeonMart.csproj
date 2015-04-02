@@ -296,6 +296,7 @@
     <Compile Include="Models\SkillViewModel.cs" />
     <Compile Include="Models\SpellViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Helpers\AbilityHelper.cs" />
     <Compile Include="Services\CharacterClassService.cs" />
     <Compile Include="Services\ClassLevelService.cs" />
     <Compile Include="Services\DomainService.cs" />
