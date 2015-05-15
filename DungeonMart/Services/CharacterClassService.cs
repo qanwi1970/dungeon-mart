@@ -28,10 +28,10 @@ namespace DungeonMart.Services
             return CharacterClassMapper.MapEntityToModel(_characterClassRepository.GetById(id));
         }
 
-        public CharacterClassViewModel AddClass(CharacterClassViewModel characterClass)
+        public CharacterClassViewModel AddClass(CharacterClassViewModel characterClass, string userId)
         {
             var characterClassToAdd = CharacterClassMapper.MapModelToEntity(characterClass);
-            characterClassToAdd.CreatedBy = "TEST";
+            characterClassToAdd.CreatedBy = userId;
             characterClassToAdd.SeedData = false;
             var addedCharacterClass = _characterClassRepository.Add(characterClassToAdd);
             return CharacterClassMapper.MapEntityToModel(addedCharacterClass);

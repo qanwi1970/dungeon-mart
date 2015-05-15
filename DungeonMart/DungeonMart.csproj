@@ -214,6 +214,7 @@
     <Compile Include="Data\Interfaces\ISkillRepository.cs" />
     <Compile Include="Data\Interfaces\ISpellRepository.cs" />
     <Compile Include="Data\Models\Alignment.cs" />
+    <Compile Include="Data\Models\Character.cs" />
     <Compile Include="Data\Models\CharacterClass.cs" />
     <Compile Include="Data\Models\ClassProgression.cs" />
     <Compile Include="Data\Models\Domain.cs" />

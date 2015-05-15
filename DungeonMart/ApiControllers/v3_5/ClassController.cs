@@ -62,7 +62,7 @@ namespace DungeonMart.ApiControllers.v3_5
         [ResponseType(typeof(CharacterClassViewModel))]
         public async Task<IHttpActionResult> Post([FromBody]CharacterClassViewModel characterClass)
         {
-            var newCharacterClass = await Task.Run(() => _characterClassService.AddClass(characterClass));
+            var newCharacterClass = await Task.Run(() => _characterClassService.AddClass(characterClass, "TEST"));
             return CreatedAtRoute("GetClassById", new {id = newCharacterClass.Id}, newCharacterClass);
         }
 

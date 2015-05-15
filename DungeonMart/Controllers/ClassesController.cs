@@ -1,9 +1,11 @@
 ﻿using System.Web.Mvc;
 using DungeonMart.Data.DAL;
+using DungeonMart.Data.Models;
 using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
 using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
+using Microsoft.AspNet.Identity;
 
 namespace DungeonMart.Controllers
 {
@@ -52,7 +54,7 @@ namespace DungeonMart.Controllers
         {
             try
             {
-                _characterClassService.AddClass(characterClass);
+                _characterClassService.AddClass(characterClass, User.Identity.GetUserId());
 
                 return RedirectToAction("Index");
             }
