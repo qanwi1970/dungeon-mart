@@ -45,7 +45,7 @@ namespace DungeonMart.ApiControllers.v3_5
 			timer.Start("Getting classes");
             var classes = await Task.Run(() => _characterClassService.GetClasses(timer.StartChildMetric("Service")));
 			timer.Stop();
-			_logger.Debug(timer.GetDefaultReport());
+			_logger.Debug(timer.ReportAsDefault());
             return Ok(classes);
         }
 

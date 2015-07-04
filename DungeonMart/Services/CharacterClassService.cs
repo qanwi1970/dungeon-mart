@@ -28,7 +28,7 @@ namespace DungeonMart.Services
         {
 	        var metricInfo = new HiPerfMetric("CharacterClassService.GetClasses");
 	        var classes = GetClasses(metricInfo);
-			_logger.Debug(metricInfo.GetDefaultReport());
+			_logger.Debug(metricInfo.ReportAsDefault());
 	        return classes;
         }
 
