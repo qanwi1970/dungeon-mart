@@ -7,6 +7,9 @@ using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
 using DungeonMart.Services;
 using DungeonMart.Services.Interfaces;
+using HiPerfMetrics;
+using HiPerfMetrics.Reports;
+using log4net;
 
 namespace DungeonMart.ApiControllers.v3_5
 {
@@ -16,6 +19,7 @@ namespace DungeonMart.ApiControllers.v3_5
     [RoutePrefix("api/v3.5/class")]
     public class ClassController : ApiController
     {
+	    private static readonly ILog _logger = LogManager.GetLogger(typeof (ClassController));
         private readonly ICharacterClassService _characterClassService;
 
         public ClassController(ICharacterClassService characterClassService)
@@ -37,7 +41,11 @@ namespace DungeonMart.ApiControllers.v3_5
         [ResponseType(typeof(CharacterClassViewModel))]
         public async Task<IHttpActionResult> Get()
         {
-            var classes = await Task.Run(() => _characterClassService.GetClasses());
+	        var timer = new HiPerfMetric("Get all classes");
+			timer.Start("Getting classes");
+            var classes = await Task.Run(() => _characterClassService.GetClasses(timer.StartChildMetric("Service")));
+			timer.Stop();
+			_logger.Debug(timer.GetDefaultReport());
             return Ok(classes);
         }
 

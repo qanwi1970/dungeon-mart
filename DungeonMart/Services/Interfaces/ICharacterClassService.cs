@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using DungeonMart.Models;
+using HiPerfMetrics;
+using HiPerfMetrics.Info;
 
 namespace DungeonMart.Services.Interfaces
 {
@@ -11,5 +13,6 @@ namespace DungeonMart.Services.Interfaces
         CharacterClassViewModel UpdateClass(int id, CharacterClassViewModel characterClass);
         void DeleteClass(int id);
         void SeedClass(string seedDataPath);
+		IQueryable<CharacterClassViewModel> GetClasses(IStartStop startChildMetric);
     }
 }
