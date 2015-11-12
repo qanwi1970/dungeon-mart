@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EC8795
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.Characters.API", "DungeonMart.Characters.API\DungeonMart.Characters.API.csproj", "{66DF67DA-3EBE-4C11-8D50-D9E604AFCD9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonMart.Web", "DungeonMart.Web\DungeonMart.Web.csproj", "{950BFBBB-2333-4E18-91BA-F8E01E61C4BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,14 @@ Global
 		{258B4B32-9471-457D-B21A-F73FAE9BE846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258B4B32-9471-457D-B21A-F73FAE9BE846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{258B4B32-9471-457D-B21A-F73FAE9BE846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66DF67DA-3EBE-4C11-8D50-D9E604AFCD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66DF67DA-3EBE-4C11-8D50-D9E604AFCD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66DF67DA-3EBE-4C11-8D50-D9E604AFCD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66DF67DA-3EBE-4C11-8D50-D9E604AFCD9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950BFBBB-2333-4E18-91BA-F8E01E61C4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950BFBBB-2333-4E18-91BA-F8E01E61C4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950BFBBB-2333-4E18-91BA-F8E01E61C4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950BFBBB-2333-4E18-91BA-F8E01E61C4BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

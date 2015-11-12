@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using DungeonMart.Data.DAL;
-using DungeonMart.Data.Models;
 using DungeonMart.Data.Repositories;
 using DungeonMart.Models;
 using DungeonMart.Services;
