@@ -2,7 +2,7 @@
 app.factory('authService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
 
 	//TODO: Move this to a configuration setting
-	var serviceBase = 'http://dmartcharacterapi.azurewebsites.net/';
+	var serviceBase = 'http://localhost:6621/';
 	var authServiceFactory = {};
 
 	var _authentication = {

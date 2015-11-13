@@ -2,7 +2,7 @@
 app.factory('charactersService', ['$http', function ($http) {
 
 	//TODO: make this a config item
-	var serviceBase = 'http://dmartcharacterapi.azurewebsites.net/';
+	var serviceBase = 'http://localhost:6621/';
 	var charactersServiceFactory = {};
 
 	var _getcharacters = function () {
