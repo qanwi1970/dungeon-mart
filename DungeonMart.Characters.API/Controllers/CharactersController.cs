@@ -28,7 +28,14 @@ namespace DungeonMart.Characters.API.Controllers
             if (ObjectId.TryParse(id, out characterId))
             {
                 var character = await repo.GetCharacter(characterId);
-                return Ok(character);
+                if (character != null)
+                {
+                    return Ok(character);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
 
             return BadRequest("The character id is not of the proper format.");
