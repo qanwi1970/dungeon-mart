@@ -12,7 +12,7 @@ namespace DungeonMart.Characters.API.Controllers
     {
         private readonly ICharacterRepository repo;
 
-        // this controller goes away when we introduce DI
+        // this constructor goes away when we introduce DI
         public CharactersController() : this(new CharacterRepository())
         {
         }
