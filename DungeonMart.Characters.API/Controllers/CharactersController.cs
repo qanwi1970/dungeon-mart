@@ -1,17 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using DungeonMart.Characters.API.Models;
-using DungeonMart.Characters.API.Repositories;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using DungeonMart.Characters.API.Repositories.Interfaces;
+using DungeonMart.Characters.API.Repositories;
 
 namespace DungeonMart.Characters.API.Controllers
 {
 	[RoutePrefix("api/characters")]
     public class CharactersController : ApiController
     {
-        CharacterRepository repo = new CharacterRepository();
+        private readonly ICharacterRepository repo;
+
+        // this controller goes away when we introduce DI
+        public CharactersController() : this(new CharacterRepository())
+        {
+        }
+
+        public CharactersController(ICharacterRepository characterRepository)
+        {
+            repo = characterRepository;
+        }
 
 		[Route("")]
 		public async Task<IHttpActionResult> Get()
@@ -56,6 +65,35 @@ namespace DungeonMart.Characters.API.Controllers
             addedCharacter.TryGetValue("_id", out characterId);
 
             return CreatedAtRoute("GetById", new { id = characterId.AsObjectId }, addedCharacter);
+        }
+
+        [Route("{id}")]
+        public async Task<IHttpActionResult> Put(string id, BaseCharacterViewModel character)
+        {
+            var bsonCharacter = new BsonDocument
+            {
+                { "_id", character.CharacterID },
+                { "characterName", character.CharacterName },
+                { "isShared", character.IsShared },
+                { "system", character.System.ToString() }
+            };
+
+            await repo.UpdateCharacter(bsonCharacter);
+
+            return Ok();
+        }
+
+        [Route("{id}")]
+        public async Task<IHttpActionResult> Delete(string id)
+        {
+            ObjectId characterId;
+            if (!ObjectId.TryParse(id, out characterId))
+            {
+                return BadRequest("The character id is not of the proper format.");
+            }
+            
+            await repo.DeleteCharacter(characterId);
+            return Ok();
         }
     }
 }
