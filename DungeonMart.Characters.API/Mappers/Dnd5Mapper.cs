@@ -17,5 +17,17 @@ namespace DungeonMart.Characters.API.Mappers
 
             return newModel;
         }
+
+        public BsonDocument MapViewModelToDocument(BaseCharacterViewModel character)
+        {
+            var bsonCharacter = new BsonDocument
+            {
+                { "characterName", character.CharacterName },
+                { "isShared", character.IsShared },
+                { "system", character.System.ToString() }
+            };
+
+            return bsonCharacter;
+        }
     }
 }

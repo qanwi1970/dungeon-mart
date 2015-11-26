@@ -6,5 +6,6 @@ namespace DungeonMart.Characters.API.Mappers
     public interface ICharacterMapper
     {
         BaseCharacterViewModel MapDocumentToViewModel(BsonDocument character);
+        BsonDocument MapViewModelToDocument(BaseCharacterViewModel character);
     }
 }

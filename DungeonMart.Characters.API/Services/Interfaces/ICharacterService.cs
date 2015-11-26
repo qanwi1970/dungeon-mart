@@ -8,5 +8,6 @@ namespace DungeonMart.Characters.API.Services.Interfaces
     {
         Task<List<BaseCharacterViewModel>> GetCharacters();
         Task<BaseCharacterViewModel> GetCharacterById(string id);
+        Task<BaseCharacterViewModel> AddCharacter(BaseCharacterViewModel character);
     }
 }

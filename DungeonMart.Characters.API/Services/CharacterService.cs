@@ -30,9 +30,7 @@ namespace DungeonMart.Characters.API.Services
             var bsonCharacters = await _characterRepository.GetCharacters();
             foreach (var character in bsonCharacters)
             {
-                var gameSystemString = character.GetValue("system").AsString;
-                var gameSystem = (GameSystem) Enum.Parse(typeof(GameSystem), gameSystemString);
-                var mapper = _characterMapperProvider.GetCharacterMapper(gameSystem);
+                var mapper = _characterMapperProvider.GetCharacterMapper(character);
                 returnList.Add(mapper.MapDocumentToViewModel(character));
             }
 
@@ -53,10 +51,19 @@ namespace DungeonMart.Characters.API.Services
                 return null;
             }
 
-            var gameSystemString = character.GetValue("system").AsString;
-            var gameSystem = (GameSystem)Enum.Parse(typeof(GameSystem), gameSystemString);
-            var mapper = _characterMapperProvider.GetCharacterMapper(gameSystem);
+            var mapper = _characterMapperProvider.GetCharacterMapper(character);
             return mapper.MapDocumentToViewModel(character);
+        }
+
+        public async Task<BaseCharacterViewModel> AddCharacter(BaseCharacterViewModel character)
+        {
+            var mapper = _characterMapperProvider.GetCharacterMapper(character);
+
+            var bsonCharacter = mapper.MapViewModelToDocument(character);
+
+            var addedCharacter = await _characterRepository.AddCharacter(bsonCharacter);
+
+            return mapper.MapDocumentToViewModel(addedCharacter);
         }
     }
 }

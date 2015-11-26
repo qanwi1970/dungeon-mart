@@ -59,18 +59,9 @@ namespace DungeonMart.Characters.API.Controllers
 		[Route("")]
         public async Task<IHttpActionResult> Post(BaseCharacterViewModel character)
         {
-            var bsonCharacter = new BsonDocument
-            {
-                { "characterName", character.CharacterName },
-                { "isShared", character.IsShared },
-                { "system", character.System.ToString() }
-            };
+		    var addedCharacter = await _characterService.AddCharacter(character);
 
-            var addedCharacter = await repo.AddCharacter(bsonCharacter);
-            BsonValue characterId;
-            addedCharacter.TryGetValue("_id", out characterId);
-
-            return CreatedAtRoute("GetById", new { id = characterId.AsObjectId }, addedCharacter);
+            return CreatedAtRoute("GetById", new { id = addedCharacter.CharacterID }, addedCharacter);
         }
 
         [Route("{id}")]
