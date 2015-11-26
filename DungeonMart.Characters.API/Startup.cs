@@ -3,6 +3,7 @@ using DungeonMart.Characters.API.Providers;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Converters;
 using Owin;
 using System;
 using System.Web.Http;
@@ -21,6 +22,8 @@ namespace AngularJSAuthentication.API
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
+
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
         }
 
         public void ConfigureOAuth(IAppBuilder app)
