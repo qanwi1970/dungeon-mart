@@ -1,15 +1,15 @@
-﻿using DungeonMart.Characters.API;
+﻿using System;
+using System.Web.Http;
+using DungeonMart.Characters.API;
 using DungeonMart.Characters.API.Providers;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Converters;
 using Owin;
-using System;
-using System.Web.Http;
 
-[assembly: OwinStartup(typeof(AngularJSAuthentication.API.Startup))]
-namespace AngularJSAuthentication.API
+[assembly: OwinStartup(typeof(Startup))]
+namespace DungeonMart.Characters.API
 {
     public class Startup
     {

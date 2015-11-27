@@ -10,15 +10,13 @@ namespace DungeonMart.Characters.API.Repositories
 {
     public class CharacterRepository : ICharacterRepository
     {
-        protected static IMongoClient _client;
-        protected static IMongoDatabase _database;
-        protected static IMongoCollection<BsonDocument> _collection;
+        private static IMongoCollection<BsonDocument> _collection;
 
         public CharacterRepository()
         {
-            _client = new MongoClient();
-            _database = _client.GetDatabase("test");
-            _collection = _database.GetCollection<BsonDocument>("characters");
+            IMongoClient client = new MongoClient();
+            var database = client.GetDatabase("test");
+            _collection = database.GetCollection<BsonDocument>("characters");
         }
 
         public async Task<List<BsonDocument>> GetCharacters()

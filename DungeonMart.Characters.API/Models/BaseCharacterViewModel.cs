@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace DungeonMart.Characters.API.Models
+﻿namespace DungeonMart.Characters.API.Models
 {
 	public class BaseCharacterViewModel
 	{
