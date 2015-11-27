@@ -27,6 +27,12 @@ namespace DungeonMart.Characters.API.Mappers
                 { "system", character.System.ToString() }
             };
 
+            if (character.CharacterID != null)
+            {
+                var objectId = ObjectId.Parse(character.CharacterID);
+                bsonCharacter.Add(new BsonElement("_id", objectId));
+            }
+
             return bsonCharacter;
         }
     }

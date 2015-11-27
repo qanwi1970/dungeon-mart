@@ -77,7 +77,7 @@ namespace DungeonMart.Characters.API.Repositories
             {
                 throw new ArgumentException("Document does not contain an _id.");
             }
-            if (character.BsonType == BsonType.ObjectId)
+            if (characterId.BsonType == BsonType.ObjectId)
             {
                 return characterId.AsObjectId;
             }

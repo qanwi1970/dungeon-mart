@@ -65,5 +65,26 @@ namespace DungeonMart.Characters.API.Services
 
             return mapper.MapDocumentToViewModel(addedCharacter);
         }
+
+        public async Task UpdateCharacter(string id, BaseCharacterViewModel character)
+        {
+            var mapper = _characterMapperProvider.GetCharacterMapper(character);
+
+            character.CharacterID = id;
+            var bsonCharacter = mapper.MapViewModelToDocument(character);
+
+            await _characterRepository.UpdateCharacter(bsonCharacter);
+        }
+
+        public async Task DeleteCharacter(string id)
+        {
+            ObjectId characterId;
+            if (!ObjectId.TryParse(id, out characterId))
+            {
+                throw new ArgumentException("The character id is not of the proper format.");
+            }
+
+            await _characterRepository.DeleteCharacter(characterId);
+        }
     }
 }

@@ -67,15 +67,7 @@ namespace DungeonMart.Characters.API.Controllers
         [Route("{id}")]
         public async Task<IHttpActionResult> Put(string id, BaseCharacterViewModel character)
         {
-            var bsonCharacter = new BsonDocument
-            {
-                { "_id", character.CharacterID },
-                { "characterName", character.CharacterName },
-                { "isShared", character.IsShared },
-                { "system", character.System.ToString() }
-            };
-
-            await repo.UpdateCharacter(bsonCharacter);
+            await _characterService.UpdateCharacter(id, character);
 
             return Ok();
         }
@@ -83,13 +75,8 @@ namespace DungeonMart.Characters.API.Controllers
         [Route("{id}")]
         public async Task<IHttpActionResult> Delete(string id)
         {
-            ObjectId characterId;
-            if (!ObjectId.TryParse(id, out characterId))
-            {
-                return BadRequest("The character id is not of the proper format.");
-            }
-            
-            await repo.DeleteCharacter(characterId);
+            await _characterService.DeleteCharacter(id);
+
             return Ok();
         }
     }
