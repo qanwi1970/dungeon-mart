@@ -6,7 +6,7 @@ namespace DungeonMart.Characters.API.Repositories.Interfaces
 {
     public interface ICharacterRepository
     {
-        Task<List<BsonDocument>> GetCharacters();
+        Task<List<BsonDocument>> GetCharacters(string user);
         Task<BsonDocument> GetCharacter(ObjectId objectId);
         Task<BsonDocument> AddCharacter(BsonDocument character);
         Task<BsonDocument> UpdateCharacter(BsonDocument character);

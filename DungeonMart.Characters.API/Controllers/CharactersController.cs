@@ -4,6 +4,7 @@ using DungeonMart.Characters.API.Models;
 using System.Threading.Tasks;
 using DungeonMart.Characters.API.Services.Interfaces;
 using DungeonMart.Characters.API.Services;
+using Microsoft.AspNet.Identity;
 
 namespace DungeonMart.Characters.API.Controllers
 {
@@ -25,8 +26,9 @@ namespace DungeonMart.Characters.API.Controllers
         [Authorize]
 		[Route("")]
 		public async Task<IHttpActionResult> Get()
-		{
-			var characters = await _characterService.GetCharacters();
+        {
+            var user = User.Identity.Name;
+			var characters = await _characterService.GetCharacters(user);
 
 			return Ok(characters);
 		}
@@ -57,7 +59,7 @@ namespace DungeonMart.Characters.API.Controllers
 		[Route("")]
         public async Task<IHttpActionResult> Post(BaseCharacterViewModel character)
         {
-		    var addedCharacter = await _characterService.AddCharacter(character);
+		    var addedCharacter = await _characterService.AddCharacter(character, User.Identity.Name);
 
             return CreatedAtRoute("GetById", new { id = addedCharacter.CharacterID }, addedCharacter);
         }
@@ -66,7 +68,7 @@ namespace DungeonMart.Characters.API.Controllers
         [Route("{id}")]
         public async Task<IHttpActionResult> Put(string id, BaseCharacterViewModel character)
         {
-            await _characterService.UpdateCharacter(id, character);
+            await _characterService.UpdateCharacter(id, character, User.Identity.Name);
 
             return Ok();
         }

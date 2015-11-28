@@ -19,9 +19,10 @@ namespace DungeonMart.Characters.API.Repositories
             _collection = database.GetCollection<BsonDocument>("characters");
         }
 
-        public async Task<List<BsonDocument>> GetCharacters()
+        public async Task<List<BsonDocument>> GetCharacters(string user)
         {
-			return await _collection.Find(new BsonDocument()).ToListAsync();
+            var filter = Builders<BsonDocument>.Filter.Eq("owner", user);
+			return await _collection.Find(filter).ToListAsync();
         }
 
         public async Task<BsonDocument> GetCharacter(ObjectId objectId)

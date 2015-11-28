@@ -27,6 +27,7 @@ namespace DungeonMart.Characters.API.Repositories
             };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);
+            await _userManager.AddToRoleAsync(user.Id, "Player");
 
             return result;
         }

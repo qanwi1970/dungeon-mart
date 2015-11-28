@@ -23,11 +23,11 @@ namespace DungeonMart.Characters.API.Services
             _characterMapperProvider = characterMapperProvider;
         }
 
-        public async Task<List<BaseCharacterViewModel>> GetCharacters()
+        public async Task<List<BaseCharacterViewModel>> GetCharacters(string user)
         {
             var returnList = new List<BaseCharacterViewModel>();
 
-            var bsonCharacters = await _characterRepository.GetCharacters();
+            var bsonCharacters = await _characterRepository.GetCharacters(user);
             foreach (var character in bsonCharacters)
             {
                 var mapper = _characterMapperProvider.GetCharacterMapper(character);
@@ -55,23 +55,25 @@ namespace DungeonMart.Characters.API.Services
             return mapper.MapDocumentToViewModel(character);
         }
 
-        public async Task<BaseCharacterViewModel> AddCharacter(BaseCharacterViewModel character)
+        public async Task<BaseCharacterViewModel> AddCharacter(BaseCharacterViewModel character, string userName)
         {
             var mapper = _characterMapperProvider.GetCharacterMapper(character);
 
             var bsonCharacter = mapper.MapViewModelToDocument(character);
+            bsonCharacter.Add(new BsonElement("owner", userName));
 
             var addedCharacter = await _characterRepository.AddCharacter(bsonCharacter);
 
             return mapper.MapDocumentToViewModel(addedCharacter);
         }
 
-        public async Task UpdateCharacter(string id, BaseCharacterViewModel character)
+        public async Task UpdateCharacter(string id, BaseCharacterViewModel character, string userName)
         {
             var mapper = _characterMapperProvider.GetCharacterMapper(character);
 
             character.CharacterID = id;
             var bsonCharacter = mapper.MapViewModelToDocument(character);
+            bsonCharacter.Add(new BsonElement("owner", userName));
 
             await _characterRepository.UpdateCharacter(bsonCharacter);
         }
