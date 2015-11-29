@@ -40,7 +40,7 @@ namespace DungeonMart.Characters.API.Controllers
             BaseCharacterViewModel character;
             try
             {
-                character = await _characterService.GetCharacterById(id);
+                character = await _characterService.GetCharacterById(id, User.Identity.Name);
             }
             catch (ArgumentException ex)
             {
@@ -77,7 +77,7 @@ namespace DungeonMart.Characters.API.Controllers
         [Route("{id}")]
         public async Task<IHttpActionResult> Delete(string id)
         {
-            await _characterService.DeleteCharacter(id);
+            await _characterService.DeleteCharacter(id, User.Identity.Name);
 
             return Ok();
         }

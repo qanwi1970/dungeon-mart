@@ -7,9 +7,9 @@ namespace DungeonMart.Characters.API.Services.Interfaces
     public interface ICharacterService
     {
         Task<List<BaseCharacterViewModel>> GetCharacters(string user);
-        Task<BaseCharacterViewModel> GetCharacterById(string id);
+        Task<BaseCharacterViewModel> GetCharacterById(string id, string userName);
         Task<BaseCharacterViewModel> AddCharacter(BaseCharacterViewModel character, string userName);
         Task UpdateCharacter(string id, BaseCharacterViewModel character, string userName);
-        Task DeleteCharacter(string id);
+        Task DeleteCharacter(string id, string userName);
     }
 }

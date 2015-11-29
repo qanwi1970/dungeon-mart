@@ -37,7 +37,7 @@ namespace DungeonMart.Characters.API.Services
             return returnList;
         }
 
-        public async Task<BaseCharacterViewModel> GetCharacterById(string id)
+        public async Task<BaseCharacterViewModel> GetCharacterById(string id, string userName)
         {
             ObjectId characterId;
             if (!ObjectId.TryParse(id, out characterId))
@@ -45,7 +45,7 @@ namespace DungeonMart.Characters.API.Services
                 throw new ArgumentException("Character Id invalid");
             }
 
-            var character = await _characterRepository.GetCharacter(characterId);
+            var character = await _characterRepository.GetCharacter(characterId, userName);
             if (character == null)
             {
                 return null;
@@ -78,7 +78,7 @@ namespace DungeonMart.Characters.API.Services
             await _characterRepository.UpdateCharacter(bsonCharacter);
         }
 
-        public async Task DeleteCharacter(string id)
+        public async Task DeleteCharacter(string id, string userName)
         {
             ObjectId characterId;
             if (!ObjectId.TryParse(id, out characterId))
@@ -86,7 +86,7 @@ namespace DungeonMart.Characters.API.Services
                 throw new ArgumentException("The character id is not of the proper format.");
             }
 
-            await _characterRepository.DeleteCharacter(characterId);
+            await _characterRepository.DeleteCharacter(characterId, userName);
         }
     }
 }
