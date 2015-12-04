@@ -39,10 +39,11 @@ namespace DungeonMart.Characters.API.Repositories
             return character;
         }
 
-        public async Task<BsonDocument> UpdateCharacter(BsonDocument character)
+        public async Task<BsonDocument> UpdateCharacter(BsonDocument character, string userName)
         {
             var characterObjectId = extractCharacterObjectId(character);
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", characterObjectId);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", characterObjectId) &
+                         Builders<BsonDocument>.Filter.Eq("owner", userName);
 
             // Now that we have the id in the proper format, we can delete it.
             // This is easier than converting it. If we leave it a BsonValue, Mongo will throw an error

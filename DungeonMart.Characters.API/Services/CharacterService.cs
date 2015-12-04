@@ -75,7 +75,7 @@ namespace DungeonMart.Characters.API.Services
             var bsonCharacter = mapper.MapViewModelToDocument(character);
             bsonCharacter.Add(new BsonElement("owner", userName));
 
-            await _characterRepository.UpdateCharacter(bsonCharacter);
+            await _characterRepository.UpdateCharacter(bsonCharacter, userName);
         }
 
         public async Task DeleteCharacter(string id, string userName)
