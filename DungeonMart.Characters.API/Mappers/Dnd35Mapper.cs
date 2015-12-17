@@ -1,13 +1,14 @@
-﻿using DungeonMart.Characters.API.Models;
+﻿using DungeonMart.Characters.API.Mappers.Interfaces;
+using DungeonMart.Characters.API.Models;
 using MongoDB.Bson;
 
 namespace DungeonMart.Characters.API.Mappers
 {
-    public class Dnd35Mapper : ICharacterMapper
+    public class Dnd35Mapper : IDnd35Mapper
     {
-        public BaseCharacterViewModel MapDocumentToViewModel(BsonDocument character)
+        public Dnd35CharacterViewModel MapDocumentToViewModel(BsonDocument character)
         {
-            var newModel = new BaseCharacterViewModel
+            var newModel = new Dnd35CharacterViewModel
             {
                 System = GameSystem.Dnd35,
                 CharacterID = character.GetValue("_id").AsObjectId.ToString(),
@@ -18,7 +19,7 @@ namespace DungeonMart.Characters.API.Mappers
             return newModel;
         }
 
-        public BsonDocument MapViewModelToDocument(BaseCharacterViewModel character)
+        public BsonDocument MapViewModelToDocument(Dnd35CharacterViewModel character)
         {
             var bsonCharacter = new BsonDocument
             {

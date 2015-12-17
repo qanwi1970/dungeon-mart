@@ -56,24 +56,6 @@ namespace DungeonMart.Characters.API.Controllers
         }
 
         [Authorize]
-		[Route("")]
-        public async Task<IHttpActionResult> Post(BaseCharacterViewModel character)
-        {
-		    var addedCharacter = await _characterService.AddCharacter(character, User.Identity.Name);
-
-            return CreatedAtRoute("GetById", new { id = addedCharacter.CharacterID }, addedCharacter);
-        }
-        
-        [Authorize]
-        [Route("{id}")]
-        public async Task<IHttpActionResult> Put(string id, BaseCharacterViewModel character)
-        {
-            await _characterService.UpdateCharacter(id, character, User.Identity.Name);
-
-            return Ok();
-        }
-
-        [Authorize]
         [Route("{id}")]
         public async Task<IHttpActionResult> Delete(string id)
         {

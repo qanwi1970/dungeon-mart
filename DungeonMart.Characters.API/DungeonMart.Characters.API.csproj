@@ -161,10 +161,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CharactersController.cs" />
+    <Compile Include="Controllers\Dnd35Controller.cs" />
     <Compile Include="DAL\AuthContext.cs" />
     <Compile Include="Mappers\Dnd35Mapper.cs" />
     <Compile Include="Mappers\Dnd5Mapper.cs" />
     <Compile Include="Mappers\ICharacterMapper.cs" />
+    <Compile Include="Mappers\Interfaces\IDnd35Mapper.cs" />
     <Compile Include="Models\BaseCharacterViewModel.cs" />
     <Compile Include="Models\Dnd35CharacterViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -175,7 +177,9 @@
     <Compile Include="Repositories\CharacterRepository.cs" />
     <Compile Include="Repositories\Interfaces\ICharacterRepository.cs" />
     <Compile Include="Services\CharacterService.cs" />
+    <Compile Include="Services\Dnd35Service.cs" />
     <Compile Include="Services\Interfaces\ICharacterService.cs" />
+    <Compile Include="Services\Interfaces\IDnd35Service.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
