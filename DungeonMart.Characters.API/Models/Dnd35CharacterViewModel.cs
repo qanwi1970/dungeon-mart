@@ -1,9 +1,11 @@
-﻿namespace DungeonMart.Characters.API.Models
+﻿using System.Collections.Generic;
+
+namespace DungeonMart.Characters.API.Models
 {
     public class Dnd35CharacterViewModel : BaseCharacterViewModel
     {
-        public ClassLevel[] Classes { get; set; }
-        public int Ecl { get; set; }
+        public List<ClassLevel> Classes { get; set; }
+        public int? Ecl { get; set; }
         public string Race { get; set; }
         public string Alignment { get; set; }
         public string Diety { get; set; }
@@ -30,18 +32,32 @@
         public SavingThrow FortitudeSave { get; set; }
         public SavingThrow ReflexSave { get; set; }
         public SavingThrow WillSave { get; set; }
-        public string[] ConditionalSaveModifiers { get; set; }
+        public List<string> ConditionalSaveModifiers { get; set; }
         public int? BaseAttackBonus { get; set; }
-        public AttackStats[] AttackOptions { get; set; }
-        public SkillStats[] Skills { get; set; }
+        public List<AttackStats> AttackOptions { get; set; }
+        public List<SkillStats> Skills { get; set; }
         public int? ExperiencePoints { get; set; }
         public ArmorStats Armor { get; set; }
         public ShieldStats Shield { get; set; }
-        public ItemStats[] Items { get; set; }
-        public string[] RacialTraits { get; set; }
-        public string[] ClassFeatures { get; set; }
-        public string[] Feats { get; set; }
-        public string[] Languages { get; set; }
+        public List<ItemStats> Items { get; set; }
+        public List<string> RacialTraits { get; set; }
+        public List<string> ClassFeatures { get; set; }
+        public List<string> Feats { get; set; }
+        public List<string> Languages { get; set; }
+
+
+        public Dnd35CharacterViewModel()
+        {
+            Classes = new List<ClassLevel>();
+            ConditionalSaveModifiers = new List<string>();
+            AttackOptions = new List<AttackStats>();
+            Skills = new List<SkillStats>();
+            Items = new List<ItemStats>();
+            RacialTraits = new List<string>();
+            ClassFeatures = new List<string>();
+            Feats = new List<string>();
+            Languages = new List<string>();
+        }
 
 
         public class ClassLevel

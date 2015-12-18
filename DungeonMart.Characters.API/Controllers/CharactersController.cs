@@ -24,40 +24,8 @@ namespace DungeonMart.Characters.API.Controllers
         }
 
         [Authorize]
-		[Route("")]
-		public async Task<IHttpActionResult> Get()
-        {
-            var user = User.Identity.Name;
-			var characters = await _characterService.GetCharacters(user);
-
-			return Ok(characters);
-		}
-
-        [Authorize]
-        [Route("{id}", Name = "GetById")]
-        public async Task<IHttpActionResult> GetById(string id)
-        {
-            BaseCharacterViewModel character;
-            try
-            {
-                character = await _characterService.GetCharacterById(id, User.Identity.Name);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
-            if (character == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(character);
-        }
-
-        [Authorize]
-        [Route("{id}")]
-        public async Task<IHttpActionResult> Delete(string id)
+        [Route("{system}/{id}")]
+        public async Task<IHttpActionResult> Delete(GameSystem system, string id)
         {
             await _characterService.DeleteCharacter(id, User.Identity.Name);
 

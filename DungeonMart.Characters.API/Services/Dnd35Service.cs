@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DungeonMart.Characters.API.Mappers.Interfaces;
 using DungeonMart.Characters.API.Models;
 using DungeonMart.Characters.API.Repositories.Interfaces;
@@ -29,6 +30,16 @@ namespace DungeonMart.Characters.API.Services
         }
 
         public Task UpdateCharacter(string id, Dnd35CharacterViewModel character, string userName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<Dnd35CharacterViewModel>> GetCharacters(string userName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Dnd35CharacterViewModel> GetCharacterById(string id, string userName)
         {
             throw new System.NotImplementedException();
         }

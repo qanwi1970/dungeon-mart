@@ -171,7 +171,6 @@
     <Compile Include="Models\Dnd35CharacterViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\CharacterMapperProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
     <Compile Include="Repositories\CharacterRepository.cs" />

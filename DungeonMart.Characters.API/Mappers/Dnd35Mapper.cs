@@ -15,6 +15,24 @@ namespace DungeonMart.Characters.API.Mappers
                 CharacterName = character.GetValue("characterName").AsString,
                 IsShared = character.GetValue("isShared").AsBoolean
             };
+            BsonValue classesArray;
+            if (character.TryGetValue("classes", out classesArray))
+            {
+                foreach (var bsonValue in (BsonArray)classesArray)
+                {
+                    var classLevel = (BsonDocument) bsonValue;
+                    newModel.Classes.Add(new Dnd35CharacterViewModel.ClassLevel
+                    {
+                        ClassName = classLevel.GetValue("className").AsString,
+                        Level = classLevel.GetValue("level").AsNullableInt32
+                    });
+                }
+            }
+            BsonValue ecl;
+            if (character.TryGetValue("ecl", out ecl))
+            {
+                newModel.Ecl = ecl.AsNullableInt32;
+            }
 
             return newModel;
         }
@@ -27,6 +45,19 @@ namespace DungeonMart.Characters.API.Mappers
                 { "isShared", character.IsShared },
                 { "system", character.System.ToString() }
             };
+
+            var classes = new BsonArray();
+            foreach (var classLevel in character.Classes)
+            {
+                classes.Add(new BsonDocument
+                {
+                    {"className", classLevel.ClassName},
+                    {"level", classLevel.Level }
+                });
+            }
+            bsonCharacter.Add(new BsonElement("classes", classes));
+
+            bsonCharacter.Add("ecl", () => new BsonInt32(character.Ecl.Value), character.Ecl.HasValue);
 
             if (character.CharacterID != null)
             {
