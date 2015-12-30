@@ -163,6 +163,7 @@
     <Compile Include="Controllers\CharactersController.cs" />
     <Compile Include="Controllers\Dnd35Controller.cs" />
     <Compile Include="DAL\AuthContext.cs" />
+    <Compile Include="Mappers\BsonMapper.cs" />
     <Compile Include="Mappers\Dnd35Mapper.cs" />
     <Compile Include="Mappers\Dnd5Mapper.cs" />
     <Compile Include="Mappers\ICharacterMapper.cs" />
